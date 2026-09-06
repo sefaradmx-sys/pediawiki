@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuentes y referencias — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html" class="active">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Fuentes</div>
+      <h1>Fuentes y referencias</h1>
+      <p>Sistema de referencias similar a Wikipedia. Cada afirmación importante se asocia a una fuente.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <p class="lead">Cada fuente puede incluir: archivo, biblioteca, libro, autor, colección, número de expediente, folio, página, URL, fecha de consulta, fotografía del documento y transcripción.</p>
+
+      <h2 class="mt-3">Ejemplos de fuentes en la demostración</h2>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Referencia</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Archivo</td>
+            <td>Archivo Histórico de la Comunidad Judía de Salónica (AHJS), leg. 12, fol. 45</td>
+            <td>Biografía de David Toledano</td>
+          </tr>
+          <tr>
+            <td>Archivo</td>
+            <td>AHJS, leg. 8, fol. 12-13</td>
+            <td>Ketubá de 1535</td>
+          </tr>
+          <tr>
+            <td>Libro</td>
+            <td>Benbassa, E. & Rodrigue, A. <em>Sephardi Jewry</em>. Univ. of California Press, 2000.</td>
+            <td>Contexto histórico</td>
+          </tr>
+          <tr>
+            <td>Libro</td>
+            <td>Beider, A. <em>A Dictionary of Jewish Surnames from the Maghreb...</em></td>
+            <td>Apellidos</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box mt-2">
+        <strong>Principio:</strong> Las referencias se muestran al final de cada artículo. El sistema permite enlazar cada dato concreto (nacimiento, matrimonio, parentesco) con la fuente exacta que lo respalda.
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

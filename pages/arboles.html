@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Árboles genealógicos — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html" class="active">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Árboles genealógicos</div>
+      <h1>Árboles genealógicos</h1>
+      <p>Visualización de relaciones familiares con indicadores de nivel de evidencia.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="warning-box">
+        <strong>Indicadores visuales:</strong>
+        <span class="badge badge-confirmado" style="margin-left:0.5rem;">Documentado</span>
+        <span class="badge badge-probable">Estimado</span>
+        <span class="badge badge-hipotesis">No confirmado</span>
+        — Cada persona del árbol enlaza a su biografía y a los documentos que demuestran la relación.
+      </div>
+
+      <h2>Árbol de demostración: familia Toledano (Salónica, s. XVI)</h2>
+      <div class="tree-container mt-2">
+        <div class="tree">
+          <div class="tree-level">
+            <div class="tree-person estimated">
+              <div class="name"><a href="persona.html?id=david-ben-abraham-toledano">Abraham Toledano</a></div>
+              <div class="years">Probable · padre de David</div>
+            </div>
+            <div class="tree-person unconfirmed">
+              <div class="name">Sara (apellido desconocido)</div>
+              <div class="years">Hipótesis</div>
+            </div>
+          </div>
+          <div class="tree-connector"></div>
+          <div class="tree-level">
+            <div class="tree-person documented">
+              <div class="name"><a href="persona.html?id=david-ben-abraham-toledano">David ben Abraham Toledano</a></div>
+              <div class="years">c. 1485 – c. 1542</div>
+            </div>
+            <div class="tree-person documented">
+              <div class="name"><a href="persona.html?id=rachel-cohen-toledano">Rachel Cohen</a></div>
+              <div class="years">c. 1490 – después de 1545</div>
+            </div>
+          </div>
+          <div class="tree-connector"></div>
+          <div class="tree-level">
+            <div class="tree-person documented">
+              <div class="name"><a href="persona.html?id=isaac-toledano">Isaac Toledano</a></div>
+              <div class="years">c. 1512 – c. 1580</div>
+            </div>
+            <div class="tree-person documented">
+              <div class="name"><a href="persona.html?id=miriam-toledano">Miriam Toledano</a></div>
+              <div class="years">c. 1515 – ?</div>
+            </div>
+          </div>
+          <div class="tree-connector"></div>
+          <div class="tree-level">
+            <div class="tree-person documented">
+              <div class="name"><a href="persona.html?id=abraham-toledano-ii">Abraham Toledano</a></div>
+              <div class="years">c. 1540 – c. 1610</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-2" style="font-size:0.9rem;color:#666;">Haga clic en cualquier nombre para abrir la ficha biográfica completa. En producción el árbol sería interactivo (zoom, expansión de ramas, filtro por evidencia).</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

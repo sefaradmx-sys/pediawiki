@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa histórico — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html" class="active">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Mapa</div>
+      <h1>Mapa histórico e interactivo</h1>
+      <p>Lugares de nacimiento, residencia, matrimonio, fallecimiento, migraciones y comunidades sefardíes.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="filters">
+        <div class="filter-group">
+          <label>Seleccionar persona</label>
+          <select>
+            <option value="">— Ver todas las rutas —</option>
+            <option>David ben Abraham Toledano</option>
+            <option>Isaac Toledano</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Tipo de lugar</label>
+          <select>
+            <option value="">Todos</option>
+            <option>Nacimiento</option>
+            <option>Residencia</option>
+            <option>Matrimonio</option>
+            <option>Fallecimiento</option>
+            <option>Comunidad sefardí</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" onclick="alert('Mapa de demostración. En producción se cargaría Leaflet con capas de puntos y rutas.')">Actualizar mapa</button>
+        </div>
+      </div>
+
+      <div class="map-box" style="height:480px;">
+        <div style="text-align:center;padding:2rem;max-width:560px;">
+          <p style="font-size:2.5rem;">🗺️</p>
+          <h3>Mapa de demostración</h3>
+          <p style="margin:0.75rem 0;color:#555;">Principales nodos de la diáspora sefardí post-1492:</p>
+          <ul style="text-align:left;display:inline-block;font-size:0.95rem;">
+            <li><strong>Toledo</strong> — origen de la familia de demostración</li>
+            <li><strong>Lisboa</strong> — tránsito tras 1492</li>
+            <li><strong>Salónica</strong> — asentamiento principal</li>
+            <li><strong>Esmirna</strong> — posible destino posterior (hipótesis)</li>
+            <li><strong>Ámsterdam</strong> — comunidad sefardí occidental</li>
+          </ul>
+          <p style="font-size:0.85rem;color:#777;margin-top:1rem;">En la versión completa: capas de OpenStreetMap / Leaflet, selección de persona para ver desplazamientos en el tiempo, y filtros por siglo y tipo de evento.</p>
+        </div>
+        <div class="map-overlay-info">
+          <strong>Ruta demo:</strong> Toledo → Lisboa (1492) → Salónica (c. 1498)
+        </div>
+      </div>
+
+      <h2 class="mt-3">Rutas migratorias documentadas (demo)</h2>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Desde</th>
+            <th>Hasta</th>
+            <th>Periodo</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Toledo</td>
+            <td>Lisboa</td>
+            <td>1492-1497</td>
+            <td>Expulsión de Castilla y tránsito por Portugal</td>
+          </tr>
+          <tr>
+            <td>Lisboa</td>
+            <td>Salónica</td>
+            <td>1497-1500</td>
+            <td>Emigración al Imperio Otomano</td>
+          </tr>
+          <tr>
+            <td>Salónica</td>
+            <td>Esmirna</td>
+            <td>s. XVII</td>
+            <td>Movimientos internos (hipótesis para algunas ramas)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

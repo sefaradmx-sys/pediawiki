@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribuir — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Contribuir</div>
+      <h1>Sistema de contribuciones</h1>
+      <p>Roles, propuestas y revisión editorial.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container" style="max-width:800px;">
+      <h2>Roles de usuario</h2>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Rol</th>
+            <th>Permisos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Visitante</strong></td>
+            <td>Consulta pública de fichas y documentos abiertos</td>
+          </tr>
+          <tr>
+            <td><strong>Colaborador</strong></td>
+            <td>Proponer nuevas biografías, documentos, correcciones, relaciones y fuentes</td>
+          </tr>
+          <tr>
+            <td><strong>Investigador</strong></td>
+            <td>Edición avanzada, subida de documentos, etiquetado de evidencia</td>
+          </tr>
+          <tr>
+            <td><strong>Editor</strong></td>
+            <td>Revisión y aprobación de contribuciones</td>
+          </tr>
+          <tr>
+            <td><strong>Administrador</strong></td>
+            <td>Gestión completa del sistema, usuarios y configuración</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="mt-3">Qué se puede proponer</h2>
+      <ul style="list-style:disc;padding-left:1.5rem;">
+        <li>Nuevas biografías</li>
+        <li>Documentos históricos (con metadatos y derechos)</li>
+        <li>Correcciones a fichas existentes</li>
+        <li>Relaciones familiares (con nivel de evidencia)</li>
+        <li>Fuentes y referencias</li>
+      </ul>
+
+      <h2 class="mt-3">Revisión editorial</h2>
+      <p>Las modificaciones importantes pasan por revisión. Se mantiene un historial de cambios que muestra: quién modificó, qué cambió, fecha, versión anterior y versión nueva.</p>
+
+      <div class="info-box mt-2">
+        Esta página es una demostración del flujo de contribuciones. En la versión completa existiría un formulario de registro, cola de revisión y sistema de notificaciones.
+      </div>
+
+      <p class="mt-2"><button class="btn btn-gold" onclick="alert('Registro de demostración. En producción se abriría el formulario de alta de colaborador.')">Solicitar cuenta de colaborador</button></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

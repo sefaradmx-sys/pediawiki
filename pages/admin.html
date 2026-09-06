@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel administrativo — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Panel administrativo</div>
+      <h1>Dashboard administrativo</h1>
+      <p>Vista de demostración del panel de gestión.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="dashboard-stats" id="admin-stats">
+        <!-- JS -->
+      </div>
+
+      <h2>Contribuciones pendientes de revisión</h2>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>Título</th>
+            <th>Propuesto por</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Biografía</td>
+            <td>Nueva ficha: Samuel Toledano</td>
+            <td>colaborador01</td>
+            <td>2026-09-01</td>
+            <td>
+              <button class="btn btn-primary" style="padding:0.3rem 0.6rem;font-size:0.8rem;" onclick="alert('Aprobado (demo)')">Aprobar</button>
+              <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.8rem;" onclick="alert('Rechazado (demo)')">Rechazar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Documento</td>
+            <td>Acta de defunción (fragmento)</td>
+            <td>investigador02</td>
+            <td>2026-09-03</td>
+            <td>
+              <button class="btn btn-primary" style="padding:0.3rem 0.6rem;font-size:0.8rem;" onclick="alert('Aprobado (demo)')">Aprobar</button>
+              <button class="btn btn-outline" style="padding:0.3rem 0.6rem;font-size:0.8rem;" onclick="alert('Solicitar correcciones (demo)')">Corregir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="mt-3">Cambios recientes</h2>
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Acción</th>
+            <th>Objeto</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>editor01</td>
+            <td>Aprobó biografía</td>
+            <td>David ben Abraham Toledano</td>
+            <td>2026-08-28</td>
+          </tr>
+          <tr>
+            <td>investigador02</td>
+            <td>Añadió documento</td>
+            <td>Ketubá 1535</td>
+            <td>2026-08-25</td>
+          </tr>
+          <tr>
+            <td>colaborador01</td>
+            <td>Propuso corrección</td>
+            <td>Lugar de nacimiento de Rachel Cohen</td>
+            <td>2026-08-20</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box mt-2">
+        Panel de demostración. En producción incluiría gestión de usuarios, reportes, artículos pendientes, moderación de privacidad y herramientas de importación de datos.
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

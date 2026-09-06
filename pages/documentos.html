@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentos históricos — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html" class="active">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Documentos</div>
+      <h1>Biblioteca digital de documentos</h1>
+      <p>Actas, censos, testamentos, pasaportes, fotografías y otras fuentes históricas.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="filters">
+        <div class="filter-group">
+          <label>Tipo de documento</label>
+          <select>
+            <option value="">Todos</option>
+            <option>Actas de nacimiento</option>
+            <option>Actas de bautismo</option>
+            <option>Actas de matrimonio</option>
+            <option>Actas de defunción</option>
+            <option>Registros parroquiales</option>
+            <option>Registros civiles</option>
+            <option>Censos</option>
+            <option>Testamentos</option>
+            <option>Pasaportes</option>
+            <option>Documentos migratorios</option>
+            <option>Padrones</option>
+            <option>Escrituras</option>
+            <option>Fotografías</option>
+            <option>Libros</option>
+            <option>Periódicos históricos</option>
+            <option>Cartas</option>
+            <option>Otros</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Siglo / fecha</label>
+          <input type="text" placeholder="Ej. 1500-1600">
+        </div>
+        <div class="filter-group">
+          <label>Lugar</label>
+          <input type="text" placeholder="Ej. Salónica">
+        </div>
+        <div class="filter-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" onclick="alert('Filtros de demostración.')">Filtrar</button>
+        </div>
+      </div>
+
+      <div id="documentos-lista" class="doc-list">
+        <!-- JS -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

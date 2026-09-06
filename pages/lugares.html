@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lugares — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html" class="active">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Lugares</div>
+      <h1>Lugares y comunidades</h1>
+      <p>Ciudades, pueblos y comunidades sefardíes documentadas en la plataforma.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <table class="list-table">
+        <thead>
+          <tr>
+            <th>Lugar</th>
+            <th>País / entidad histórica</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Toledo</strong></td>
+            <td>España (Castilla)</td>
+            <td>Ciudad histórica · origen de muchas familias</td>
+          </tr>
+          <tr>
+            <td><strong>Salónica (Tesalónica)</strong></td>
+            <td>Grecia / Imperio Otomano</td>
+            <td>Gran comunidad sefardí</td>
+          </tr>
+          <tr>
+            <td><strong>Lisboa</strong></td>
+            <td>Portugal</td>
+            <td>Tránsito post-1492</td>
+          </tr>
+          <tr>
+            <td><strong>Esmirna (Izmir)</strong></td>
+            <td>Turquía / Imperio Otomano</td>
+            <td>Comunidad sefardí</td>
+          </tr>
+          <tr>
+            <td><strong>Ámsterdam</strong></td>
+            <td>Países Bajos</td>
+            <td>Comunidad sefardí occidental</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-2" style="font-size:0.9rem;color:#666;">En producción cada lugar tendría su propia página con personas asociadas, documentos, mapa y cronología local.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
