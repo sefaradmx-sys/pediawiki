@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memoria Sefardí — Historia, memoria y genealogía de Sefarad</title>
+  <meta name="description" content="Enciclopedia histórica y genealógica dedicada a documentar la historia de los sefardíes, sus familias, descendientes, migraciones y patrimonio documental.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="pages/personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar personas, familias, apellidos..." aria-label="Buscar">
+        <button type="submit" aria-label="Buscar">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="pages/personas.html">Personas</a>
+      <a href="pages/familias.html">Familias</a>
+      <a href="pages/apellidos.html">Apellidos</a>
+      <a href="pages/documentos.html">Documentos</a>
+      <a href="pages/arboles.html">Árboles genealógicos</a>
+      <a href="pages/lugares.html">Lugares</a>
+      <a href="pages/mapa.html">Mapa</a>
+      <a href="pages/cronologia.html">Cronología</a>
+      <a href="pages/fuentes.html">Fuentes</a>
+      <a href="pages/biblioteca.html">Biblioteca</a>
+      <a href="pages/sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Memoria Sefardí</h1>
+        <p class="tagline">Historia, memoria y genealogía de Sefarad</p>
+        <form class="hero-search search-bar" action="pages/personas.html" method="get">
+          <input type="search" name="q" placeholder="Buscar por nombre, apellido, lugar, documento..." aria-label="Búsqueda principal">
+          <button type="submit">🔍</button>
+        </form>
+        <div class="quick-links">
+          <a class="quick-link" href="pages/personas.html">Personas</a>
+          <a class="quick-link" href="pages/familias.html">Familias</a>
+          <a class="quick-link" href="pages/arboles.html">Árboles genealógicos</a>
+          <a class="quick-link" href="pages/documentos.html">Documentos</a>
+          <a class="quick-link" href="pages/lugares.html">Lugares</a>
+          <a class="quick-link" href="pages/apellidos.html">Apellidos</a>
+          <a class="quick-link" href="pages/cronologia.html">Cronología</a>
+          <a class="quick-link" href="pages/mapa.html">Migraciones</a>
+          <a class="quick-link" href="pages/fuentes.html">Fuentes históricas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personajes destacados -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Personajes destacados</h2>
+          <a href="pages/personas.html" class="view-all">Ver todos →</a>
+        </div>
+        <div class="card-grid" id="personajes-destacados">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Familias recientes -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Familias recientemente documentadas</h2>
+          <a href="pages/familias.html" class="view-all">Ver todas →</a>
+        </div>
+        <div class="card-grid" id="familias-recientes">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentos recientes -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Documentos recientemente incorporados</h2>
+          <a href="pages/documentos.html" class="view-all">Ver todos →</a>
+        </div>
+        <div class="card-grid" id="docs-recientes">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapa de migraciones -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Rutas históricas de migración sefardí</h2>
+          <a href="pages/mapa.html" class="view-all">Explorar mapa →</a>
+        </div>
+        <div class="map-box">
+          <div style="text-align:center;padding:2rem;max-width:500px;">
+            <p style="font-size:2.5rem;margin-bottom:0.75rem;">🗺️</p>
+            <h3 style="margin-bottom:0.5rem;">Mapa interactivo de demostración</h3>
+            <p style="font-size:0.95rem;color:#555;margin-bottom:1rem;">Principales rutas post-1492: Castilla y Aragón → Portugal → Imperio Otomano (Salónica, Estambul, Esmirna), Norte de África, Italia, Países Bajos y, posteriormente, América.</p>
+            <p style="font-size:0.85rem;color:#777;">En la versión completa se integrará un mapa con Leaflet mostrando comunidades, rutas y desplazamientos individuales.</p>
+            <a href="pages/mapa.html" class="btn btn-primary mt-2">Abrir mapa completo</a>
+          </div>
+        </div>
+        <div class="warning-box mt-2">
+          <strong>Nota:</strong> Los datos mostrados en esta demostración son ficticios y tienen únicamente finalidad ilustrativa. No representan personas reales ni afirmaciones genealógicas verificadas.
+        </div>
+      </div>
+    </section>
+
+    <!-- Principios -->
+    <section class="section">
+      <div class="container">
+        <h2 class="text-center mb-2">Principios del proyecto</h2>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-body">
+              <h3>📜 Rigor documental</h3>
+              <p class="card-excerpt">Toda afirmación importante se asocia a fuentes. Se distingue claramente lo confirmado, lo documentado, lo probable y lo hipotético.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>🔍 Transparencia genealógica</h3>
+              <p class="card-excerpt">La presencia de un apellido no demuestra por sí sola ascendencia sefardí. Las relaciones familiares requieren evidencia.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>🤝 Colaboración revisada</h3>
+              <p class="card-excerpt">Investigadores y colaboradores pueden proponer datos; las modificaciones relevantes pasan por revisión editorial.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h3>🔒 Privacidad</h3>
+              <p class="card-excerpt">Información de personas vivas se trata con especial cuidado. Registros pueden ser públicos, restringidos o privados.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Memoria Sefardí</h4>
+          <p style="font-size:0.9rem;margin-top:0.5rem;">Enciclopedia histórica y genealógica dedicada a la memoria de Sefarad y su diáspora.</p>
+        </div>
+        <div>
+          <h4>Explorar</h4>
+          <a href="pages/personas.html">Personas</a>
+          <a href="pages/familias.html">Familias</a>
+          <a href="pages/documentos.html">Documentos</a>
+          <a href="pages/mapa.html">Mapa</a>
+        </div>
+        <div>
+          <h4>Proyecto</h4>
+          <a href="pages/sobre.html">Sobre el proyecto</a>
+          <a href="pages/fuentes.html">Fuentes</a>
+          <a href="pages/contribuciones.html">Contribuir</a>
+          <a href="pages/admin.html">Panel admin (demo)</a>
+        </div>
+        <div>
+          <h4>Aviso</h4>
+          <p style="font-size:0.85rem;">Sitio de demostración con datos ficticios. No utilizar como fuente genealógica real.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración educativa. Todos los personajes y documentos son inventados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
