@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sefarad MX | Archivo Histórico: Francisco García de la Peña (1883-1962)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        sefarad: {
+                            50: '#fbf8f2',
+                            100: '#f5edd8',
+                            200: '#ebd9b0',
+                            300: '#dec081',
+                            400: '#d1a355',
+                            500: '#b88330',
+                            600: '#9b6424',
+                            700: '#7c4a20',
+                            800: '#683d21',
+                            900: '#583420',
+                            950: '#331b10',
+                        },
+                        archive: {
+                            bg: '#14171f',
+                            card: '#1d222e',
+                            border: '#2d3548',
+                            text: '#e2e8f0',
+                            gold: '#d4af37'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parchment-bg {
+            background-color: #fbf8f2;
+            background-image: radial-gradient(#ebd9b0 0.75px, transparent 0.75px), radial-gradient(#ebd9b0 0.75px, #fbf8f2 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .dark .parchment-bg {
+            background-color: #0f1219;
+            background-image: radial-gradient(#1e2536 0.75px, transparent 0.75px), radial-gradient(#1e2536 0.75px, #0f1219 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #b88330;
+            border-radius: 4px;
+        }
+        .image-zoom-container {
+            overflow: hidden;
+            position: relative;
+            cursor: zoom-in;
+        }
+        .image-zoom-container img {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="parchment-bg text-slate-800 dark:text-slate-100 font-sans min-h-screen transition-colors duration-300">
+
+    <!-- Top Header / Branding Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-sefarad-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-sefarad-600 to-sefarad-800 flex items-center justify-center text-white font-cinzel font-bold text-xl shadow-md border-2 border-sefarad-300">
+                        ✡
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-cinzel font-bold text-xl tracking-wider text-sefarad-900 dark:text-sefarad-300">SEFARAD MX</span>
+                            <span class="text-xs bg-sefarad-100 dark:bg-sefarad-950 text-sefarad-800 dark:text-sefarad-300 font-semibold px-2 py-0.5 rounded-full border border-sefarad-300 dark:border-sefarad-800">
+                                Orgullo Sefardí
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Archivo Histórico y Registros Genealógicos del Noreste de México</p>
+                    </div>
+                </div>
+
+                <!-- Controls & Actions -->
+                <div class="flex items-center space-x-3">
+                    <!-- Quick Search Input -->
+                    <div class="relative hidden md:block">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="globalSearch" onkeyup="filterContent()" placeholder="Buscar en el documento..." 
+                               class="pl-9 pr-4 py-1.5 text-sm rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-sefarad-500 w-48 sm:w-64 transition-all">
+                    </div>
+
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Cambiar tema">
+                        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                        <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+                    </button>
+
+                    <!-- Print / Export Button -->
+                    <button onclick="window.print()" class="hidden sm:inline-flex items-center space-x-2 bg-sefarad-700 hover:bg-sefarad-800 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-all">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Imprimir / PDF</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Hero Section -->
+        <div class="relative rounded-2xl bg-gradient-to-r from-slate-900 via-sefarad-950 to-slate-900 text-white p-6 sm:p-10 mb-8 shadow-2xl overflow-hidden border border-sefarad-700/30">
+            <!-- Background Decorative Watermark -->
+            <div class="absolute -right-10 -bottom-10 opacity-10 font-cinzel text-9xl pointer-events-none select-none text-sefarad-300">
+                SEFARAD
+            </div>
+
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-sefarad-500/20 border border-sefarad-400/40 text-sefarad-300 text-xs px-3 py-1 rounded-full uppercase tracking-widest font-semibold">
+                        <i class="fa-solid fa-scroll text-sefarad-400"></i>
+                        <span>Expediente Documental N° P7LC-66L</span>
+                    </div>
+
+                    <h1 class="font-cinzel text-3xl sm:text-4xl lg:text-5xl font-extrabold text-amber-100 tracking-tight leading-tight">
+                        Francisco García de la Peña
+                    </h1>
+
+                    <p class="text-sefarad-200 text-base sm:text-lg font-serif italic">
+                        "Nacido en el Rancho de Huachichil y bautizado en la Vice-Parroquia de San Francisco de Patos (hoy General Cepeda, Coahuila)"
+                    </p>
+
+                    <!-- Quick Metadata Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+                        <div class="bg-slate-800/80 border border-slate-700 p-2.5 rounded-lg">
+                            <span class="block text-slate-400 font-medium">Nacimiento</span>
+                            <span class="font-semibold text-white">4 Octubre 1883</span>
+                        </div>
+                        <div class="bg-slate-800/80 border border-slate-700 p-2.5 rounded-lg">
+                            <span class="block text-slate-400 font-medium">Defunción</span>
+                            <span class="font-semibold text-white">24 Noviembre 1962</span>
+                        </div>
+                        <div class="bg-slate-800/80 border border-slate-700 p-2.5 rounded-lg">
+                            <span class="block text-slate-400 font-medium">Origen Linaje</span>
+                            <span class="font-semibold text-white">Patos / Huachichil</span>
+                        </div>
+                        <div class="bg-slate-800/80 border border-slate-700 p-2.5 rounded-lg">
+                            <span class="block text-slate-400 font-medium">Cónyuge</span>
+                            <span class="font-semibold text-white">María García García</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Showcase Badge / Hero Photo Preview -->
+                <div class="lg:col-span-1 flex flex-col items-center justify-center bg-slate-800/60 p-4 rounded-xl border border-sefarad-500/30 backdrop-blur-sm">
+                    <div class="relative w-full h-48 rounded-lg overflow-hidden border border-sefarad-400/40 shadow-inner group cursor-pointer" onclick="openImageModal('https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/4f33c3dc3f9c8e8bf6ce9d9d63e94a8b6f23d7e9/Imagenes-familires/Registros/Francisco%20Garc%C3%ADa%20pe%C3%B1a%20bautismo.jpg', 'Registro Civil de Bautismo - Francisco García Peña (1883)')">
+                        <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/4f33c3dc3f9c8e8bf6ce9d9d63e94a8b6f23d7e9/Imagenes-familires/Registros/Francisco%20Garc%C3%ADa%20pe%C3%B1a%20bautismo.jpg" 
+                             alt="Registro Histórico" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-2 left-2 right-2 flex justify-between items-center text-xs text-sefarad-200">
+                            <span class="font-semibold"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Documento Civil 1883</span>
+                            <span class="bg-sefarad-600/80 px-2 py-0.5 rounded text-[10px]">Acta N° 504</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 text-center mt-3 italic">
+                        Manuscrito original del Registro Civil de Patos (General Cepeda), foliado en 1883.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Section Tabs -->
+        <div class="flex border-b border-sefarad-200 dark:border-slate-800 mb-8 overflow-x-auto custom-scrollbar space-x-2 sm:space-x-4">
+            <button onclick="switchTab('tab-bio')" id="btn-tab-bio" class="tab-btn active border-b-2 border-sefarad-600 text-sefarad-800 dark:text-sefarad-400 font-semibold px-4 py-3 text-sm flex items-center space-x-2 whitespace-nowrap transition-all">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>Biografía e Historia</span>
+            </button>
+            <button onclick="switchTab('tab-arbol')" id="btn-tab-arbol" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-sefarad-700 dark:text-slate-400 font-medium px-4 py-3 text-sm flex items-center space-x-2 whitespace-nowrap transition-all">
+                <i class="fa-solid fa-sitemap"></i>
+                <span>Árbol Genealógico Interactivo</span>
+            </button>
+            <button onclick="switchTab('tab-documentos')" id="btn-tab-documentos" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-sefarad-700 dark:text-slate-400 font-medium px-4 py-3 text-sm flex items-center space-x-2 whitespace-nowrap transition-all">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span>Documental de la Constancia (Visor)</span>
+            </button>
+            <button onclick="switchTab('tab-timeline')" id="btn-tab-timeline" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-sefarad-700 dark:text-slate-400 font-medium px-4 py-3 text-sm flex items-center space-x-2 whitespace-nowrap transition-all">
+                <i class="fa-solid fa-timeline"></i>
+                <span>Línea del Tiempo</span>
+            </button>
+            <button onclick="switchTab('tab-fuentes')" id="btn-tab-fuentes" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-sefarad-700 dark:text-slate-400 font-medium px-4 py-3 text-sm flex items-center space-x-2 whitespace-nowrap transition-all">
+                <i class="fa-solid fa-quote-right"></i>
+                <span>Citas y Fuentes Cheadle</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: BIOGRAFÍA E HISTORIA -->
+        <div id="tab-bio" class="tab-content block space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Biography Main Article -->
+                <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-800 space-y-6">
+                    
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <h2 class="font-cinzel text-2xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-feather-pointed text-sefarad-600"></i>
+                            Reseña Biográfica de Francisco García de la Peña
+                        </h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                            Investigación histórica recopilada para el portal Sefarad MX / Orgullo Sefardí.
+                        </p>
+                    </div>
+
+                    <div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 space-y-4 font-serif leading-relaxed text-justify">
+                        <p>
+                            <span class="float-left text-5xl font-cinzel text-sefarad-700 font-bold pr-3 leading-none">F</span>rancisco García de la Peña nació el <strong>4 de octubre de 1883</strong> en el paraje rural del <em>Rancho del Huachichil</em> (jurisdicción de Arteaga y Villa de Patos, actual municipio de General Cepeda, Coahuila, México). Fue presentado formalmente ante el Registro Civil de la Villa de Patos el día <strong>20 de diciembre de 1883</strong> por su padre, el ciudadano Jesús García, quedando asentado en la Acta Número 504.
+                        </p>
+                        
+                        <div class="my-6 bg-sefarad-50 dark:bg-slate-800/80 p-5 rounded-xl border-l-4 border-sefarad-600 not-italic font-sans text-sm">
+                            <h4 class="font-cinzel font-bold text-sefarad-900 dark:text-sefarad-300 mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-id-card"></i> Ficha Genealógica de Origen
+                            </h4>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-700 dark:text-slate-300">
+                                <li><strong>Nombre Completo:</strong> Francisco García de la Peña</li>
+                                <li><strong>Padre:</strong> Jesús García Flores (n. ~1850)</li>
+                                <li><strong>Madre:</strong> Jacoba de la Peña Saucedo (n. ~1861)</li>
+                                <li><strong>Abuelos Paternos:</strong> Jesús García Saucedo y Rosalía Flores</li>
+                                <li><strong>Abuelos Maternos:</strong> Praxedis de la Peña y Juana Saucedo</li>
+                                <li><strong>Parroquia Bautismal:</strong> San Francisco de Asís (Villa de Patos)</li>
+                            </ul>
+                        </div>
+
+                        <p>
+                            Paralelamente a su registro civil, recibió el bautismo el mismo 20 de diciembre de 1883 en la <strong>Vice-Parroquia de San Francisco de Patos</strong> por el presbítero Manuel Flores Farías, sirviendo como padrinos Manuel Cárdenas y Andrea Aragón de Cárdenas. Sus raíces se extienden a través de familias tradicionales asentadas en el sur del estado de Coahuila con ramificaciones en los antiguos valles del suroeste novohispano.
+                        </p>
+
+                        <h3 class="font-cinzel text-xl font-bold text-slate-900 dark:text-slate-100 pt-4">
+                            Unión Familiar y Trayectoria de Vida
+                        </h3>
+                        <p>
+                            Francisco contrajo matrimonio con la señora <strong>María García García</strong> (nacida alrededor de 1884 en Venado, San Luis Potosí, e hija de Eduarda García García). La señora María había estado previamente casada con Julián Rodríguez Castillo desde 1904 hasta la defunción de este en 1909. Tras unirse con Francisco García de la Peña, establecieron su hogar definitivo en el municipio de General Cepeda, Coahuila.
+                        </p>
+                        <p>
+                            De la unión de Francisco y María nacieron varios hijos, entre ellos <strong>Raimundo García</strong> (nacido en 1922) y <strong>Hermilo García García</strong> (nacido el 14 de enero de 1925 y fallecido en 2017). Francisco ejerció las labores del campo y la ganadería local en las haciendas y rancherías del municipio.
+                        </p>
+
+                        <h3 class="font-cinzel text-xl font-bold text-slate-900 dark:text-slate-100 pt-4">
+                            Fallecimiento y Legado Memorable
+                        </h3>
+                        <p>
+                            Francisco García de la Peña falleció el <strong>24 de noviembre de 1962</strong> a los 78 años de edad en General Cepeda, Coahuila, descansando sus restos en el panteón municipal de dicha localidad. Su descendencia continuó fortaleciendo la presencialidad histórica en la región coahuilense y áreas circunvecinas como Saltillo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sidebar Metadata & Historical Context -->
+                <div class="space-y-6">
+                    <!-- Key Data Card -->
+                    <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
+                        <h3 class="font-cinzel font-bold text-lg text-sefarad-800 dark:text-sefarad-400 mb-4 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-landmark"></i> Contexto Territorial
+                        </h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-location-dot text-sefarad-600 mt-1"></i>
+                                <div>
+                                    <strong class="block text-slate-800 dark:text-slate-200">Villa de Patos (General Cepeda)</strong>
+                                    <span class="text-sla
