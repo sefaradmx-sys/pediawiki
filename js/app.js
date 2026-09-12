@@ -2,7 +2,7 @@
 async function cargarPersonajesDestacados() {
   try {
     // Verificar que el cliente de Supabase esté disponible
-    if (!window.supabase || !window.supabaseClient) {
+    if (!window.supabaseClient) {
       console.error('Cliente Supabase no disponible');
       mostrarError('Error: Cliente Supabase no configurado correctamente');
       return;
@@ -55,7 +55,7 @@ function renderizarPersonajes(personajes) {
     // Mostrar imagen si existe
     if (personaje.imagen_url) {
       contenido += `
-        <img src="${personaje.imagen_url}" alt="${personaje.nombre || 'Personaje'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.parentElement.innerHTML='<div class=\"w-full h-full flex items-center justify-center text-sefarad-100 text-4xl\"><i class=\"fa-solid fa-user-circle\"></i></div>'">
+        <img src="${personaje.imagen_url}" alt="${personaje.nombre || 'Personaje'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.parentElement.innerHTML='<div class=\\\"w-full h-full flex items-center justify-center text-sefarad-100 text-4xl\\\"><i class=\\\"fa-solid fa-user-circle\\\"></i></div>'">
       `;
     } else {
       contenido += `
