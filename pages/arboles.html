@@ -1,122 +1,198 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Árboles genealógicos — Memoria Sefardí</title>
+  <title>Árboles Genealógicos — Memoria Sefardí</title>
+  <meta name="description" content="Visualización interactiva de relaciones familiares, linajes sefardíes y niveles de evidencia histórica.">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            sefarad: {
+              50: '#fbf8f2', 100: '#f4ede0', 200: '#e7d8be', 300: '#d7bf97',
+              400: '#c5a16d', 500: '#b28549', 600: '#9b6e3c', 700: '#7e5433',
+              800: '#67442f', 900: '#54392a', 950: '#2e1c15',
+            },
+            royal: { 800: '#1e293b', 900: '#0f172a', 950: '#080d1a' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-top">
-      <a href="../index.html" class="logo">
-        <div class="logo-mark">מ</div>
-        <div class="logo-text">
-          <strong>Memoria Sefardí</strong>
-          <span>Enciclopedia histórica</span>
-        </div>
-      </a>
-      <form class="search-bar" action="personas.html" method="get">
-        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit">🔍</button>
-      </form>
-      <button class="nav-toggle" aria-label="Menú">☰</button>
+<body class="bg-sefarad-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-royal-950/90 backdrop-blur-md border-b border-sefarad-500/20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-sefarad-400 to-sefarad-700 flex items-center justify-center shadow-lg shadow-sefarad-600/30">
+            <span class="font-serif text-2xl font-bold text-white tracking-widest">מ</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-2xl font-bold tracking-wide text-sefarad-100">Memoria Sefardí</span>
+            <span class="text-xs tracking-widest uppercase text-sefarad-400 font-medium">Enciclopedia Histórica</span>
+          </div>
+        </a>
+
+        <!-- Navegación de escritorio -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+          <a href="../index.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Inicio</a>
+          <a href="personas.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Personas</a>
+          <a href="familias.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Familias</a>
+          <a href="apellidos.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Apellidos</a>
+          <a href="documentos.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Documentos</a>
+          <a href="arboles.html" class="px-3 py-1.5 rounded-md bg-sefarad-600 text-white font-semibold">Árboles</a>
+          <a href="mapa.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Mapa</a>
+          <a href="../admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i> Admin</a>
+        </nav>
+      </div>
     </div>
-    <nav class="main-nav container">
-      <a href="../index.html">Inicio</a>
-      <a href="personas.html">Personas</a>
-      <a href="familias.html">Familias</a>
-      <a href="apellidos.html">Apellidos</a>
-      <a href="documentos.html">Documentos</a>
-      <a href="arboles.html" class="active">Árboles genealógicos</a>
-      <a href="lugares.html">Lugares</a>
-      <a href="mapa.html">Mapa</a>
-      <a href="cronologia.html">Cronología</a>
-      <a href="fuentes.html">Fuentes</a>
-      <a href="biblioteca.html">Biblioteca</a>
-      <a href="sobre.html">Sobre el proyecto</a>
-    </nav>
   </header>
 
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Árboles genealógicos</div>
-      <h1>Árboles genealógicos</h1>
-      <p>Visualización de relaciones familiares con indicadores de nivel de evidencia.</p>
+  <!-- BANNER -->
+  <div class="bg-royal-950 text-white py-12 border-b border-sefarad-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-xs text-sefarad-400 font-medium uppercase tracking-wider mb-2">Genealogía & Linajes</div>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold text-sefarad-100">Árboles Genealógicos Sefardíes</h1>
+      <p class="text-slate-300 mt-2 max-w-2xl font-light">Visualización esquemática de conexiones familiares con indicadores certificados de nivel de evidencia documental.</p>
     </div>
   </div>
 
-  <main class="section">
-    <div class="container">
-      <div class="warning-box">
-        <strong>Indicadores visuales:</strong>
-        <span class="badge badge-confirmado" style="margin-left:0.5rem;">Documentado</span>
-        <span class="badge badge-probable">Estimado</span>
-        <span class="badge badge-hipotesis">No confirmado</span>
-        — Cada persona del árbol enlaza a su biografía y a los documentos que demuestran la relación.
-      </div>
-
-      <h2>Árbol de demostración: familia Toledano (Salónica, s. XVI)</h2>
-      <div class="tree-container mt-2">
-        <div class="tree">
-          <div class="tree-level">
-            <div class="tree-person estimated">
-              <div class="name"><a href="persona.html?id=david-ben-abraham-toledano">Abraham Toledano</a></div>
-              <div class="years">Probable · padre de David</div>
-            </div>
-            <div class="tree-person unconfirmed">
-              <div class="name">Sara (apellido desconocido)</div>
-              <div class="years">Hipótesis</div>
-            </div>
-          </div>
-          <div class="tree-connector"></div>
-          <div class="tree-level">
-            <div class="tree-person documented">
-              <div class="name"><a href="persona.html?id=david-ben-abraham-toledano">David ben Abraham Toledano</a></div>
-              <div class="years">c. 1485 – c. 1542</div>
-            </div>
-            <div class="tree-person documented">
-              <div class="name"><a href="persona.html?id=rachel-cohen-toledano">Rachel Cohen</a></div>
-              <div class="years">c. 1490 – después de 1545</div>
-            </div>
-          </div>
-          <div class="tree-connector"></div>
-          <div class="tree-level">
-            <div class="tree-person documented">
-              <div class="name"><a href="persona.html?id=isaac-toledano">Isaac Toledano</a></div>
-              <div class="years">c. 1512 – c. 1580</div>
-            </div>
-            <div class="tree-person documented">
-              <div class="name"><a href="persona.html?id=miriam-toledano">Miriam Toledano</a></div>
-              <div class="years">c. 1515 – ?</div>
-            </div>
-          </div>
-          <div class="tree-connector"></div>
-          <div class="tree-level">
-            <div class="tree-person documented">
-              <div class="name"><a href="persona.html?id=abraham-toledano-ii">Abraham Toledano</a></div>
-              <div class="years">c. 1540 – c. 1610</div>
-            </div>
-          </div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- LEYENDA DE EVIDENCIA -->
+    <div class="bg-white p-5 rounded-2xl shadow-md border border-sefarad-200 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-sefarad-100 flex items-center justify-center text-sefarad-700">
+          <i class="fa-solid fa-sitemap text-lg"></i>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg font-bold text-slate-900">Indicadores Visuales de Certeza</h3>
+          <p class="text-xs text-slate-600">El color del borde indica el respaldo documental archivístico.</p>
         </div>
       </div>
+      <div class="flex flex-wrap gap-2 text-xs font-semibold">
+        <span class="px-3 py-1.5 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-lg flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Documentado
+        </span>
+        <span class="px-3 py-1.5 bg-amber-50 text-amber-800 border border-amber-300 rounded-lg flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span> Estimado / Probable
+        </span>
+        <span class="px-3 py-1.5 bg-rose-50 text-rose-800 border border-rose-300 rounded-lg flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span> Hipótesis
+        </span>
+      </div>
+    </div>
 
-      <p class="mt-2" style="font-size:0.9rem;color:#666;">Haga clic en cualquier nombre para abrir la ficha biográfica completa. En producción el árbol sería interactivo (zoom, expansión de ramas, filtro por evidencia).</p>
+    <!-- CONTENEDOR DEL ÁRBOL GENEALÓGICO -->
+    <div class="bg-white p-6 sm:p-10 rounded-2xl shadow-xl border border-sefarad-200 overflow-x-auto">
+      <div class="min-w-[700px] flex flex-col items-center space-y-8 py-6">
+        
+        <!-- NIVEL 1: GENERACIÓN ANCESTRAL -->
+        <div class="flex justify-center gap-12 w-full">
+          <!-- Persona 1 -->
+          <div class="bg-amber-50/80 border-2 border-amber-400 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Estimado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Abraham Toledano</h4>
+            <p class="text-xs text-slate-600 mt-1">Padre de David (Siglo XV)</p>
+          </div>
+          <!-- Persona 2 -->
+          <div class="bg-rose-50/80 border-2 border-rose-400 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-500 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Hipótesis</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Sara (Sin apellido)</h4>
+            <p class="text-xs text-slate-600 mt-1">Matronas de Sefarad</p>
+          </div>
+        </div>
+
+        <!-- CONECTOR VERTICAL -->
+        <div class="w-0.5 h-10 bg-sefarad-400"></div>
+
+        <!-- NIVEL 2: GENERACIÓN PRINCIPAL -->
+        <div class="flex justify-center gap-12 w-full">
+          <!-- Persona 3 -->
+          <div class="bg-emerald-50/80 border-2 border-emerald-500 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Documentado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">David b. Abraham Toledano</h4>
+            <p class="text-xs text-slate-600 mt-1">c. 1485 – c. 1542 (Salónica)</p>
+          </div>
+          <!-- Persona 4 -->
+          <div class="bg-emerald-50/80 border-2 border-emerald-500 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Documentado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Rachel Cohen</h4>
+            <p class="text-xs text-slate-600 mt-1">c. 1490 – post 1545</p>
+          </div>
+        </div>
+
+        <!-- CONECTOR VERTICAL -->
+        <div class="w-0.5 h-10 bg-sefarad-400"></div>
+
+        <!-- NIVEL 3: DESCENDENCIA -->
+        <div class="flex justify-center gap-12 w-full">
+          <!-- Persona 5 -->
+          <div class="bg-emerald-50/80 border-2 border-emerald-500 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Documentado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Isaac Toledano</h4>
+            <p class="text-xs text-slate-600 mt-1">c. 1512 – c. 1580</p>
+          </div>
+          <!-- Persona 6 -->
+          <div class="bg-emerald-50/80 border-2 border-emerald-500 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Documentado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Miriam Toledano</h4>
+            <p class="text-xs text-slate-600 mt-1">c. 1515 – ?</p>
+          </div>
+        </div>
+
+        <!-- CONECTOR VERTICAL -->
+        <div class="w-0.5 h-10 bg-sefarad-400"></div>
+
+        <!-- NIVEL 4: RAMA FINAL -->
+        <div class="flex justify-center w-full">
+          <div class="bg-emerald-50/80 border-2 border-emerald-500 p-4 rounded-xl shadow-sm w-64 text-center relative group hover:shadow-md transition-all">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full">Documentado</span>
+            <h4 class="font-serif text-lg font-bold text-slate-900 mt-1">Abraham Toledano II</h4>
+            <p class="text-xs text-slate-600 mt-1">c. 1540 – c. 1610</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NOTA INFORMATIVA INFERIOR -->
+    <div class="mt-8 text-center text-sm text-slate-600 bg-sefarad-100/60 p-4 rounded-xl border border-sefarad-300">
+      <p><i class="fa-solid fa-circle-info text-sefarad-600 mr-1.5"></i> Cada nodo representa una persona vinculada a los archivos genealógicos de la base de datos central de Supabase.</p>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
-      </div>
+  <!-- FOOTER -->
+  <footer class="bg-royal-950 text-slate-400 border-t border-sefarad-500/20 py-8 text-center text-sm mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-sefarad-300 font-serif text-base mb-1">Memoria Sefardí</p>
+      <p>&copy; 2026 Memoria Sefardí. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script src="../js/data.js"></script>
-  <script src="../js/app.js"></script>
+  <!-- SCRIPTS -->
+  <script src="../js/supabase.js"></script>
 </body>
-</html>
+    </html>
+    
