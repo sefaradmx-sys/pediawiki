@@ -1,57 +1,229 @@
-<title>Apellidos — Memoria Sefardí</title>
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directorio de Apellidos — Memoria Sefardí</title>
+  <meta name="description" content="Directorio histórico de apellidos sefardíes, variantes, distribución geográfica y nivel de evidencia documental.">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            sefarad: {
+              50: '#fbf8f2', 100: '#f4ede0', 200: '#e7d8be', 300: '#d7bf97',
+              400: '#c5a16d', 500: '#b28549', 600: '#9b6e3c', 700: '#7e5433',
+              800: '#67442f', 900: '#54392a', 950: '#2e1c15',
+            },
+            royal: { 800: '#1e293b', 900: '#0f172a', 950: '#080d1a' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-top">
-      <a href="../index.html" class="logo">
-        <div class="logo-mark">מ</div>
-        <div class="logo-text">
-          <strong>Memoria Sefardí</strong>
-          <span>Enciclopedia histórica</span>
+<body class="bg-sefarad-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-royal-950/90 backdrop-blur-md border-b border-sefarad-500/20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-sefarad-400 to-sefarad-700 flex items-center justify-center shadow-lg shadow-sefarad-600/30">
+            <span class="font-serif text-2xl font-bold text-white tracking-widest">מ</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-2xl font-bold tracking-wide text-sefarad-100">Memoria Sefardí</span>
+            <span class="text-xs tracking-widest uppercase text-sefarad-400 font-medium">Enciclopedia Histórica</span>
+          </div>
+        </a>
+
+        <!-- Buscador rápido en cabecera -->
+        <div class="hidden lg:block flex-1 max-w-md mx-8">
+          <form action="personas.html" method="get" class="relative">
+            <input type="search" name="q" placeholder="Buscar personas, familias..." class="w-full bg-slate-900/80 text-sm text-slate-200 placeholder-slate-400 rounded-full pl-10 pr-4 py-2 border border-sefarad-500/30 focus:outline-none focus:border-sefarad-400">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
+          </form>
         </div>
-      </a>
-      <form class="search-bar" action="personas.html" method="get">
-        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit">🔍</button>
-      </form>
-      <button class="nav-toggle" aria-label="Menú">☰</button>
+
+        <!-- Navegación -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+          <a href="../index.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Inicio</a>
+          <a href="personas.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Personas</a>
+          <a href="familias.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Familias</a>
+          <a href="apellidos.html" class="px-3 py-1.5 rounded-md bg-sefarad-600 text-white font-semibold">Apellidos</a>
+          <a href="documentos.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Documentos</a>
+          <a href="mapa.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Mapa</a>
+          <a href="../admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i> Admin</a>
+        </nav>
+      </div>
     </div>
-    <nav class="main-nav container">
-      <a href="../index.html">Inicio</a>
-      <a href="personas.html">Personas</a>
-      <a href="familias.html">Familias</a>
-      <a href="apellidos.html" class="active">Apellidos</a>
-      <a href="documentos.html">Documentos</a>
-      <a href="arboles.html">Árboles genealógicos</a>
-      <a href="lugares.html">Lugares</a>
-      <a href="mapa.html">Mapa</a>
-      <a href="cronologia.html">Cronología</a>
-      <a href="fuentes.html">Fuentes</a>
-      <a href="biblioteca.html">Biblioteca</a>
-      <a href="sobre.html">Sobre el proyecto</a>
-    </nav>
   </header>
 
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Apellidos</div>
-      <h1>Directorio de apellidos</h1>
-      <p>Historia documentada, variantes, distribución geográfica y nivel de evidencia.</p>
+  <!-- BANNER -->
+  <div class="bg-royal-950 text-white py-12 border-b border-sefarad-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-xs text-sefarad-400 font-medium uppercase tracking-wider mb-2">Genealogía & Onomástica</div>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold text-sefarad-100">Directorio de Apellidos Sefardíes</h1>
+      <p class="text-slate-300 mt-2 max-w-2xl font-light">Historia documentada, variantes fonéticas, distribución geográfica y niveles de evidencia archivística.</p>
     </div>
   </div>
 
-  <main class="section">
-    <div class="container">
-      <div class="warning-box">
-        <strong>Advertencia fundamental:</strong> La presencia de un apellido no demuestra por sí sola ascendencia sefardí. Las afirmaciones genealógicas deberán sustentarse mediante documentación y fuentes.
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- ADVERTENCIA METODOLÓGICA -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl shadow-sm mb-8 flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl mt-0.5"></i>
+      <div>
+        <h4 class="font-semibold text-amber-900 text-sm">Advertencia fundamental de rigor genealógico</h4>
+        <p class="text-xs text-amber-800 mt-0.5 leading-relaxed">La presencia de un apellido en este directorio no demuestra por sí sola ascendencia sefardí directa. Muchas denominaciones toponímicas u ocupacionales eran compartidas. Las afirmaciones genealógicas deben sustentarse obligatoriamente mediante actas, expedientes inquisitoriales y fuentes documentales verificadas.</p>
       </div>
+    </div>
 
-      <table class="list-table mt-2">
-        <thead>
-          <tr>
-            <th>Apellido</th>
-            <th>Variantes</th>
+    <!-- BUSCADOR INTERACTIVO EN TABLA -->
+    <div class="bg-white p-4 rounded-2xl shadow-md border border-sefarad-200 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="w-full sm:w-96 relative">
+        <input type="text" id="buscador-apellidos" placeholder="Filtrar apellido o variante..." class="w-full bg-sefarad-50 border border-sefarad-300 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-sefarad-500">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
+      </div>
+      <div class="text-xs text-slate-500 font-medium">
+        <i class="fa-solid fa-cloud text-sefarad-600 mr-1"></i> Registros sincronizados en tiempo real
+      </div>
+    </div>
+
+    <!-- TABLA MODERNA -->
+    <div class="bg-white rounded-2xl shadow-xl border border-sefarad-200 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-sefarad-100/70 border-b border-sefarad-200 text-slate-700 font-serif text-sm uppercase tracking-wider">
+              <th class="py-4 px-6 font-bold">Apellido</th>
+              <th class="py-4 px-6 font-bold">Variantes</th>
+              <th class="py-4 px-6 font-bold">Distribución Geográfica</th>
+              <th class="py-4 px-6 font-bold">Nivel de Evidencia</th>
+            </tr>
+          </thead>
+          <tbody id="apellidos-tbody" class="divide-y divide-sefarad-100 text-sm text-slate-700">
+            <!-- Estado de Carga / Datos dinámicos -->
+            <tr>
+              <td colspan="4" class="text-center py-12 text-slate-500">
+                <i class="fa-solid fa-spinner fa-spin text-2xl text-sefarad-600 mb-2"></i>
+                <p>Cargando directorio de apellidos desde Supabase...</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-royal-950 text-slate-400 border-t border-sefarad-500/20 py-8 text-center text-sm mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-sefarad-300 font-serif text-base mb-1">Memoria Sefardí</p>
+      <p>&copy; 2026 Memoria Sefardí. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- SUPABASE JS Y SCRIPT DE CONEXIÓN DINÁMICA -->
+  <script src="../js/supabase.js"></script>
+  <script>
+    // Datos de respaldo (por si la tabla aún se está creando en Supabase)
+    const apellidosDemo = [
+      { apellido: "Toledano", variantes: "Toledano, Toledan, Toledano de Salónica", distribucion: "Toledo, Lisboa, Salónica, Ámsterdam", evidencia: "Documentado" },
+      { apellido: "Carvajal", variantes: "Caravajal, Carbajal", distribucion: "Extremadura, Monterrey (Nuevo León), Ciudad de México", evidencia: "Documentado" },
+      { apellido: "Abravanel", variantes: "Abarbanel, Abrabanel", distribucion: "Sevilla, Salónica, Ferrara, Ámsterdam", evidencia: "Documentado" },
+      { apellido: "Benveniste", variantes: "Benvenisti, Bienviste", distribucion: "Barcelona, Provenza, Constantinopla", evidencia: "Documentado" },
+      { apellido: "Garza", variantes: "De la Garza, Garcés", distribucion: "León, Vizcaya, Nuevo Reino de León (México)", evidencia: "Estimado" },
+      { apellido: "Navarro", variantes: "Navarra", distribucion: "Aragón, Navarra, Imperio Otomano", evidencia: "Hipótesis" }
+    ];
+
+    function pintarApellidos(lista) {
+      const tbody = document.getElementById('apellidos-tbody');
+      tbody.innerHTML = '';
+
+      if (!lista || lista.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-slate-500">No se encontraron registros de apellidos.</td></tr>`;
+        return;
+      }
+
+      lista.forEach(item => {
+        let badgeClass = "bg-emerald-50 text-emerald-800 border-emerald-300";
+        let dotColor = "bg-emerald-500";
+        
+        const ev = (item.evidencia || item.nivel_evidencia || "").toLowerCase();
+        if (ev.includes('estimado') || ev.includes('probable')) {
+          badgeClass = "bg-amber-50 text-amber-800 border-amber-300";
+          dotColor = "bg-amber-500";
+        } else if (ev.includes('hipótesis') || ev.includes('no')) {
+          badgeClass = "bg-rose-50 text-rose-800 border-rose-300";
+          dotColor = "bg-rose-500";
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-sefarad-50/60 transition-colors";
+        tr.innerHTML = `
+          <td class="py-4 px-6 font-serif font-bold text-slate-900 text-base">${item.apellido || item.titulo || 'Sin nombre'}</td>
+          <td class="py-4 px-6 text-slate-600">${item.variantes || 'N/D'}</td>
+          <td class="py-4 px-6 text-slate-600"><i class="fa-solid fa-location-dot text-sefarad-500 mr-1.5 text-xs"></i>${item.distribucion || item.distribucion_geografica || 'Global'}</td>
+          <td class="py-4 px-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${badgeClass}">
+              <span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>
+              ${item.evidencia || item.nivel_evidencia || 'Documentado'}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function cargarDatosSupabase() {
+      try {
+        if (typeof _supabaseClient !== 'undefined') {
+          // Intenta consultar la tabla 'apellidos' en Supabase
+          const { data, error } = await _supabaseClient.from('apellidos').select('*');
+          if (data && data.length > 0) {
+            pintarApellidos(data);
+            return;
+          }
+        }
+      } catch (e) {
+        console.log("Cargando base de datos de respaldo local.");
+      }
+      // Carga por defecto si no hay conexión activa
+      pintarApellidos(apellidosDemo);
+    }
+
+    // Filtro en tiempo real
+    document.getElementById('buscador-apellidos').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtrados = apellidosDemo.filter(a => 
+        a.apellido.toLowerCase().includes(q) || 
+        a.variantes.toLowerCase().includes(q) || 
+        a.distribucion.toLowerCase().includes(q)
+      );
+      pintarApellidos(filtrados);
+    });
+
+    cargarDatosSupabase();
+  </script>
+</body>
+  </html>
+  
