@@ -42,7 +42,7 @@
             }
           },
           backgroundImage: {
-            'sefardic-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23c5a16d\" fill-opacity=\"0.07\"%3E%3Cpath d=\"M30 30L0 0h60L30 30zM0 60l30-30 30 30H0z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+            'sefardic-pattern': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23b28549\" fill-opacity=\"0.08\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')"
           }
         }
       }
@@ -104,7 +104,7 @@
         <!-- BUSCADOR RÁPIDO EN CABECERA -->
         <div class="hidden lg:block flex-1 max-w-md mx-8">
           <form action="pages/personas.html" method="get" class="relative">
-            <input type="search" name="q" placeholder="Buscar personas, familias, apellidos..." class="w-full bg-slate-900/80 text-sm text-slate-200 placeholder-slate-400 rounded-full pl-10 pr-10 py-2 border border-sefarad-500/30 focus:outline-none focus:border-sefarad-400 focus:ring-1 focus:ring-sefarad-400 transition-all">
+            <input type="search" name="q" placeholder="Buscar personas, familias, apellidos..." class="w-full bg-slate-900/80 text-sm text-slate-200 placeholder-slate-400 rounded-full pl-10 pr-10 py-2 border border-slate-700 focus:border-sefarad-500 focus:outline-none transition-colors">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
             <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-sefarad-600 hover:bg-sefarad-500 text-white rounded-full flex items-center justify-center text-xs transition-colors">
               <i class="fa-solid fa-arrow-right"></i>
@@ -131,13 +131,13 @@
         <a href="pages/cronologia.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Cronología</a>
         <a href="pages/fuentes.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Fuentes</a>
         <a href="pages/biblioteca.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Biblioteca</a>
-        <a href="admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 hover:text-sefarad-200 hover:bg-slate-800/60 transition-all font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i> Panel Admin</a>
+        <a href="admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 hover:text-sefarad-200 hover:bg-slate-800/60 transition-all font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i>Admin</a>
       </nav>
 
       <!-- MENÚ DESPLEGABLE MÓVIL -->
       <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2 border-t border-slate-800">
         <form action="pages/personas.html" method="get" class="mb-4 relative">
-          <input type="search" name="q" placeholder="Buscar personas, familias..." class="w-full bg-slate-900 text-sm text-slate-200 placeholder-slate-400 rounded-lg pl-10 pr-4 py-2 border border-sefarad-500/30">
+          <input type="search" name="q" placeholder="Buscar personas, familias..." class="w-full bg-slate-900 text-sm text-slate-200 placeholder-slate-400 rounded-lg pl-10 pr-4 py-2 border border-slate-700 focus:outline-none transition-colors">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
         </form>
         <div class="grid grid-cols-2 gap-2 text-sm">
@@ -181,7 +181,7 @@
             <div class="absolute -inset-1 bg-gradient-to-r from-sefarad-500 to-sefarad-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
             <div class="relative flex items-center bg-royal-900/90 rounded-xl border border-sefarad-500/40 shadow-2xl p-2">
               <i class="fa-solid fa-magnifying-glass text-sefarad-400 text-xl ml-4 mr-2"></i>
-              <input type="search" name="q" placeholder="Escribe un apellido, persona, lugar o manuscrito..." class="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none px-2 py-3 text-base">
+              <input type="search" name="q" placeholder="Escribe un apellido, persona, lugar o manuscrito..." class="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none px-2 py-2">
               <button type="submit" class="bg-gradient-to-r from-sefarad-600 to-sefarad-700 hover:from-sefarad-500 hover:to-sefarad-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all flex items-center gap-2">
                 <span>Buscar</span>
                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -192,10 +192,10 @@
 
         <div class="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-slate-400">
           <span class="mr-2 text-sefarad-400/80 font-medium">Acceso directo:</span>
-          <a href="pages/personas.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-user-group text-sefarad-400 mr-1.5"></i>Personas</a>
-          <a href="pages/familias.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-sitemap text-sefarad-400 mr-1.5"></i>Familias</a>
-          <a href="pages/documentos.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-scroll text-sefarad-400 mr-1.5"></i>Documentos</a>
-          <a href="pages/mapa.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-earth-mediterranean text-sefarad-400 mr-1.5"></i>Migraciones</a>
+          <a href="pages/personas.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all">Personas</a>
+          <a href="pages/familias.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all">Familias</a>
+          <a href="pages/documentos.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all">Documentos</a>
+          <a href="pages/mapa.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all">Mapa</a>
         </div>
       </div>
     </section>
@@ -281,6 +281,9 @@
       <p>&copy; 2026 Memoria Sefardí. Todos los derechos reservados. Desarrollado con Supabase y GitHub Pages.</p>
     </div>
   </footer>
+
+  <!-- LIBRERÍA DE SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <!-- SCRIPTS DE CONEXIÓN Y LÓGICA DE SUPABASE -->
   <script src="js/supabase.js"></script>
