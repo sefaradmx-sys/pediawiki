@@ -1,6 +1,6 @@
 // Cargar configuración de Supabase
 const SUPABASE_URL = 'https://jytwmhpqerddaimyjtws.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5dHdtaHBxZXJkZGFpbXlqdHdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwOTYwNDcsImV4cCI6MjEwNDY3MjA0N30.3iPk7B-S_vBt5VeY4kw_vLzN2UwKxQ8bZ9pR3mQ2x5Q';
+const SUPABASE_ANON_KEY = 'sb_publishable_55pRwrj_H7BbU9TYXbhQfQ_YF3l0I9I';
 
 // Esperar a que la librería de Supabase esté lista
 function inicializarSupabase() {
