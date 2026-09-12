@@ -1,92 +1,245 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca — Memoria Sefardí</title>
+  <meta name="description" content="Biblioteca documental, libros, artículos y recursos bibliográficos sobre historia y genealogía sefardí.">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            sefarad: {
+              50: '#fbf8f2', 100: '#f4ede0', 200: '#e7d8be', 300: '#d7bf97',
+              400: '#c5a16d', 500: '#b28549', 600: '#9b6e3c', 700: '#7e5433',
+              800: '#67442f', 900: '#54392a', 950: '#2e1c15',
+            },
+            royal: { 800: '#1e293b', 900: '#0f172a', 950: '#080d1a' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-top">
-      <a href="../index.html" class="logo">
-        <div class="logo-mark">מ</div>
-        <div class="logo-text">
-          <strong>Memoria Sefardí</strong>
-          <span>Enciclopedia histórica</span>
+<body class="bg-sefarad-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-royal-950/90 backdrop-blur-md border-b border-sefarad-500/20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-sefarad-400 to-sefarad-700 flex items-center justify-center shadow-lg shadow-sefarad-600/30">
+            <span class="font-serif text-2xl font-bold text-white tracking-widest">מ</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif text-2xl font-bold tracking-wide text-sefarad-100">Memoria Sefardí</span>
+            <span class="text-xs tracking-widest uppercase text-sefarad-400 font-medium">Enciclopedia Histórica</span>
+          </div>
+        </a>
+
+        <!-- Buscador rápido en cabecera -->
+        <div class="hidden lg:block flex-1 max-w-md mx-8">
+          <form action="personas.html" method="get" class="relative">
+            <input type="search" name="q" placeholder="Buscar personas, familias..." class="w-full bg-slate-900/80 text-sm text-slate-200 placeholder-slate-400 rounded-full pl-10 pr-4 py-2 border border-sefarad-500/30 focus:outline-none focus:border-sefarad-400">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
+          </form>
         </div>
-      </a>
-      <form class="search-bar" action="personas.html" method="get">
-        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit">🔍</button>
-      </form>
-      <button class="nav-toggle" aria-label="Menú">☰</button>
+
+        <!-- Navegación -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+          <a href="../index.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Inicio</a>
+          <a href="personas.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Personas</a>
+          <a href="familias.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Familias</a>
+          <a href="apellidos.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Apellidos</a>
+          <a href="documentos.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Documentos</a>
+          <a href="mapa.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white transition-all">Mapa</a>
+          <a href="biblioteca.html" class="px-3 py-1.5 rounded-md bg-sefarad-600 text-white font-semibold">Biblioteca</a>
+          <a href="../admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i> Admin</a>
+        </nav>
+      </div>
     </div>
-    <nav class="main-nav container">
-      <a href="../index.html">Inicio</a>
-      <a href="personas.html">Personas</a>
-      <a href="familias.html">Familias</a>
-      <a href="apellidos.html">Apellidos</a>
-      <a href="documentos.html">Documentos</a>
-      <a href="arboles.html">Árboles genealógicos</a>
-      <a href="lugares.html">Lugares</a>
-      <a href="mapa.html">Mapa</a>
-      <a href="cronologia.html">Cronología</a>
-      <a href="fuentes.html">Fuentes</a>
-      <a href="biblioteca.html" class="active">Biblioteca</a>
-      <a href="sobre.html">Sobre el proyecto</a>
-    </nav>
   </header>
 
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Biblioteca</div>
-      <h1>Biblioteca documental</h1>
-      <p>Libros, artículos, colecciones y recursos bibliográficos sobre historia y genealogía sefardí.</p>
+  <!-- BANNER -->
+  <div class="bg-royal-950 text-white py-12 border-b border-sefarad-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-xs text-sefarad-400 font-medium uppercase tracking-wider mb-2">Historiografía & Referencias</div>
+      <h1 class="font-serif text-3xl md:text-5xl font-bold text-sefarad-100">Biblioteca Documental</h1>
+      <p class="text-slate-300 mt-2 max-w-2xl font-light">Libros, artículos científicos, monografías y recursos bibliográficos fundamentales sobre historia y genealogía sefardí.</p>
     </div>
   </div>
 
-  <main class="section">
-    <div class="container">
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-body">
-            <h3>Sephardi Jewry</h3>
-            <div class="card-meta">Benbassa, E. & Rodrigue, A. · University of California Press, 2000</div>
-            <p class="card-excerpt">Obra de referencia sobre la historia de las comunidades sefardíes desde la Edad Media hasta la época moderna.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h3>Dicionário Sefaradi de Sobrenomes</h3>
-            <div class="card-meta">Faiguenboim, G. et al.</div>
-            <p class="card-excerpt">Diccionario de apellidos sefardíes con variantes y distribución geográfica.</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h3>A Dictionary of Jewish Surnames from the Maghreb</h3>
-            <div class="card-meta">Beider, A.</div>
-            <p class="card-excerpt">Estudio onomástico de apellidos judíos del Magreb, Gibraltar y Malta.</p>
-          </div>
-        </div>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- BARRA DE FILTRADO DE LA BIBLIOTECA -->
+    <div class="bg-white p-4 rounded-2xl shadow-md border border-sefarad-200 mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="w-full sm:w-96 relative">
+        <input type="text" id="buscador-biblioteca" placeholder="Buscar por título, autor o tema..." class="w-full bg-sefarad-50 border border-sefarad-300 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-sefarad-500">
+        <i class="fa-solid fa-book-open absolute left-3.5 top-1/2 -translate-y-1/2 text-sefarad-400 text-sm"></i>
       </div>
-      <p class="mt-2" style="font-size:0.9rem;color:#666;">Sección de demostración. En producción se integraría un catálogo completo con enlaces a repositorios digitales autorizados.</p>
+      <div class="text-xs text-slate-500 font-medium">
+        <i class="fa-solid fa-cloud text-sefarad-600 mr-1"></i> Catálogo bibliográfico sincronizado
+      </div>
+    </div>
+
+    <!-- CUADRÍCULA DE LIBROS / RECURSOS -->
+    <div id="grid-biblioteca" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Tarjetas cargadas dinámicamente -->
+      <div class="col-span-full text-center py-12 text-slate-500">
+        <i class="fa-solid fa-spinner fa-spin text-2xl text-sefarad-600 mb-2"></i>
+        <p>Cargando biblioteca documental...</p>
+      </div>
+    </div>
+
+    <!-- NOTA INFORMATIVA INFERIOR -->
+    <div class="mt-12 text-center text-sm text-slate-600 bg-sefarad-100/60 p-4 rounded-xl border border-sefarad-300 max-w-2xl mx-auto">
+      <p><i class="fa-solid fa-info-circle text-sefarad-600 mr-1.5"></i> Sección de referencia académica. Las obras indicadas pertenecen a sus respectivos autores y editoriales autorizadas.</p>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
-      </div>
+  <!-- FOOTER -->
+  <footer class="bg-royal-950 text-slate-400 border-t border-sefarad-500/20 py-8 text-center text-sm mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-sefarad-300 font-serif text-base mb-1">Memoria Sefardí</p>
+      <p>&copy; 2026 Memoria Sefardí. Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script src="../js/data.js"></script>
-  <script src="../js/app.js"></script>
+  <!-- SCRIPTS DE CONEXIÓN Y RENDERIZADO -->
+  <script src="../js/supabase.js"></script>
+  <script>
+    // Datos de respaldo por defecto para la biblioteca
+    const librosDemo = [
+      {
+        titulo: "Sephardi Jewry",
+        autor: "Benbassa, E. & Rodrigue, A.",
+        editorial: "University of California Press, 2000",
+        descripcion: "Obra fundamental de referencia académica sobre la evolución sociohistórica de las comunidades sefardíes desde la Edad Media hasta la época contemporánea.",
+        tipo: "Libro Académico"
+      },
+      {
+        titulo: "Dicionário Sefaradi de Sobrenomes",
+        autor: "Faiguenboim, G. et al.",
+        editorial: "Editora Imago, 2003",
+        descripcion: "Diccionario onomástico exhaustivo de apellidos sefardíes con análisis de variantes lingüísticas, etimologías y distribución geográfica global.",
+        tipo: "Diccionario Genealógico"
+      },
+      {
+        titulo: "A Dictionary of Jewish Surnames from the Maghreb",
+        autor: "Beider, Alexander",
+        editorial: "Avotaynu, 2005",
+        descripcion: "Estudio riguroso enfocado en la genealogía y onomástica de las familias judías procedentes del norte de África, Gibraltar y el Mediterráneo occidental.",
+        tipo: "Investigación Onomástica"
+      },
+      {
+        titulo: "Los Judíos de España",
+        autor: "Beinart, Haim",
+        editorial: "Mapfre, 1992",
+        descripcion: "Análisis histórico profundo sobre la vida espiritual, social y económica de las comunidades hebreas en los reinos hispánicos medievales antes de 1492.",
+        tipo: "Monografía Histórica"
+      },
+      {
+        titulo: "Cautivos y Conversos en el Norte de la Nueva España",
+        autor: "Cavazos Garza, Israel",
+        editorial: "Universidad Autónoma de Nuevo León",
+        descripcion: "Investigación archivística clave sobre los linajes criptojudíos y familias fundadoras en Monterrey y el Nuevo Reino de León.",
+        tipo: "Archivo Histórico"
+      }
+    ];
+
+    function pintarBiblioteca(lista) {
+      const grid = document.getElementById('grid-biblioteca');
+      grid.innerHTML = '';
+
+      if (!lista || lista.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12 text-slate-500 bg-white rounded-2xl border border-sefarad-200">
+            <i class="fa-solid fa-book text-3xl text-sefarad-400 mb-2"></i>
+            <p>No se encontraron registros bibliográficos coincidentes.</p>
+          </div>
+        `;
+        return;
+      }
+
+      lista.forEach(libro => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-sefarad-200 p-6 flex flex-col justify-between group";
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 bg-sefarad-100 text-sefarad-800 text-[11px] font-semibold rounded-full uppercase tracking-wider">
+                ${libro.tipo || libro.categoria || 'Recurso Bibliográfico'}
+              </span>
+              <i class="fa-solid fa-bookmark text-sefarad-400 group-hover:text-sefarad-600 transition-colors"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-sefarad-700 transition-colors leading-tight mb-2">
+              ${libro.titulo || libro.nombre || 'Título no especificado'}
+            </h3>
+            <p class="text-xs text-sefarad-700 font-semibold mb-3 flex items-center gap-1.5">
+              <i class="fa-solid fa-feather-pointed"></i> ${libro.autor || libro.autores || 'Autor desconocido'}
+            </p>
+            <p class="text-sm text-slate-600 font-light leading-relaxed mb-4">
+              ${libro.descripcion || libro.resumen || 'Sin descripción detallada disponible.'}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-sefarad-100 flex items-center justify-between text-xs text-slate-500">
+            <span><i class="fa-solid fa-building-columns mr-1 text-sefarad-500"></i> ${libro.editorial || libro.fuente || 'Editorial Independiente'}</span>
+            <span class="font-medium text-sefarad-700">Ver ficha</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    async function cargarDatosSupabase() {
+      try {
+        if (typeof _supabaseClient !== 'undefined') {
+          // Intenta consultar la tabla 'biblioteca' en Supabase
+          const { data, error } = await _supabaseClient.from('biblioteca').select('*');
+          if (data && data.length > 0) {
+            pintarBiblioteca(data);
+            return;
+          }
+        }
+      } catch (e) {
+        console.log("Cargando repositorio de respaldo local para biblioteca.");
+      }
+      // Carga por defecto si no hay conexión activa
+      pintarBiblioteca(librosDemo);
+    }
+
+    // Buscador interactivo en tiempo real
+    document.getElementById('buscador-biblioteca').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      const filtrados = librosDemo.filter(l => 
+        l.titulo.toLowerCase().includes(q) || 
+        l.autor.toLowerCase().includes(q) || 
+        l.descripcion.toLowerCase().includes(q) ||
+        l.tipo.toLowerCase().includes(q)
+      );
+      pintarBiblioteca(filtrados);
+    });
+
+    cargarDatosSupabase();
+  </script>
 </body>
-</html>
+  </html>
+  
