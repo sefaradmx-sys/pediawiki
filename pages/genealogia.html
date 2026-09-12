@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genealogía – Familia García Gaona</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: #f7fafc; color: #1a202c; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    h1 { margin-bottom: 6px; font-size: 1.8rem; }
+    .subtitulo { color: #4a5568; margin-bottom: 22px; }
+    .buscador { display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
+    .buscador input { flex: 1; min-width: 220px; padding: 10px 14px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 15px; }
+    .buscador button { background: #2b6cb0; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .buscador button:hover { background: #2c5282; }
+    .total { margin-bottom: 14px; color: #4a5568; font-size: 14px; }
+    .tarjeta { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start; }
+    .tarjeta:hover { border-color: #90cdf4; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .foto { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; background: #edf2f7; flex-shrink: 0; }
+    .foto.vacia { display: flex; align-items: center; justify-content: center; color: #a0aec0; font-size: 12px; }
+    .info { flex: 1; }
+    .nombre { font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+    .meta { font-size: 13px; color: #4a5568; margin-bottom: 2px; }
+    .meta span { background: #edf2f7; padding: 1px 7px; border-radius: 3px; margin-right: 5px; }
+    .links a { font-size: 13px; color: #2b6cb0; margin-right: 12px; }
+    .vacio, .cargando { text-align: center; padding: 40px; color: #718096; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Genealogía – Familia García Gaona</h1>
+    <p class="subtitulo">Consulta de registros familiares</p>
+
+    <div class="buscador">
+      <input type="text" id="q" placeholder="Buscar por nombre o apellido...">
+      <button onclick="buscar()">Buscar</button>
+    </div>
+
+    <div class="total" id="total"></div>
+    <div id="resultados" class="cargando">Cargando datos...</div>
+  </div>
+
+  <script>
+    // Claves correctas para uso en el navegador
+    const SUPABASE_URL = 'https://jytwmhpqerddaimyjtws.supabase.co'
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5dHdtaHBxZXJkZGFpbXlqdHdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwOTYwNDcsImV4cCI6MjEwNDY3MjA0N30.3iPk7B-S_Rdj1h9YEwSVA3PoGwKrGRTETtuP4seUWwo'
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+
+    async function cargarDatos(texto = '') {
+      const contenedor = document.getElementById('resultados')
+      const totalEl = document.getElementById('total')
+      contenedor.innerHTML = '<div class="cargando">Buscando...</div>'
+
+      let query = supabase
+        .from('genealogia_personas')
+        .select('*')
+        .order('apellidos', { ascending: true })
+        .limit(300)
+
+      if (texto.trim()) {
+        query = query.or(`nombre_completo.ilike.%${texto}%,nombres.ilike.%${texto}%,apellidos.ilike.%${texto}%`)
+      }
+
+      const { data, error } = await query
+
+      if (error) {
+        contenedor.innerHTML = `<div class="vacio">Error: ${error.message}</div>`
+        return
+      }
+
+      totalEl.textContent = `Se encontraron ${data.length} registros`
+
+      if (!data.length) {
+        contenedor.innerHTML = '<div class="vacio">No se encontraron resultados</div>'
+        return
+      }
+
+      contenedor.innerHTML = data.map(p => {
+        const foto = p.url_imagen
+          ? `<img class="foto" src="${p.url_imagen}" alt="">`
+          : `<div class="foto vacia">Sin foto</div>`
+
+        const nacimiento = [p.fecha_nacimiento, p.lugar_nacimiento].filter(Boolean).join(' · ')
+        const defuncion  = [p.fecha_defuncion, p.lugar_defuncion].filter(Boolean).join(' · ')
+
+        let links = ''
+        if (p.url_documento) links += `<a href="${p.url_documento}" target="_blank">Documento</a>`
+        if (p.url_video)     links += `<a href="${p.url_video}" target="_blank">Video</a>`
+        if (p.url_imagen)    links += `<a href="${p.url_imagen}" target="_blank">Ver imagen</a>`
+
+        return `
+          <div class="tarjeta">
+            ${foto}
+            <div class="info">
+              <div class="nombre">${p.nombre_completo || 'Sin nombre'}</div>
+              <div class="meta">
+                ${p.sexo ? `<span>${p.sexo === 'M' ? 'Masculino' : 'Femenino'}</span>` : ''}
+                ${p.id_ancestry ? `<span>${p.id_ancestry}</span>` : ''}
+              </div>
+              ${nacimiento ? `<div class="meta">Nacimiento: ${nacimiento}</div>` : ''}
+              ${defuncion ? `<div class="meta">Defunción: ${defuncion}</div>` : ''}
+              ${p.residencia ? `<div class="meta">Residencia: ${p.residencia}</div>` : ''}
+              ${links ? `<div class="links" style="margin-top:6px">${links}</div>` : ''}
+            </div>
+          </div>
+        `
+      }).join('')
+    }
+
+    function buscar() {
+      cargarDatos(document.getElementById('q').value)
+    }
+
+    document.getElementById('q').addEventListener('keyup', e => {
+      if (e.key === 'Enter') buscar()
+    })
+
+    cargarDatos()
+  </script>
+</body>
+</html>
