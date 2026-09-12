@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -54,7 +53,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Custom Animations & Styles */
     @keyframes pulseGlow {
       0%, 100% { opacity: 0.4; transform: scale(1); }
       50% { opacity: 0.8; transform: scale(1.05); }
@@ -133,7 +131,7 @@
         <a href="pages/cronologia.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Cronología</a>
         <a href="pages/fuentes.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Fuentes</a>
         <a href="pages/biblioteca.html" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-sefarad-300 hover:bg-slate-800/60 transition-all">Biblioteca</a>
-        <a href="pages/sobre.html" class="px-3 py-1.5 rounded-md text-sefarad-400 hover:text-sefarad-200 hover:bg-slate-800/60 transition-all">Sobre el proyecto</a>
+        <a href="admin.html" class="px-3 py-1.5 rounded-md text-sefarad-400 hover:text-sefarad-200 hover:bg-slate-800/60 transition-all font-semibold"><i class="fa-solid fa-plus-circle mr-1"></i> Panel Admin</a>
       </nav>
 
       <!-- MENÚ DESPLEGABLE MÓVIL -->
@@ -151,8 +149,7 @@
           <a href="pages/arboles.html" class="px-3 py-2 rounded text-slate-300 hover:bg-slate-800">Árboles</a>
           <a href="pages/lugares.html" class="px-3 py-2 rounded text-slate-300 hover:bg-slate-800">Lugares</a>
           <a href="pages/mapa.html" class="px-3 py-2 rounded text-slate-300 hover:bg-slate-800">Mapa</a>
-          <a href="pages/cronologia.html" class="px-3 py-2 rounded text-slate-300 hover:bg-slate-800">Cronología</a>
-          <a href="pages/sobre.html" class="px-3 py-2 rounded text-sefarad-400 hover:bg-slate-800">Sobre el proyecto</a>
+          <a href="admin.html" class="px-3 py-2 rounded text-sefarad-400 hover:bg-slate-800 font-semibold">Panel Admin</a>
         </div>
       </div>
     </div>
@@ -160,20 +157,17 @@
 
   <main class="flex-grow">
     
-    <!-- HERO SECTION MODERNO -->
+    <!-- HERO SECTION -->
     <section class="relative bg-royal-950 text-white py-24 md:py-32 overflow-hidden bg-sefardic-pattern">
-      <!-- Glow Gradients background -->
       <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sefarad-600/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
       <div class="absolute bottom-0 right-10 w-96 h-96 bg-blue-900/20 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <!-- Subheading Badge -->
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sefarad-500/10 border border-sefarad-500/30 text-sefarad-300 text-xs sm:text-sm font-medium mb-8 backdrop-blur-md">
           <span class="w-2 h-2 rounded-full bg-sefarad-400 animate-ping"></span>
           <span>Preservando el legado histórico e inmaterial</span>
         </div>
 
-        <!-- Main Title -->
         <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sefarad-100 via-sefarad-200 to-sefarad-400 mb-6 leading-tight">
           Memoria Sefardí
         </h1>
@@ -182,13 +176,12 @@
           Explora la historia, genealogía y las rutas de la diáspora. Un archivo documental interactivo para conectar linajes, manuscritos y la memoria de Sefarad.
         </p>
 
-        <!-- Big Interactive Search Box -->
         <div class="max-w-2xl mx-auto mb-12">
           <form action="pages/personas.html" method="get" class="relative group">
             <div class="absolute -inset-1 bg-gradient-to-r from-sefarad-500 to-sefarad-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
             <div class="relative flex items-center bg-royal-900/90 rounded-xl border border-sefarad-500/40 shadow-2xl p-2">
               <i class="fa-solid fa-magnifying-glass text-sefarad-400 text-xl ml-4 mr-2"></i>
-              <input type="search" id="hero-search-input" name="q" placeholder="Escribe un apellido, persona, lugar o manuscrito..." class="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none px-2 py-3 text-base">
+              <input type="search" name="q" placeholder="Escribe un apellido, persona, lugar o manuscrito..." class="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none px-2 py-3 text-base">
               <button type="submit" class="bg-gradient-to-r from-sefarad-600 to-sefarad-700 hover:from-sefarad-500 hover:to-sefarad-600 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all flex items-center gap-2">
                 <span>Buscar</span>
                 <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -197,12 +190,10 @@
           </form>
         </div>
 
-        <!-- Quick Tag Links -->
         <div class="flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm text-slate-400">
           <span class="mr-2 text-sefarad-400/80 font-medium">Acceso directo:</span>
           <a href="pages/personas.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-user-group text-sefarad-400 mr-1.5"></i>Personas</a>
           <a href="pages/familias.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-sitemap text-sefarad-400 mr-1.5"></i>Familias</a>
-          <a href="pages/arboles.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-tree text-sefarad-400 mr-1.5"></i>Árboles</a>
           <a href="pages/documentos.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-scroll text-sefarad-400 mr-1.5"></i>Documentos</a>
           <a href="pages/mapa.html" class="bg-slate-900/80 hover:bg-sefarad-900/60 text-slate-300 hover:text-sefarad-200 border border-slate-800 hover:border-sefarad-500/40 px-3 py-1.5 rounded-lg transition-all"><i class="fa-solid fa-earth-mediterranean text-sefarad-400 mr-1.5"></i>Migraciones</a>
         </div>
@@ -213,578 +204,86 @@
     <section class="relative -mt-10 z-20 max-w-6xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-2xl glass-card shadow-xl border border-sefarad-200/60">
         <div class="text-center p-3 border-r border-sefarad-200/60 last:border-0">
-          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">12,400+</p>
-          <p class="text-xs sm:text-sm text-slate-600 font-medium">Registros Personales</p>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">Dinámico</p>
+          <p class="text-xs sm:text-sm text-slate-600 font-medium">Registros en Supabase</p>
         </div>
         <div class="text-center p-3 border-r border-sefarad-200/60 last:border-0">
-          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">1,850+</p>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">Sefardí</p>
           <p class="text-xs sm:text-sm text-slate-600 font-medium">Linajes y Familias</p>
         </div>
         <div class="text-center p-3 border-r border-sefarad-200/60 last:border-0">
-          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">3,100+</p>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">Cloud</p>
           <p class="text-xs sm:text-sm text-slate-600 font-medium">Manuscritos y Actas</p>
         </div>
         <div class="text-center p-3">
-          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">45+</p>
+          <p class="font-serif text-3xl md:text-4xl font-bold text-sefarad-800">Global</p>
           <p class="text-xs sm:text-sm text-slate-600 font-medium">Rutas de Diáspora</p>
         </div>
       </div>
     </section>
 
-    <!-- PERSONAJES DESTACADOS -->
+    <!-- PERSONAJES DESTACADOS (CONEXIÓN DIRECTA CON SUPABASE) -->
     <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 pb-4 border-b border-sefarad-200">
         <div>
           <span class="text-xs uppercase tracking-widest text-sefarad-600 font-semibold">Biografías e Historias</span>
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mt-1">Personajes destacados</h2>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mt-1">Personajes y Registros de la Base de Datos</h2>
         </div>
-        <a href="pages/personas.html" class="mt-4 sm:mt-0 text-sm font-semibold text-sefarad-700 hover:text-sefarad-900 flex items-center gap-2 group">
-          <span>Ver todas las biografías</span>
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        <a href="admin.html" class="mt-4 sm:mt-0 text-sm font-semibold text-sefarad-700 hover:text-sefarad-900 flex items-center gap-2 group">
+          <span>+ Agregar nuevo registro</span>
+          <i class="fa-solid fa-plus group-hover:scale-110 transition-transform"></i>
         </a>
       </div>
 
-      <!-- Grid dinamizada mediante JS con Fallback -->
+      <!-- Grid donde Supabase inyectará dinámicamente las tarjetas con fotos y videos de YouTube -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="personajes-destacados">
-        <!-- JS populate or Fallback Cards -->
+        <!-- Cargando datos... -->
+        <div class="col-span-3 text-center py-12 text-slate-500">
+          <i class="fa-solid fa-spinner fa-spin text-2xl text-sefarad-600 mb-2"></i>
+          <p>Conectando con Supabase y cargando registros genealógicos...</p>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN INTERACTIVA: RUTAS MIGRATORIAS Y MAPA CANVA -->
+    <!-- SECCIÓN INTERACTIVA MAPA -->
     <section class="py-16 bg-royal-950 text-white relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          <!-- Contenido Explicativo -->
           <div class="lg:col-span-5 space-y-6">
             <span class="text-xs uppercase tracking-widest text-sefarad-400 font-semibold">Geografía Histórica</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sefarad-100">Rutas de la Diáspora Sefardí</h2>
             <p class="text-slate-300 leading-relaxed font-light">
-              Tras los edictos de expulsión de 1492 en España y 1497 en Portugal, las comunidades sefardíes establecieron florecientes centros culturales y comerciales a lo largo del Mediterráneo, Europa del Norte y el Nuevo Mundo.
+              Tras los edictos de expulsión de 1492 en España y 1497 en Portugal, las comunidades sefardíes establecieron florecientes centros culturales y comerciales.
             </p>
-            
-            <div class="space-y-3 pt-2">
-              <div class="flex items-start gap-3">
-                <div class="p-2 rounded bg-sefarad-500/20 text-sefarad-400 mt-1"><i class="fa-solid fa-compass text-sm"></i></div>
-                <div>
-                  <h4 class="font-semibold text-sefarad-200 text-sm">Imperio Otomano</h4>
-                  <p class="text-xs text-slate-400">Salónica, Estambul y Esmirna se convirtieron en los principales núcleos de habla judeoespañola (Ladino).</p>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="p-2 rounded bg-sefarad-500/20 text-sefarad-400 mt-1"><i class="fa-solid fa-anchor text-sm"></i></div>
-                <div>
-                  <h4 class="font-semibold text-sefarad-200 text-sm">Norte de Europa y Las Américas</h4>
-                  <p class="text-xs text-slate-400">Ámsterdam, Londres, Livorno, Curazao y Recife albergaron la red mercantil "de la Nación".</p>
-                </div>
-              </div>
-            </div>
-
             <div class="pt-4">
-              <a href="pages/mapa.html" class="inline-flex items-center gap-2 bg-sefarad-600 hover:bg-sefarad-500 text-white font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-sefarad-600/30 transition-all">
+              <a href="pages/mapa.html" class="inline-flex items-center gap-2 bg-sefarad-600 hover:bg-sefarad-500 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all">
                 <span>Explorar Mapa Interactivo</span>
                 <i class="fa-solid fa-map"></i>
               </a>
             </div>
           </div>
-
-          <!-- Interactive Canvas Map Preview -->
           <div class="lg:col-span-7">
             <div class="dark-glass-card p-4 rounded-2xl relative border border-sefarad-500/30 overflow-hidden shadow-2xl">
-              <div class="flex justify-between items-center mb-3 px-2">
-                <span class="text-xs font-mono text-sefarad-300 flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Visualizador de Rutas (Demostración)
-                </span>
-                <span class="text-xs text-slate-400">Siglos XV - XVIII</span>
-              </div>
-              
-              <div class="relative w-full h-80 bg-slate-950 rounded-xl overflow-hidden border border-slate-800">
-                <canvas id="interactive-map-canvas" class="w-full h-full block cursor-crosshair"></canvas>
-                <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur px-3 py-1.5 rounded-md border border-slate-700 text-[11px] text-slate-300">
-                  <i class="fa-solid fa-circle-info text-sefarad-400 mr-1"></i> Haz clic en los nodos para ver ciudades
-                </div>
-              </div>
-
-              <div class="mt-3 p-3 bg-slate-900/50 rounded-lg text-xs text-slate-400 flex items-center justify-between">
-                <span>Rutas destacadas: Sefarad → Salónica / Ámsterdam / Livorno</span>
-                <span class="text-sefarad-400 font-semibold">Leaflet Engine Ready</span>
+              <div class="relative w-full h-80 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-center text-slate-500">
+                <p class="text-sm"><i class="fa-solid fa-earth-americas text-sefarad-400 mr-2 text-lg"></i> Módulo de Mapas y Rutas Historicas Sefardíes</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
-    <!-- FAMILIAS & LINAGES RECIENTES -->
-    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 pb-4 border-b border-sefarad-200">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-sefarad-600 font-semibold">Estudios Genealógicos</span>
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mt-1">Familias documentadas</h2>
-        </div>
-        <a href="pages/familias.html" class="mt-4 sm:mt-0 text-sm font-semibold text-sefarad-700 hover:text-sefarad-900 flex items-center gap-2 group">
-          <span>Ver todos los linajes</span>
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="familias-recientes">
-        <!-- JS populate or Fallback Cards -->
-      </div>
-    </section>
-
-    <!-- CRONOLOGÍA INTERACTIVA -->
-    <section class="py-16 bg-sefarad-100/60 border-y border-sefarad-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <span class="text-xs uppercase tracking-widest text-sefarad-700 font-semibold">Hitos Históricos</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">Línea del Tiempo Sefardí</h2>
-          <p class="text-slate-600 text-sm mt-2">Haz clic en los años clave para revisar los acontecimientos decisivos en la historia de la diáspora.</p>
-        </div>
-
-        <div class="space-y-6 max-w-4xl mx-auto">
-          <!-- Horizontal Timeline selector -->
-          <div class="flex items-center justify-between gap-2 overflow-x-auto pb-4 custom-scrollbar" id="timeline-buttons">
-            <button onclick="selectTimeline(1492)" id="tb-1492" class="tb-btn px-4 py-2 rounded-full text-sm font-bold bg-sefarad-700 text-white shadow-md transition-all whitespace-nowrap">1492 — Expulsión de España</button>
-            <button onclick="selectTimeline(1497)" id="tb-1497" class="tb-btn px-4 py-2 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-sefarad-200 transition-all whitespace-nowrap">1497 — Portugal</button>
-            <button onclick="selectTimeline(1536)" id="tb-1536" class="tb-btn px-4 py-2 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-sefarad-200 transition-all whitespace-nowrap">1536 — Inquisición</button>
-            <button onclick="selectTimeline(1600)" id="tb-1600" class="tb-btn px-4 py-2 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-sefarad-200 transition-all whitespace-nowrap">1600 — Ámsterdam</button>
-            <button onclick="selectTimeline(1654)" id="tb-1654" class="tb-btn px-4 py-2 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-sefarad-200 transition-all whitespace-nowrap">1654 — Nueva Ámsterdam</button>
-          </div>
-
-          <!-- Timeline Content Card Dynamic -->
-          <div id="timeline-content-card" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-sefarad-200 transition-all">
-            <div class="flex items-center gap-3 text-sefarad-700 font-serif text-2xl font-bold mb-3">
-              <i class="fa-regular fa-calendar-check text-sefarad-500"></i>
-              <span id="tl-title">1492: El Edictode Granada / Decreto de la Alhambra</span>
-            </div>
-            <p id="tl-desc" class="text-slate-600 leading-relaxed text-sm sm:text-base">
-              Los Reyes Católicos firman el decreto exigiendo la conversión al catolicismo o la expulsión de los judíos de las coronas de Castilla y Aragón. Decenas de miles inician un éxodo hacia el Norte de África, Portugal y el Imperio Otomano.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DOCUMENTOS RECIENTES -->
-    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 pb-4 border-b border-sefarad-200">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-sefarad-600 font-semibold">Acervo Histórico</span>
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-slate-900 mt-1">Documentos recientemente incorporados</h2>
-        </div>
-        <a href="pages/documentos.html" class="mt-4 sm:mt-0 text-sm font-semibold text-sefarad-700 hover:text-sefarad-900 flex items-center gap-2 group">
-          <span>Explorar catálogo documental</span>
-          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="docs-recientes">
-        <!-- JS populate or Fallback Cards -->
-      </div>
-    </section>
-
-    <!-- PRINCIPIOS Y RIGOR CIENTÍFICO -->
-    <section class="py-16 bg-slate-900 text-white relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-14">
-          <span class="text-xs uppercase tracking-widest text-sefarad-400 font-semibold">Metodología</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sefarad-100 mt-1">Principios del Proyecto</h2>
-          <p class="text-slate-400 text-sm mt-2">Comprometidos con el rigor crítico, la ética de datos y la investigación científica.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 hover:border-sefarad-500/50 transition-all group">
-            <div class="w-12 h-12 rounded-xl bg-sefarad-500/10 text-sefarad-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-scroll"></i>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-sefarad-200 mb-2">Rigor Documental</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Cada registro se vincula directamente con fuentes notariales, inquisitoriales o comunitarias verificadas.</p>
-          </div>
-
-          <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 hover:border-sefarad-500/50 transition-all group">
-            <div class="w-12 h-12 rounded-xl bg-sefarad-500/10 text-sefarad-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-magnifying-glass-chart"></i>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-sefarad-200 mb-2">Transparencia Genealógica</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Un apellido no implica automáticamente ascendencia. Se requieren pruebas documentales tangibles.</p>
-          </div>
-
-          <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 hover:border-sefarad-500/50 transition-all group">
-            <div class="w-12 h-12 rounded-xl bg-sefarad-500/10 text-sefarad-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-users-gear"></i>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-sefarad-200 mb-2">Colaboración Revisada</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Aportes de investigadores son evaluados peer-to-peer por nuestro comité editorial antes de su publicación.</p>
-          </div>
-
-          <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/60 hover:border-sefarad-500/50 transition-all group">
-            <div class="w-12 h-12 rounded-xl bg-sefarad-500/10 text-sefarad-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-user-shield"></i>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-sefarad-200 mb-2">Privacidad Estricta</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">Protección integral de datos de personas vivas según normativas de protección de datos actuales.</p>
-          </div>
-        </div>
-
-        <div class="mt-12 bg-sefarad-950/80 border border-sefarad-500/30 p-4 rounded-xl text-center text-xs text-sefarad-300/80 max-w-3xl mx-auto">
-          <i class="fa-solid fa-triangle-exclamation text-sefarad-400 mr-2"></i>
-          <strong>Aviso de demostración:</strong> Los datos presentados en esta plataforma interactiva son maquetas ilustrativas para propósitos de pruebas de desarrollo.
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- FOOTER ELEGANTE -->
-  <footer class="bg-royal-950 text-slate-400 text-sm border-t border-slate-800 pt-16 pb-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-        
-        <!-- Columna 1 y 2: Info Proyecto -->
-        <div class="lg:col-span-2 space-y-4">
-          <a href="index.html" class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-sefarad-600 flex items-center justify-center text-white font-serif font-bold text-lg">מ</div>
-            <span class="font-serif text-2xl font-bold text-sefarad-100">Memoria Sefardí</span>
-          </a>
-          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-            Enciclopedia digital libre y colaborativa orientada a la recuperación, preservación y análisis genealógico de la diáspora sefardí en el mundo.
-          </p>
-          <div class="flex gap-3 text-slate-400 pt-2">
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sefarad-400 hover:border-sefarad-500/50 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sefarad-400 hover:border-sefarad-500/50 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:text-sefarad-400 hover:border-sefarad-500/50 transition-colors"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-
-        <!-- Columna 3: Explorar -->
-        <div>
-          <h4 class="text-sefarad-200 font-semibold mb-4 text-xs tracking-widest uppercase">Explorar Archivos</h4>
-          <ul class="space-y-2.5 text-xs">
-            <li><a href="pages/personas.html" class="hover:text-sefarad-300 transition-colors">Biografías</a></li>
-            <li><a href="pages/familias.html" class="hover:text-sefarad-300 transition-colors">Linajes y Familias</a></li>
-            <li><a href="pages/apellidos.html" class="hover:text-sefarad-300 transition-colors">Diccionario de Apellidos</a></li>
-            <li><a href="pages/documentos.html" class="hover:text-sefarad-300 transition-colors">Acervo Documental</a></li>
-            <li><a href="pages/arboles.html" class="hover:text-sefarad-300 transition-colors">Árboles Genealógicos</a></li>
-          </ul>
-        </div>
-
-        <!-- Columna 4: Proyecto -->
-        <div>
-          <h4 class="text-sefarad-200 font-semibold mb-4 text-xs tracking-widest uppercase">Investigación</h4>
-          <ul class="space-y-2.5 text-xs">
-            <li><a href="pages/mapa.html" class="hover:text-sefarad-300 transition-colors">Mapa de Rutas</a></li>
-            <li><a href="pages/cronologia.html" class="hover:text-sefarad-300 transition-colors">Cronología Histórica</a></li>
-            <li><a href="pages/fuentes.html" class="hover:text-sefarad-300 transition-colors">Fuentes Notariales</a></li>
-            <li><a href="pages/biblioteca.html" class="hover:text-sefarad-300 transition-colors">Biblioteca Digital</a></li>
-            <li><a href="pages/sobre.html" class="hover:text-sefarad-300 transition-colors">Sobre el Proyecto</a></li>
-          </ul>
-        </div>
-
-        <!-- Columna 5: Legal & Demo -->
-        <div>
-          <h4 class="text-sefarad-200 font-semibold mb-4 text-xs tracking-widest uppercase">Colaboración</h4>
-          <ul class="space-y-2.5 text-xs">
-            <li><a href="pages/contribuciones.html" class="hover:text-sefarad-300 transition-colors">Proponer Registros</a></li>
-            <li><a href="pages/admin.html" class="hover:text-sefarad-300 transition-colors">Panel Editorial (Demo)</a></li>
-            <li><a href="#" class="hover:text-sefarad-300 transition-colors">Política de Privacidad</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© 2026 Memoria Sefardí — Demostración Educativa. Todos los derechos reservados.</p>
-        <p>Diseño Web Moderno e Interactivo</p>
-      </div>
+  <!-- FOOTER -->
+  <footer class="bg-royal-950 text-slate-400 border-t border-sefarad-500/20 py-12 text-center text-sm">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-sefarad-300 font-serif text-lg mb-2">Memoria Sefardí</p>
+      <p>&copy; 2026 Memoria Sefardí. Todos los derechos reservados. Desarrollado con Supabase y GitHub Pages.</p>
     </div>
   </footer>
 
-  <!-- ARCHIVOS JS PROPIOS (Mantenidos) -->
-  <script src="js/data.js"></script>
+  <!-- SCRIPTS DE CONEXIÓN Y LÓGICA DE SUPABASE -->
+  <script src="js/supabase.js"></script>
   <script src="js/app.js"></script>
-
-  <!-- SCRIPT DE LÓGICA Y DINAMISMO PARA ESTA PÁGINA -->
-  <script>
-    // 1. Toggle Mobile Menu
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // 2. Timeline Interaction Data
-    const timelineData = {
-      1492: {
-        title: "1492: Decreto de Granada (Expulsión de España)",
-        desc: "Los Reyes Católicos promulgan el Edicto de Expulsión. Más de 100,000 judíos sefardíes parten hacia el Norte de África, Portugal, Italia y los dominios del Imperio Otomano."
-      },
-      1497: {
-        title: "1497: Bautismo Forzoso en Portugal",
-        desc: "El rey Manuel I de Portugal decreta la conversión obligatoria de todos los judíos en el reino, dando origen a la comunidad de 'Cristianos Nuevos' o criptojudíos."
-      },
-      1536: {
-        title: "1536: Establecimiento de la Inquisición Portuguesa",
-        desc: "Se instituye el Tribunal del Santo Oficio en Lisboa. Esto desencadena una nueva ola migratoria secreta hacia Amberes, Venecia, Salónica y el Caribe."
-      },
-      1600: {
-        title: "1600: Florecimiento de la Jerusalén del Norte (Ámsterdam)",
-        desc: "Ámsterdam se consolida como el gran refugio de conversos que retornan al judaísmo de manera abierta, fundando la célebre comunidad Talmud Torah."
-      },
-      1654: {
-        title: "1654: Primeros Sefardíes en Norteamérica",
-        desc: "Veintitrés sefardíes provenientes de Recife (Brasil portugués) llegan a Nueva Ámsterdam (actual Nueva York), fundando la primera congregación judía de Norteamérica (Shearith Israel)."
-      }
-    };
-
-    function selectTimeline(year) {
-      document.querySelectorAll('.tb-btn').forEach(btn => {
-        btn.classList.remove('bg-sefarad-700', 'text-white', 'shadow-md');
-        btn.classList.add('bg-white', 'text-slate-700');
-      });
-      const activeBtn = document.getElementById(`tb-${year}`);
-      if(activeBtn) {
-        activeBtn.classList.remove('bg-white', 'text-slate-700');
-        activeBtn.classList.add('bg-sefarad-700', 'text-white', 'shadow-md');
-      }
-      
-      const card = document.getElementById('timeline-content-card');
-      card.classList.add('opacity-0', 'translate-y-2');
-      
-      setTimeout(() => {
-        document.getElementById('tl-title').innerText = timelineData[year].title;
-        document.getElementById('tl-desc').innerText = timelineData[year].desc;
-        card.classList.remove('opacity-0', 'translate-y-2');
-      }, 150);
-    }
-
-    // 3. Populate Fallback Data if JS external data is missing
-    document.addEventListener("DOMContentLoaded", () => {
-      
-      // PERSONAJES DEMO FALLBACK
-      const personajesContainer = document.getElementById('personajes-destacados');
-      if (personajesContainer && personajesContainer.children.length === 0) {
-        const personajes = [
-          {
-            nombre: "Gracia Nasi (Doña Gracia)",
-            fecha: "1510 – 1569",
-            lugar: "Lisboa / Estambul",
-            desc: "Líder de negocios, filántropa y protectora clave de miles de conversos fugitivos de la Inquisición a lo largo de toda Europa.",
-            tag: "Filántropa y Financiera"
-          },
-          {
-            nombre: "Menasseh Ben Israel",
-            fecha: "1604 – 1657",
-            lugar: "Maderia / Ámsterdam",
-            desc: "Rabi, escritor e impresor. Creador de la primera imprenta hebrea en Ámsterdam e impulsor de la readmisión judía en Inglaterra.",
-            tag: "Erudito e Impresor"
-          },
-          {
-            nombre: "Moses Montefiore",
-            fecha: "1784 – 1885",
-            lugar: "Livorno / Londres",
-            desc: "Financista, banquero y filántropo anglo-sefardí que dedicó su vida a la defensa de los derechos civiles de las minorías.",
-            tag: "Diplomático"
-          }
-        ];
-
-        personajesContainer.innerHTML = personajes.map(p => `
-          <div class="glass-card rounded-2xl p-6 shadow-md hover:shadow-xl transition-all border border-sefarad-200/80 flex flex-col justify-between group">
-            <div>
-              <div class="flex justify-between items-start mb-3">
-                <span class="text-[11px] font-semibold tracking-wider uppercase bg-sefarad-100 text-sefarad-800 px-2.5 py-1 rounded-full">${p.tag}</span>
-                <span class="text-xs text-slate-500"><i class="fa-regular fa-clock mr-1"></i>${p.fecha}</span>
-              </div>
-              <h3 class="font-serif text-2xl font-bold text-slate-900 group-hover:text-sefarad-700 transition-colors mb-2">${p.nombre}</h3>
-              <p class="text-xs text-sefarad-600 font-medium mb-3"><i class="fa-solid fa-location-dot mr-1"></i>${p.lugar}</p>
-              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">${p.desc}</p>
-            </div>
-            <a href="pages/personas.html" class="inline-flex items-center text-xs font-bold text-sefarad-700 hover:text-sefarad-900 gap-1.5">
-              <span>Ver ficha biográfica completa</span>
-              <i class="fa-solid fa-chevron-right text-[10px]"></i>
-            </a>
-          </div>
-        `).join('');
-      }
-
-      // FAMILIAS DEMO FALLBACK
-      const familiasContainer = document.getElementById('familias-recientes');
-      if (familiasContainer && familiasContainer.children.length === 0) {
-        const familias = [
-          {
-            nombre: "Familia Senior / Coronel",
-            origen: "Segovia / Ámsterdam",
-            rama: "Finanzas y Diplomacia real",
-            desc: "Linaje destacado con ramas que mantuvieron prominentes roles financieros en Castilla y posteriormente en la Holanda del siglo XVII."
-          },
-          {
-            nombre: "Familia De Sola",
-            origen: "Navarra / Lisboa / Londres",
-            rama: "Eruditos y Rabinos",
-            desc: "Familia con prolífica representación rabínica y literaria en Gran Bretaña, Curazao y Canadá."
-          },
-          {
-            nombre: "Familia Belmonte",
-            origen: "Portugal / Ámsterdam",
-            rama: "Comercio internacional",
-            desc: "Barones e industriales diplomáticos al servicio de las coronas europea y española en el norte de Europa."
-          }
-        ];
-
-        familiasContainer.innerHTML = familias.map(f => `
-          <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md border border-sefarad-200 transition-all flex flex-col justify-between">
-            <div>
-              <div class="w-10 h-10 rounded-lg bg-sefarad-50 text-sefarad-700 flex items-center justify-center font-bold text-lg mb-3">
-                <i class="fa-solid fa-people-roof"></i>
-              </div>
-              <h3 class="font-serif text-xl font-bold text-slate-900 mb-1">${f.nombre}</h3>
-              <p class="text-xs text-sefarad-600 font-medium mb-3"><i class="fa-solid fa-earth-americas mr-1"></i>${f.origen}</p>
-              <p class="text-slate-600 text-xs leading-relaxed mb-4">${f.desc}</p>
-            </div>
-            <a href="pages/familias.html" class="text-xs font-semibold text-sefarad-700 hover:underline">Ver linaje completo →</a>
-          </div>
-        `).join('');
-      }
-
-      // DOCUMENTOS DEMO FALLBACK
-      const docsContainer = document.getElementById('docs-recientes');
-      if (docsContainer && docsContainer.children.length === 0) {
-        const docs = [
-          {
-            titulo: "Ketubá (Contrato Matrimonial) de Livorno",
-            año: "1688",
-            tipo: "Manuscrito Ilustrado",
-            desc: "Registro de matrimonio redactado en arameo y hebreo con orlas florales grabadas en pergamino."
-          },
-          {
-            titulo: "Proceso Inquisitorial de Toledo",
-            año: "1512",
-            tipo: "Acta Judicial",
-            desc: "Expediente de testimonios notariales conservado en el Archivo Histórico Nacional."
-          },
-          {
-            titulo: "Registro de Pasajeros a Curazao",
-            año: "1720",
-            tipo: "Libro de Embarque",
-            desc: "Manuscrito de la comunidad holandesa detallando familias autorizadas para el comercio caribeño."
-          }
-        ];
-
-        docsContainer.innerHTML = docs.map(d => `
-          <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md border border-sefarad-200 transition-all">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-2 py-0.5 rounded">${d.tipo}</span>
-              <span class="text-xs font-mono text-sefarad-600 font-bold">${d.año}</span>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-slate-900 mb-2">${d.titulo}</h3>
-            <p class="text-slate-600 text-xs leading-relaxed mb-4">${d.desc}</p>
-            <a href="pages/documentos.html" class="text-xs font-semibold text-sefarad-700 hover:underline flex items-center gap-1">
-              <i class="fa-solid fa-file-contract"></i>
-              <span>Ver documento digitalizado</span>
-            </a>
-          </div>
-        `).join('');
-      }
-
-      // 4. Interactive Canvas Migration Simulation
-      initMapCanvas();
-    });
-
-    // MAP CANVAS INTERACTIVO SIMPLIFICADO
-    function initMapCanvas() {
-      const canvas = document.getElementById('interactive-map-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-
-      function resize() {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      const nodes = [
-        { name: "Sefarad (España)", x: 0.25, y: 0.55, color: "#c5a16d" },
-        { name: "Lisboa", x: 0.15, y: 0.58, color: "#b28549" },
-        { name: "Ámsterdam", x: 0.38, y: 0.25, color: "#38bdf8" },
-        { name: "Livorno / Venecia", x: 0.52, y: 0.48, color: "#f43f5e" },
-        { name: "Salónica", x: 0.70, y: 0.58, color: "#10b981" },
-        { name: "Estambul", x: 0.82, y: 0.52, color: "#a855f7" }
-      ];
-
-      const connections = [
-        [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [1, 2], [3, 4]
-      ];
-
-      let offset = 0;
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Background Grid Lines
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
-        ctx.lineWidth = 1;
-        for (let x = 0; x < canvas.width; x += 30) {
-          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
-        }
-        for (let y = 0; y < canvas.height; y += 30) {
-          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
-        }
-
-        // Draw connections
-        connections.forEach(([i, j]) => {
-          const n1 = nodes[i];
-          const n2 = nodes[j];
-          const x1 = n1.x * canvas.width;
-          const y1 = n1.y * canvas.height;
-          const x2 = n2.x * canvas.width;
-          const y2 = n2.y * canvas.height;
-
-          // Curve line
-          ctx.beginPath();
-          ctx.moveTo(x1, y1);
-          const cx = (x1 + x2) / 2;
-          const cy = (y1 + y2) / 2 - 20;
-          ctx.quadraticCurveTo(cx, cy, x2, y2);
-          ctx.strokeStyle = "rgba(197, 161, 109, 0.25)";
-          ctx.lineWidth = 1.5;
-          ctx.setLineDash([4, 4]);
-          ctx.stroke();
-          ctx.setLineDash([]);
-        });
-
-        // Draw Nodes
-        nodes.forEach(n => {
-          const nx = n.x * canvas.width;
-          const ny = n.y * canvas.height;
-
-          // Glow
-          ctx.beginPath();
-          ctx.arc(nx, ny, 8, 0, Math.PI * 2);
-          ctx.fillStyle = n.color + "33";
-          ctx.fill();
-
-          // Core point
-          ctx.beginPath();
-          ctx.arc(nx, ny, 4, 0, Math.PI * 2);
-          ctx.fillStyle = n.color;
-          ctx.fill();
-
-          // Label
-          ctx.fillStyle = "#cbd5e1";
-          ctx.font = "10px Inter, sans-serif";
-          ctx.fillText(n.name, nx + 10, ny + 3);
-        });
-
-        offset += 0.05;
-        requestAnimationFrame(draw);
-      }
-
-      draw();
-    }
-  </script>
 </body>
 </html>
-```
