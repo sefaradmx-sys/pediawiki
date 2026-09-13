@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,92 +7,477 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
+  
+  <style>
+    /* Variables de Tema - Diseño Dinámico */
+    :root {
+      --bg-color: #fcfaf8;
+      --text-color: #2c2825;
+      --header-bg: #ffffff;
+      --border-color: #e6e2dd;
+      --accent-color: #8c2131; /* Rojo colonial/vino */
+      --accent-hover: #6a1824;
+      --card-bg: #ffffff;
+      --text-muted: #66615b;
+    }
+    
+    [data-theme="dark"] {
+      --bg-color: #1a1817;
+      --text-color: #e6e2dd;
+      --header-bg: #242220;
+      --border-color: #3b3734;
+      --accent-color: #c94f63;
+      --accent-hover: #e06c7f;
+      --card-bg: #2c2825;
+      --text-muted: #a39e99;
+    }
+
+    /* Reset y Tipografía base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Cabecera y Navegación */
+    .site-header {
+      background-color: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.4s ease;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+    .logo-mark {
+      font-size: 2.8rem;
+      margin-right: 1rem;
+      color: var(--accent-color);
+      line-height: 1;
+    }
+    .logo-text strong { display: block; font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.5px; }
+    .logo-text span { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+    
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover { background-color: var(--border-color); }
+
+    .main-nav {
+      display: flex;
+      gap: 1.8rem;
+      padding-bottom: 1.25rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .main-nav a:hover, .main-nav a.active {
+      color: var(--accent-color);
+    }
+
+    /* Banner Dinámico */
+    .page-banner {
+      position: relative;
+      background: linear-gradient(to right, rgba(26,24,23,0.9), rgba(26,24,23,0.6)), url('https://images.unsplash.com/photo-1464627409240-7f61c37d6e46?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #ffffff;
+      padding: 5rem 0;
+      text-align: left;
+    }
+    .page-banner h1 { 
+      color: #ffffff; 
+      font-size: 3.5rem; 
+      margin-bottom: 0.5rem; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .page-banner p { font-size: 1.3rem; opacity: 0.9; max-width: 600px; }
+    .breadcrumb { margin-bottom: 1.5rem; font-size: 0.95rem; color: #dddddd; }
+    .breadcrumb a { color: #ffffff; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Estructura Principal */
+    .section { padding: 4rem 0; }
+    .lead { 
+      font-size: 1.35rem; 
+      color: var(--text-muted); 
+      margin-bottom: 2.5rem; 
+      font-family: 'Cormorant Garamond', serif; 
+      font-style: italic;
+    }
+    
+    /* Sistema de Pestañas (Tabs) */
+    .tabs-container { margin: 3rem 0; }
+    .tabs-header {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 2.5rem;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1.15rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text-color); }
+    .tab-btn.active { color: var(--accent-color); }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 3px 3px 0 0;
+    }
+    .tab-content { 
+      display: none; 
+      animation: fadeIn 0.6s ease; 
+    }
+    .tab-content.active { display: block; }
+    
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(15px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+
+    /* Grillas y Tarjetas */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      border-color: var(--accent-color);
+    }
+    .card h3 { 
+      font-size: 1.6rem; 
+      margin-bottom: 1rem; 
+      border-bottom: 1px solid var(--border-color); 
+      padding-bottom: 0.75rem; 
+    }
+
+    /* Listas de Evidencia Documental */
+    .evidence-list { list-style: none; margin: 2rem 0; }
+    .evidence-list li {
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent-color);
+      border-radius: 0 6px 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .stars { color: #d4af37; font-size: 1.3rem; letter-spacing: 2px; min-width: 100px; }
+
+    /* Tablas Genealógicas */
+    .genealogy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .genealogy-table th {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1rem;
+      text-align: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+    }
+    .genealogy-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .genealogy-table tr:last-child td { border-bottom: none; }
+    .highlight-row { background-color: rgba(140, 33, 49, 0.05); }
+
+    /* Pie de página */
+    .site-footer {
+      background: var(--header-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      margin-top: 4rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Cabecera -->
   <header class="site-header">
     <div class="container header-top">
-      <a href="../index.html" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-mark">מ</div>
         <div class="logo-text">
           <strong>Memoria Sefardí</strong>
-          <span>Enciclopedia histórica</span>
+          <span>Enciclopedia Histórica y Genealógica</span>
         </div>
       </a>
-      <form class="search-bar" action="personas.html" method="get">
-        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit">🔍</button>
-      </form>
-      <button class="nav-toggle" aria-label="Menú">☰</button>
+      <div class="header-actions">
+        <button class="theme-toggle" aria-label="Cambiar tema">🌙 Modo Oscuro</button>
+      </div>
     </div>
     <nav class="main-nav container">
-      <a href="../index.html">Inicio</a>
+      <a href="index.html">Inicio</a>
       <a href="personas.html">Personas</a>
-      <a href="familias.html">Familias</a>
-      <a href="apellidos.html">Apellidos</a>
-      <a href="documentos.html">Documentos</a>
-      <a href="arboles.html">Árboles genealógicos</a>
-      <a href="lugares.html">Lugares</a>
-      <a href="mapa.html">Mapa</a>
+      <a href="familias.html">Familias Fundadoras</a>
+      <a href="documentos.html">Archivo Documental</a>
+      <a href="arboles.html">Árboles Genealógicos</a>
       <a href="cronologia.html">Cronología</a>
-      <a href="fuentes.html">Fuentes</a>
-      <a href="biblioteca.html">Biblioteca</a>
       <a href="sobre.html" class="active">Sobre el proyecto</a>
     </nav>
   </header>
 
+  <!-- Banner de Página -->
   <div class="page-banner">
     <div class="container">
-      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Sobre el proyecto</div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> › Sobre el proyecto</div>
       <h1>Sobre Memoria Sefardí</h1>
-      <p>Historia, memoria y genealogía de Sefarad.</p>
+      <p>Documentando 19 generaciones de historia, memoria y genealogía criptojudía en el noreste novohispano.</p>
     </div>
   </div>
 
-  <main class="section">
-    <div class="container" style="max-width:800px;">
-      <p class="lead">Memoria Sefardí es una enciclopedia histórica y genealógica dedicada a documentar la historia de los sefardíes, sus familias, descendientes, migraciones y patrimonio documental.</p>
+  <!-- Contenido Principal -->
+  <main class="section container">
+    <p class="lead">Memoria Sefardí es una enciclopedia documental exhaustiva dedicada a rastrear, preservar y comprender la historia de los descendientes sefardíes en el Noreste de México. Nuestro proyecto documenta la profunda huella de los criptojudíos desde su salida de la península ibérica hasta la formación de Nuevo León, Coahuila y el sur de Texas.</p>
 
-      <p>La plataforma combina las funciones de una Wikipedia especializada, un archivo histórico digital, una plataforma genealógica, una biblioteca documental y una enciclopedia biográfica.</p>
-
-      <h2 class="mt-3">Objetivo principal</h2>
-      <p>Permitir crear y consultar biografías de personas sefardíes y de sus descendientes, documentando su historia familiar mediante fotografías, actas, registros civiles, fe de bautismo, matrimonios, defunciones, censos, testamentos, documentos migratorios y otras fuentes históricas.</p>
-
-      <h2 class="mt-3">Rigor histórico</h2>
-      <p>El sitio distingue claramente la información histórica documentada de las hipótesis genealógicas. Cada dato lleva un nivel de evidencia:</p>
-      <ul style="list-style:disc;padding-left:1.5rem;margin:0.75rem 0;">
-        <li>★★★★★ Evidencia documental directa</li>
-        <li>★★★★ Evidencia documental sólida</li>
-        <li>★★★ Evidencia indirecta</li>
-        <li>★★ Hipótesis razonable</li>
-        <li>★ Investigación pendiente</li>
-      </ul>
-      <p>Nunca se presenta una hipótesis como un hecho.</p>
-
-      <h2 class="mt-3">Privacidad</h2>
-      <p>No se publica información personal sensible de personas vivas sin autorización. Los registros pueden marcarse como público, restringido, privado o que requiere autorización.</p>
-
-      <h2 class="mt-3">Contribuciones</h2>
-      <p>Investigadores y colaboradores pueden proponer nuevas biografías, documentos, correcciones y fuentes. Las modificaciones importantes pasan por revisión editorial. Se mantiene un historial de cambios completo.</p>
-
-      <div class="warning-box mt-3">
-        <strong>Aviso sobre esta demostración:</strong> Todos los personajes, documentos y datos mostrados en este sitio de demostración son ficticios e inventados con fines ilustrativos. No representan personas reales ni afirmaciones genealógicas verificadas. No deben utilizarse como fuente histórica o genealógica.
+    <div class="tabs-container">
+      <!-- Encabezados de Pestañas -->
+      <div class="tabs-header">
+        <button class="tab-btn active" data-target="tab-historia">El Proyecto y la Historia</button>
+        <button class="tab-btn" data-target="tab-linajes">Linajes Fundadores</button>
+        <button class="tab-btn" data-target="tab-genealogia">El Eje García-Gaona</button>
+        <button class="tab-btn" data-target="tab-rigor">Rigor Documental</button>
       </div>
 
-      <p class="mt-3"><a href="contribuciones.html" class="btn btn-primary">Cómo contribuir</a>
-      <a href="admin.html" class="btn btn-outline" style="margin-left:0.5rem;">Panel administrativo (demo)</a></p>
+      <!-- Contenido: El Proyecto y la Historia -->
+      <div id="tab-historia" class="tab-content active">
+        <h2>El Ghetto Invisible de la Frontera</h2>
+        <p>Durante los siglos XVII, XVIII y gran parte del XIX, el noreste mexicano sirvió como refugio para numerosas familias de origen converso. Aquellos que llegaron a Monterrey, Saltillo y Cadereyta forjaron lo que los historiadores han denominado un <strong>"ghetto invisible"</strong>.</p>
+        <p>Para proteger sus tradiciones ocultas, su memoria familiar y su seguridad física frente al Santo Oficio de la Inquisición, estas familias practicaron una endogamia extrema. El matrimonio recurrente entre individuos de los mismos linajes —los García, Garza, Treviño, Flores y Saucedo— garantizó que su identidad no se diluyera y que sus bienes permanecieran dentro de la comunidad originaria.</p>
+        
+        <h2 style="margin-top: 2rem;">Un Legado de 19 Generaciones</h2>
+        <p>El estudio central de este proyecto abarca un arco temporal impresionante: desde el año 1492 en España hasta el presente (2026), documentando diecinueve generaciones ininterrumpidas de historia transatlántica. Este esfuerzo no solo traza fechas y nombres, sino que contextualiza la resistencia cultural, las fundaciones militares y el desarrollo económico de los valles del Guajuco y las Salinas.</p>
+      </div>
+
+      <!-- Contenido: Linajes Fundadores -->
+      <div id="tab-linajes" class="tab-content">
+        <h2>Los Pilares del Noreste</h2>
+        <p>Nuestro acervo histórico categoriza y cruza la información de las principales familias que estructuraron la colonización criptojudía de la región.</p>
+        
+        <div class="grid-cards">
+          <div class="card">
+            <h3>Los Garza Falcón</h3>
+            <p>Originarios de Huelva, España, una zona de vasta presencia judía previa a 1492. Encabezados por <strong>Marcos Alonso de la Garza</strong> y <strong>Juana de Treviño</strong>, y su hijo el <strong>Capitán Blas de la Garza Falcón</strong> (1591–1669). Consolidaron el poder político y territorial, convirtiéndose en el bloque social más impenetrable del Nuevo Reino de León.</p>
+          </div>
+          
+          <div class="card">
+            <h3>Los García de Ábrego</h3>
+            <p>Representados monumentalmente por <strong>Juana de la Garza González</strong> y el <strong>Alférez Lorenzo García de Ábrego</strong>. Esta rama patrilineal asumió el rol de defensa de las fronteras mediante milicias, obteniendo a cambio vastas mercedes de tierras. Su descendencia dictó el control del Valle de las Salinas.</p>
+          </div>
+          
+          <div class="card">
+            <h3>Flores de Valdés y del Valle</h3>
+            <p>Provenientes de las Asturias de Santillana. El <strong>Capitán Rodrigo Flores de Valdés</strong> se integró magistralmente a esta red de parentesco endogámica. La asimilación de apellidos toponímicos como <em>del Valle</em> fue una táctica común de los conversos para afianzar una identidad arraigada a la tierra y desviar sospechas.</p>
+          </div>
+          
+          <div class="card">
+            <h3>Los Saucedo, Casas y Aguilar</h3>
+            <p>Apellidos recurrentemente señalados en procesos de la Inquisición. Los Saucedo cimentaron su presencia desde la Villa del Saltillo, migrando estratégicamente hacia Lampazos y Santiago. Figuras como Bernabé de las Casas completan el escudo terrateniente que garantizó la supervivencia de la comunidad.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido: El Eje García-Gaona -->
+      <div id="tab-genealogia" class="tab-content">
+        <h2>Línea de Ascendencia: Caso de Estudio Documentado</h2>
+        <p>Memoria Sefardí utiliza como hilo conductor biográfico la genealogía directa de <strong>Francisco Javier García Gaona</strong> (nacido en 1988, Coahuila/Nuevo León). Su ascendencia patrilineal directa ejemplifica la resistencia histórica de estos fundadores a través de 14 generaciones documentadas en suelo novohispano y mexicano.</p>
+        
+        <table class="genealogy-table">
+          <thead>
+            <tr>
+              <th>Generación</th>
+              <th>Nombre del Ancestro</th>
+              <th>Periodo vital</th>
+              <th>Registro Destacado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Capitán Blas de la Garza Falcón</strong> y Beatriz González Hidalgo</td>
+              <td>1591 – 1669</td>
+              <td>Regidor y Capitán de milicias de Monterrey.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Juana de la Garza González</strong> y Alférez Lorenzo García de Ábrego</td>
+              <td>1622 – 1669</td>
+              <td>Testamento de 1659 en el Archivo Municipal de Saltillo.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Joseph Lorenzo García de la Garza</td>
+              <td>1656 – ?</td>
+              <td>Continuación de la defensa militar fronteriza.</td>
+            </tr>
+            <tr>
+              <td colspan="4" style="text-align: center; color: var(--text-muted); font-style: italic;">
+                ... múltiples generaciones cimentadas en Santiago, Cadereyta y Salinas ...
+              </td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>Margarito García Vásquez</td>
+              <td>1968 – Presente</td>
+              <td>Registro contemporáneo.</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>14</td>
+              <td><strong>Francisco Javier García Gaona</strong></td>
+              <td>1988 – Presente</td>
+              <td>Sujeto de estudio. 19ª generación desde la Expulsión de 1492.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Contenido: Rigor Documental -->
+      <div id="tab-rigor" class="tab-content">
+        <h2>Metodología y Verificación Archival</h2>
+        <p>Nuestra plataforma distingue estrictamente la información histórica empírica de las proyecciones genealógicas. La investigación se sustenta en fuentes primarias como los libros parroquiales de la Catedral de Monterrey y legajos del Archivo Municipal de Saltillo.</p>
+        
+        <ul class="evidence-list">
+          <li>
+            <div class="stars">★★★★★</div>
+            <div><strong>Evidencia documental directa:</strong> Testamentos, fe de bautismo y registros parroquiales originales (Ej. Defunción de Beatriz González Hidalgo, 10 de mayo de 1670).</div>
+          </li>
+          <li>
+            <div class="stars">★★★★☆</div>
+            <div><strong>Evidencia documental sólida:</strong> Censos coloniales, padrones militares y mercedes de tierra de Nuevo León y Coahuila.</div>
+          </li>
+          <li>
+            <div class="stars">★★★☆☆</div>
+            <div><strong>Evidencia indirecta:</strong> Patrones migratorios, análisis de endogamia recurrente y cruce de actas de parientes colaterales.</div>
+          </li>
+          <li>
+            <div class="stars">★★☆☆☆</div>
+            <div><strong>Hipótesis razonable:</strong> Proyecciones derivadas de la repetición de apellidos criptojudíos identificados por el Santo Oficio.</div>
+          </li>
+        </ul>
+
+        <div style="background-color: #fff9e6; border-left: 4px solid #f2c94c; padding: 1.5rem; border-radius: 4px; margin-top: 2rem;">
+          <strong>Nota de Privacidad:</strong> Todo registro concerniente a personas vivas en la actualidad se maneja bajo estrictos estándares de privacidad. El acervo prioriza la exhibición pública de los fundadores históricos para garantizar el resguardo de la información contemporánea.
+        </div>
+      </div>
     </div>
   </main>
 
+  <!-- Pie de Página -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-bottom">
-        <p>© 2026 Memoria Sefardí — Demostración educativa con datos ficticios.</p>
-      </div>
+      <p>© 2026 Memoria Sefardí — Documentando la historia, la resiliencia y el origen del noreste.</p>
     </div>
   </footer>
 
-  <script src="../js/data.js"></script>
-  <script src="../js/app.js"></script>
+  <!-- Script para interactividad nativa -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Funcionalidad de Modo Oscuro / Claro
+      const toggleBtn = document.querySelector('.theme-toggle');
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        toggleBtn.textContent = newTheme === 'light' ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+      });
+
+      // Lógica del sistema de pestañas (Tabs)
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remover clases activas de todos los botones y contenidos
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          
+          // Añadir clase activa al botón presionado y su contenido correspondiente
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-target');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
