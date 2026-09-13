@@ -1,88 +1,144 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Familias y linajes — Memoria Sefardí</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Ruta relativa recomendada para GitHub Pages si el proyecto está en una subruta -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-top">
-      <a href="index.html" class="logo">
-        <div class="logo-mark">מ</div>
-        <div class="logo-text">
-          <strong>Memoria Sefardí</strong>
-          <span>Enciclopedia histórica</span>
-        </div>
-      </a>
-      <form class="search-bar" action="familias/personas.html" method="get">
-        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
-        <button type="submit">🔍</button>
-      </form>
-      <button class="nav-toggle" aria-label="Menú">☰</button>
-    </div>
-    <nav class="main-nav container">
-      <a href="index.html">Inicio</a>
-      <a href="familias/personas.html">Personas</a>
-      <a href="familias/familias.html" class="active">Familias</a>
-      <a href="familias/apellidos.html">Apellidos</a>
-      <a href="familias/documentos.html">Documentos</a>
-      <a href="familias/arboles.html">Árboles genealógicos</a>
-      <a href="familias/lugares.html">Lugares</a>
-      <a href="familias/mapa.html">Mapa</a>
-      <a href="familias/cronologia.html">Cronología</a>
-      <a href="familias/fuentes.html">Fuentes</a>
-      <a href="familias/biblioteca.html">Biblioteca</a>
-      <a href="familias/sobre.html">Sobre el proyecto</a>
-    </nav>
-  </header>
+import React, { useState } from 'react';
+import { Search, Menu, FileText, MapPin, BookOpen, AlertTriangle } from 'lucide-react';
 
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><a href="index.html">Inicio</a> › Familias</div>
-      <h1>Familias y linajes</h1>
-      <p class="lead">Historias de apellidos y familias sefardíes documentadas. No se asume que todas las personas con el mismo apellido pertenezcan al mismo linaje.</p>
-    </div>
-  </div>
+const App = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  <main class="section">
-    <div class="container">
-      <div class="warning-box">
-        <strong>Advertencia:</strong> La coincidencia de apellido no demuestra por sí sola un linaje común ni ascendencia sefardí. Toda afirmación genealógica debe sustentarse en documentación y fuentes.
-      </div>
-      
-      <div class="card-grid mt-2" id="familias-grid">
-        <article class="card family-card">
-          <div class="card-body">
-            <span class="badge badge-confirmado">Linaje Insigne y de Alta Hidalguía</span>
-            <h2>Familia Carvajal y de la Cueva</h2>
-            <p class="card-meta"><strong>Origen principal:</strong> Reino de León, España / Nuevo Reino de León</p>
-            <p class="card-excerpt">Linaje de proverbial hidalguía, nobleza caballeresca y profunda raigambre histórica en el norte novohispano. Encabezada históricamente por figuras de alta alcurnia institucional y fundacional como el Gobernador Don Luis de Carvajal y de la Cueva, esta casa destacó por su valía militar, su distinguida gobernanza y su indómita constancia espiritual bajo rigurosos escrutinios históricos.</p>
-            <div class="mt-2">
-              <a href="familias/apellidos.html" class="btn btn-sm btn-outline">Ver apellidos vinculados</a>
-            </div>
+  const variants = ["Toledano", "de Toledo", "Toledani", "Toledanos"];
+  const locations = ["Toledo", "Lisboa", "Salónica", "Esmirna", "Estambul", "Ámsterdam", "Marruecos"];
+  const people = ["David ben Abraham Toledano", "Isaac Toledano", "Miriam Toledano", "Abraham Toledano"];
+  const documents = [
+    { title: "Ketubá de Isaac Toledano (1535)", type: "Actas de matrimonio", location: "Salónica" },
+    { title: "Inventario de David Toledano (c. 1540)", type: "Testamentos", location: "Salónica" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+      {/* Header / Navegación */}
+      <header className="bg-amber-900 text-amber-50 sticky top-0 z-50 shadow-md">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <span className="text-2xl font-serif font-bold tracking-wide">מ Memoria Sefardí</span>
           </div>
-        </article>
+          <div className="flex items-center space-x-4">
+            <button className="p-2 hover:bg-amber-800 rounded-full transition"><Search size={20} /></button>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="p-2 hover:bg-amber-800 rounded-full transition"><Menu size={20} /></button>
+          </div>
+        </div>
+      </header>
 
-        <!-- Elementos generados por app.js -->
-      </div>
-    </div>
-  </main>
+      {/* Migas de pan (Breadcrumbs) */}
+      <nav className="max-w-4xl mx-auto px-4 py-3 text-sm text-slate-500">
+        Inicio › Familias › <span className="font-semibold text-slate-700">Toledano</span>
+      </nav>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-bottom">
+      {/* Contenido Principal */}
+      <main className="max-w-4xl mx-auto px-4 pb-12 space-y-8">
+        
+        {/* Banner de Título */}
+        <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h1 className="text-3xl font-serif font-bold text-amber-950 mb-2">Familia Toledano</h1>
+          <p className="text-slate-600">Historia del apellido, variantes, lugares y personas documentadas.</p>
+        </section>
+
+        {/* Advertencia Genealógica */}
+        <section className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg flex items-start space-x-3 text-amber-900">
+          <AlertTriangle className="flex-shrink-0 mt-0.5 text-amber-600" size={20} />
+          <div className="text-sm">
+            <strong>Importante:</strong> Evitar afirmar automáticamente que todas las personas que comparten este apellido pertenecen al mismo linaje. El apellido Toledano es toponímico y pudo ser adoptado por familias independientes.
+          </div>
+        </section>
+
+        {/* Historia del Apellido */}
+        <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-3 border-b pb-2">Historia del apellido</h2>
+          <p className="text-slate-700 leading-relaxed mb-4">
+            El apellido Toledano es de origen toponímico y hace referencia a la ciudad de Toledo (Castilla). Tras la expulsión de 1492, numerosas familias sefardíes que habían residido en Toledo o sus alrededores adoptaron o conservaron este apellido en la diáspora (Portugal, Imperio Otomano, Norte de África, Italia, etc.).
+          </p>
+        </section>
+
+        {/* Variantes & Apariciones */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 className="text-lg font-bold text-slate-900 mb-3 border-b pb-2">Variantes ortográficas</h2>
+            <div className="flex flex-wrap gap-2">
+              {variants.map((v, i) => (
+                <span key={i} className="bg-amber-100 text-amber-900 px-3 py-1 rounded-full text-sm font-medium">{v}</span>
+              ))}
+            </div>
+          </section>
+
+          <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 className="text-lg font-bold text-slate-900 mb-3 border-b pb-2">Primeras apariciones documentales</h2>
+            <ul className="text-slate-700 space-y-1 text-sm">
+              <li>• Documentado en <strong>Toledo</strong> antes de 1492.</li>
+              <li>• En <strong>Salónica</strong> desde principios del siglo XVI.</li>
+            </ul>
+          </section>
+        </div>
+
+        {/* Lugares donde aparece */}
+        <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center space-x-2">
+            <MapPin className="text-amber-700" size={20} />
+            <span>Lugares registrados</span>
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {locations.map((loc, i) => (
+              <span key={i} className="bg-slate-100 border border-slate-300 text-slate-700 px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-slate-200 cursor-pointer transition">{loc}</span>
+            ))}
+          </div>
+        </section>
+
+        {/* Personas y Documentos */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Personas */}
+          <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 className="text-lg font-bold text-slate-900 mb-3 border-b pb-2">Personas documentadas</h2>
+            <ul className="divide-y divide-slate-100">
+              {people.map((p, i) => (
+                <li key={i} className="py-2 text-slate-700 hover:text-amber-800 cursor-pointer font-medium">{p}</li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Documentos */}
+          <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 className="text-lg font-bold text-slate-900 mb-3 border-b pb-2 flex items-center space-x-2">
+              <FileText className="text-amber-700" size={18} />
+              <span>Documentos asociados</span>
+            </h2>
+            <div className="space-y-3">
+              {documents.map((doc, i) => (
+                <div key={i} className="p-3 bg-slate-50 rounded-lg border border-slate-200 hover:border-amber-400 cursor-pointer transition">
+                  <h3 className="font-semibold text-amber-950 text-sm">{doc.title}</h3>
+                  <p className="text-xs text-slate-500 mt-1">{doc.type} · {doc.location}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Bibliografía */}
+        <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+          <h2 className="text-lg font-bold text-slate-900 mb-3 border-b pb-2 flex items-center space-x-2">
+            <BookOpen className="text-amber-700" size={18} />
+            <span>Bibliografía</span>
+          </h2>
+          <ul className="space-y-2 text-xs text-slate-600 italic">
+            <li>• Beider, A. <em>A Dictionary of Jewish Surnames from the Maghreb, Gibraltar and Malta</em>.</li>
+            <li>• Faiguenboim, G. et al. <em>Dicionário Sefaradi de Sobrenomes</em>.</li>
+          </ul>
+        </section>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 py-6 text-center text-xs">
         <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
-      </div>
+      </footer>
     </div>
-  </footer>
+  );
+};
 
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
-</body>
-</html>
+export default App;
