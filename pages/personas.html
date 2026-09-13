@@ -1,336 +1,88 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personas — Memoria Sefardí</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-​<style>
-/* Variables de Tema - Diseño Dinámico /
-:root {
---bg-color: #fcfaf8;
---text-color: #2c2825;
---header-bg: #ffffff;
---border-color: #e6e2dd;
---accent-color: #8c2131; / Rojo colonial/vino */
---accent-hover: #6a1824;
---card-bg: #ffffff;
---text-muted: #66615b;
-}
-​[data-theme="dark"] {
---bg-color: #1a1817;
---text-color: #e6e2dd;
---header-bg: #242220;
---border-color: #3b3734;
---accent-color: #c94f63;
---accent-hover: #e06c7f;
---card-bg: #2c2825;
---text-muted: #a39e99;
-}
-​/* Reset y Tipografía base */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-​body {
-font-family: 'Source Sans 3', sans-serif;
-background-color: var(--bg-color);
-color: var(--text-color);
-line-height: 1.7;
-transition: background-color 0.4s ease, color 0.4s ease;
-}
-​h1, h2, h3, h4 {
-font-family: 'Cormorant Garamond', serif;
-font-weight: 600;
-color: var(--accent-color);
-margin-bottom: 1rem;
-}
-​.container {
-width: 92%;
-max-width: 1100px;
-margin: 0 auto;
-}
-​/* Cabecera y Navegación Dinámica */
-.site-header {
-background-color: var(--header-bg);
-border-bottom: 1px solid var(--border-color);
-position: sticky;
-top: 0;
-z-index: 1000;
-transition: background-color 0.4s ease;
-}
-.header-top {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.25rem 0;
-gap: 1.5rem;
-flex-wrap: wrap;
-}
-.logo {
-display: flex;
-align-items: center;
-text-decoration: none;
-color: var(--text-color);
-}
-.logo-mark {
-font-size: 2.8rem;
-margin-right: 1rem;
-color: var(--accent-color);
-line-height: 1;
-}
-.logo-text strong { display: block; font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.5px; }
-.logo-text span { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
-​/* Barra de Búsqueda Aerodinámica */
-.search-bar {
-display: flex;
-align-items: center;
-background: var(--bg-color);
-border: 1px solid var(--border-color);
-border-radius: 30px;
-padding: 0.3rem 0.5rem 0.3rem 1rem;
-flex: 1;
-max-width: 350px;
-transition: border-color 0.3s ease;
-}
-.search-bar:focus-within {
-border-color: var(--accent-color);
-}
-.search-bar input {
-background: transparent;
-border: none;
-outline: none;
-color: var(--text-color);
-font-size: 0.95rem;
-width: 100%;
-}
-.search-bar button {
-background: transparent;
-border: none;
-cursor: pointer;
-font-size: 1rem;
-padding: 0.2rem 0.5rem;
-}
-​.header-actions { display: flex; align-items: center; gap: 1rem; }
-​.theme-toggle {
-background: transparent;
-border: 1px solid var(--border-color);
-color: var(--text-color);
-padding: 0.5rem 1.25rem;
-border-radius: 20px;
-cursor: pointer;
-font-size: 0.9rem;
-font-weight: 600;
-transition: all 0.3s ease;
-white-space: nowrap;
-}
-.theme-toggle:hover { background-color: var(--border-color); }
-​.nav-toggle {
-display: none;
-background: transparent;
-border: 1px solid var(--border-color);
-color: var(--text-color);
-font-size: 1.5rem;
-padding: 0.25rem 0.75rem;
-border-radius: 8px;
-cursor: pointer;
-}
-​.main-nav {
-display: flex;
-gap: 1.5rem;
-padding-bottom: 1.25rem;
-overflow-x: auto;
-white-space: nowrap;
-}
-.main-nav::-webkit-scrollbar { height: 4px; }
-.main-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
-​.main-nav a {
-text-decoration: none;
-color: var(--text-muted);
-font-weight: 500;
-font-size: 0.95rem;
-transition: color 0.3s ease;
-}
-.main-nav a:hover, .main-nav a.active {
-color: var(--accent-color);
-}
-​/* Banner Dinámico */
-.page-banner {
-position: relative;
-background: linear-gradient(to right, rgba(26,24,23,0.9), rgba(26,24,23,0.6)), url('https://images.unsplash.com/photo-1464627409240-7f61c37d6e46?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-color: #ffffff;
-padding: 5rem 0;
-text-align: left;
-}
-.page-banner h1 {
-color: #ffffff;
-font-size: 3.5rem;
-margin-bottom: 0.5rem;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-.page-banner p { font-size: 1.3rem; opacity: 0.9; max-width: 600px; }
-.breadcrumb { margin-bottom: 1.5rem; font-size: 0.95rem; color: #dddddd; }
-.breadcrumb a { color: #ffffff; text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-​/* Estructura Principal */
-.section { padding: 4rem 0; }
-.lead {
-font-size: 1.35rem;
-color: var(--text-muted);
-margin-bottom: 2.5rem;
-font-family: 'Cormorant Garamond', serif;
-font-style: italic;
-}
-​/* Grillas y Tarjetas de Personajes */
-.grid-cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 2rem;
-margin-top: 2rem;
-}
-.card {
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-padding: 2.5rem;
-border-radius: 12px;
-box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-.card:hover {
-transform: translateY(-8px);
-box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-border-color: var(--accent-color);
-}
-.card h3 {
-font-size: 1.6rem;
-margin-bottom: 0.5rem;
-border-bottom: 1px solid var(--border-color);
-padding-bottom: 0.75rem;
-}
-.card .meta {
-font-size: 0.9rem;
-color: var(--accent-color);
-margin-bottom: 1rem;
-font-weight: 600;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-​/* Pie de página */
-.site-footer {
-background: var(--header-bg);
-border-top: 1px solid var(--border-color);
-padding: 3rem 0;
-text-align: center;
-color: var(--text-muted);
-margin-top: 4rem;
-}
-​/* Responsivo */
-@media (max-width: 768px) {
-.nav-toggle { display: block; }
-.main-nav {
-display: none;
-flex-direction: column;
-gap: 1rem;
-padding: 1rem 0;
-border-top: 1px solid var(--border-color);
-}
-.main-nav.show { display: flex; }
-.search-bar { max-width: 100%; order: 3; width: 100%; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Familias y linajes — Memoria Sefardí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Ruta corregida para subir desde la carpeta pages/ hacia el CSS -->
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-​<!-- Cabecera y Navegación Dinámica -->
-<header class="site-header">
-<div class="container header-top">
-<a href="../index.html" class="logo">
-<div class="logo-mark">מ</div>
-<div class="logo-text">
-<strong>Memoria Sefardí</strong>
-<span>Enciclopedia Histórica</span>
-</div>
-</a>
-​<form class="search-bar" action="personas.html" method="get">
-<input type="search" name="q" placeholder="Buscar personas, linajes o lugares..." aria-label="Buscar">
-<button type="submit" aria-label="Enviar búsqueda">🔍</button>
-</form>
-​<div class="header-actions">
-<button class="theme-toggle" aria-label="Cambiar tema">🌙 Modo Oscuro</button>
-<button class="nav-toggle" aria-label="Menú desplegable">☰</button>
-</div>
-</div>
-​<nav class="main-nav container">
-<a href="../index.html">Inicio</a>
-<a href="personas.html" class="active">Personas</a>
-<a href="familias.html">Familias</a>
-<a href="apellidos.html">Apellidos</a>
-<a href="documentos.html">Documentos</a>
-<a href="arboles.html">Árboles genealógicos</a>
-<a href="lugares.html">Lugares</a>
-<a href="mapa.html">Mapa</a>
-<a href="cronologia.html">Cronología</a>
-<a href="fuentes.html">Fuentes</a>
-<a href="biblioteca.html">Biblioteca</a>
-<a href="sobre.html">Sobre el proyecto</a>
-</nav>
-</header>
-​<!-- Banner de Página -->
-<div class="page-banner">
-<div class="container">
-<div class="breadcrumb"><a href="../index.html">Inicio</a> › Personas</div>
-<h1>Personas e Individualidades Históricas</h1>
-<p>Catálogo biográfico de fundadores, conversos y figuras clave en el noreste novohispano.</p>
-</div>
-</div>
-​<!-- Contenido Principal -->
-<main class="section container">
-<p class="lead">Explora las trayectorias biográficas de los principales actores que conformaron la red criptojudía y la colonización militar de Monterrey, Saltillo y sus alrededores.</p>
-​<div class="grid-cards">
-<article class="card">
-<div class="meta">1591 – 1669</div>
-<h3>Capitán Blas de la Garza Falcón</h3>
-<p>Regidor, alcalde ordinario y capitán de milicias en el Nuevo Reino de León. Figura central en la estructuración de la élite terrateniente y la defensa de las fronteras norteñas.</p>
-</article>
-​<article class="card">
-<div class="meta">1622 – 1669</div>
-<h3>Juana de la Garza González</h3>
-<p>Esposa del Alférez Lorenzo García de Ábrego. Su testamento de 1659 en el Archivo Municipal de Saltillo es una pieza clave para rastrear las redes de parentesco endogámico.</p>
-</article>
-​<article class="card">
-<div class="meta">Siglo XVII</div>
-<h3>Alférez Lorenzo García de Ábrego</h3>
-<p>Pilar de la rama patrilineal militar en el Valle de las Salinas, cuyas alianzas familiares consolidaron el control de vastas mercedes de tierra en la región.</p>
-</article>
-​<article class="card">
-<div class="meta">Siglo XVI – XVII</div>
-<h3>Marcos Alonso de la Garza</h3>
-<p>Patriarca originario de Huelva, España, y tronco común de la vasta descendencia Garza que permeó la estructura gubernamental y social del noreste novohispano.</p>
-</article>
-</div>
-</main>
-​<!-- Pie de Página -->
-<footer class="site-footer">
-<div class="container">
-<p>© 2026 Memoria Sefardí — Documentando la historia, la resiliencia y el origen del noreste.</p>
-</div>
-</footer>
-​<!-- Script para Interactividad Dinámica y Responsive -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-// 1. Modo Oscuro / Claro
-const toggleBtn = document.querySelector('.theme-toggle');
-toggleBtn.addEventListener('click', () => {
-const currentTheme = document.documentElement.getAttribute('data-theme');
-const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-document.documentElement.setAttribute('data-theme', newTheme);
-toggleBtn.textContent = newTheme === 'light' ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-});
-​// 2. Menú Desplegable Móvil
-const navToggle = document.querySelector('.nav-toggle');
-const mainNav = document.querySelector('.main-nav');
-navToggle.addEventListener('click', () => {
-mainNav.classList.toggle('show');
-});
-});
-</script>
+  <header class="site-header">
+    <div class="container header-top">
+      <a href="../index.html" class="logo">
+        <div class="logo-mark">מ</div>
+        <div class="logo-text">
+          <strong>Memoria Sefardí</strong>
+          <span>Enciclopedia histórica</span>
+        </div>
+      </a>
+      <form class="search-bar" action="personas.html" method="get">
+        <input type="search" name="q" placeholder="Buscar..." aria-label="Buscar">
+        <button type="submit">🔍</button>
+      </form>
+      <button class="nav-toggle" aria-label="Menú">☰</button>
+    </div>
+    <nav class="main-nav container">
+      <a href="../index.html">Inicio</a>
+      <a href="personas.html">Personas</a>
+      <a href="familias.html" class="active">Familias</a>
+      <a href="apellidos.html">Apellidos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="arboles.html">Árboles genealógicos</a>
+      <a href="lugares.html">Lugares</a>
+      <a href="mapa.html">Mapa</a>
+      <a href="cronologia.html">Cronología</a>
+      <a href="fuentes.html">Fuentes</a>
+      <a href="biblioteca.html">Biblioteca</a>
+      <a href="sobre.html">Sobre el proyecto</a>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <div class="breadcrumb"><a href="../index.html">Inicio</a> › Familias</div>
+      <h1>Familias y linajes</h1>
+      <p class="lead">Historias de apellidos y familias sefardíes documentadas. No se asume que todas las personas con el mismo apellido pertenezcan al mismo linaje.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <div class="warning-box">
+        <strong>Advertencia:</strong> La coincidencia de apellido no demuestra por sí sola un linaje común ni ascendencia sefardí. Toda afirmación genealógica debe sustentarse en documentación y fuentes.
+      </div>
+      
+      <div class="card-grid mt-2" id="familias-grid">
+        <article class="card family-card">
+          <div class="card-body">
+            <span class="badge badge-confirmado">Linaje Insigne y de Alta Hidalguía</span>
+            <h2>Familia Carvajal y de la Cueva</h2>
+            <p class="card-meta"><strong>Origen principal:</strong> Reino de León, España / Nuevo Reino de León</p>
+            <p class="card-excerpt">Linaje de proverbial hidalguía, nobleza caballeresca y profunda raigambre histórica en el norte novohispano. Encabezada históricamente por figuras de alta alcurnia institucional y fundacional como el Gobernador Don Luis de Carvajal y de la Cueva, esta casa destacó por su valía militar, su distinguida gobernanza y su indómita constancia espiritual bajo rigurosos escrutinios históricos.</p>
+            <div class="mt-2">
+              <a href="apellidos.html" class="btn btn-sm btn-outline">Ver apellidos vinculados</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Elementos generados por app.js -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Memoria Sefardí — Demostración con datos ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>
