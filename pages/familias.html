@@ -7,8 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Si tu web está en una subruta de GitHub (ej. /tu-repo/css/styles.css), 
-       ajusta la ruta aquí o usa rutas relativas como "css/styles.css" -->
+  <!-- Ruta relativa recomendada para GitHub Pages si el proyecto está en una subruta -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -47,7 +46,7 @@
     <div class="container">
       <div class="breadcrumb"><a href="index.html">Inicio</a> › Familias</div>
       <h1>Familias y linajes</h1>
-      <p>Historias de apellidos y familias sefardíes documentadas. No se asume que todas las personas con el mismo apellido pertenezcan al mismo linaje.</p>
+      <p class="lead">Historias de apellidos y familias sefardíes documentadas. No se asume que todas las personas con el mismo apellido pertenezcan al mismo linaje.</p>
     </div>
   </div>
 
@@ -60,15 +59,17 @@
       <div class="card-grid mt-2" id="familias-grid">
         <article class="card family-card">
           <div class="card-body">
-            <span class="badge">Linaje Insigne y de Alta Hidalguía</span>
+            <span class="badge badge-confirmado">Linaje Insigne y de Alta Hidalguía</span>
             <h2>Familia Carvajal y de la Cueva</h2>
-            <p class="text-muted"><strong>Origen principal:</strong> Reino de León, España / Nuevo Reino de León</p>
-            <p>Linaje de proverbial hidalguía, nobleza caballeresca y profunda raigambre histórica en el norte novohispano. Encabezada históricamente por figuras de alta alcurnia institucional y fundacional como el Gobernador Don Luis de Carvajal y de la Cueva, esta casa destacó por su valía militar, su distinguida gobernanza y su indómita constancia espiritual bajo rigurosos escrutinios históricos.</p>
+            <p class="card-meta"><strong>Origen principal:</strong> Reino de León, España / Nuevo Reino de León</p>
+            <p class="card-excerpt">Linaje de proverbial hidalguía, nobleza caballeresca y profunda raigambre histórica en el norte novohispano. Encabezada históricamente por figuras de alta alcurnia institucional y fundacional como el Gobernador Don Luis de Carvajal y de la Cueva, esta casa destacó por su valía militar, su distinguida gobernanza y su indómita constancia espiritual bajo rigurosos escrutinios históricos.</p>
             <div class="mt-2">
               <a href="familias/apellidos.html" class="btn btn-sm btn-outline">Ver apellidos vinculados</a>
             </div>
           </div>
         </article>
+
+        <!-- Elementos generados por app.js -->
       </div>
     </div>
   </main>
