@@ -1,80 +1,169 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración - Memoria Sefardí</title>
-  <!-- Tailwind CSS para que se vea profesional -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 min-h-screen py-10 px-4">
+/* Panel admin: personas → tabla personajes; páginas → menú automático. */
+(function () {
+  function $(id) {
+    return document.getElementById(id);
+  }
 
-  <main class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-slate-200">
-    <h1 class="text-3xl font-bold text-slate-900 mb-2">Agregar Nuevo Registro</h1>
-    <p class="text-slate-600 mb-6 text-sm">Llena los datos del ancestro y sube su foto o documento. Se guardará directo en Supabase.</p>
+  function setStatus(msg, ok) {
+    var el = $("mensaje-estado");
+    var text = $("texto-estado");
+    if (!el) return;
+    el.classList.remove("hidden");
+    el.style.background = ok ? "#ecfdf5" : "#fef2f2";
+    el.style.color = ok ? "#065f46" : "#9f1239";
+    if (text) text.textContent = msg;
+    else el.textContent = msg;
+  }
 
-    <form id="form-registro" class="space-y-4">
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nombre</label>
-          <input type="text" id="nombre" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Apellido</label>
-          <input type="text" id="apellido" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-        </div>
-      </div>
+  function localPeople() {
+    try {
+      return JSON.parse(localStorage.getItem("ms_personajes") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
 
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Fecha de Nacimiento</label>
-          <input type="text" id="fecha_nacimiento" placeholder="Ej. 1540 o 12/05/1540" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Lugar de Nacimiento</label>
-          <input type="text" id="lugar_nacimiento" placeholder="Ej. Toledo, España" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none">
-        </div>
-      </div>
+  function saveLocalPeople(rows) {
+    localStorage.setItem("ms_personajes", JSON.stringify(rows));
+  }
 
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Fecha de Defunción</label>
-          <input type="text" id="fecha_defuncion" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Lugar de Defunción</label>
-          <input type="text" id="lugar_defuncion" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none">
-        </div>
-      </div>
+  async function savePerson(payload) {
+    var client = window.msReady ? await window.msReady : null;
+    if (client) {
+      var res = await client.from("personajes").insert(payload).select();
+      if (!res.error) return { ok: true, where: "base" };
+    }
+    var rows = localPeople();
+    rows.unshift(Object.assign({ id: Date.now() }, payload));
+    saveLocalPeople(rows);
+    return { ok: true, where: "local" };
+  }
 
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Biografía / Notas históricas</label>
-        <textarea id="biografia" rows="4" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none"></textarea>
-      </div>
+  async function savePage(payload) {
+    var client = window.msReady ? await window.msReady : null;
+    if (client) {
+      var res = await client.from("paginas").insert(payload).select();
+      if (!res.error) return { ok: true, where: "base" };
+    }
+    var rows = window.msNav.readLocalPages();
+    rows = rows.filter(function (p) { return p.slug !== payload.slug; });
+    rows.push(payload);
+    window.msNav.writeLocalPages(rows);
+    return { ok: true, where: "local" };
+  }
 
-      <!-- Espacio para la foto o documento -->
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Fotografía o Imagen del documento</label>
-        <input type="file" id="archivo_foto" accept="image/*" class="w-full border border-slate-300 rounded-lg p-2 text-sm bg-slate-50 cursor-pointer">
-      </div>
+  function paintPeople(list) {
+    var box = $("lista-personajes");
+    if (!box) return;
+    var rows = list || [];
+    if (!rows.length) {
+      box.innerHTML = '<p class="col-span-3 text-center text-slate-500 py-8">Aún no hay personajes. Usa el formulario de arriba.</p>';
+      return;
+    }
+    box.innerHTML = rows
+      .map(function (p) {
+        return (
+          '<div class="glass-card rounded-xl p-4">' +
+          "<p class=\"font-serif text-lg font-bold text-slate-900\">" +
+          (p.nombre || "Sin nombre") +
+          "</p>" +
+          '<p class="text-sm text-slate-600 mt-1">' +
+          [p.fecha_nacimiento, p.lugar_origen].filter(Boolean).join(" · ") +
+          "</p></div>"
+        );
+      })
+      .join("");
+  }
 
-      <!-- Enlace de YouTube por si hay video o entrevista -->
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Enlace de YouTube (Audiovisual)</label>
-        <input type="url" id="youtube_url" placeholder="https://www.youtube.com/watch?v=..." class="w-full border border-slate-300 rounded-lg p-2.5 text-sm outline-none">
-      </div>
+  async function loadPeople() {
+    var rows = localPeople();
+    var client = window.msReady ? await window.msReady : null;
+    if (client) {
+      var res = await client.from("personajes").select("*").limit(50);
+      if (!res.error && res.data && res.data.length) rows = res.data.concat(rows);
+    }
+    if (!rows.length && window.MS_DATA && MS_DATA.personas) {
+      rows = MS_DATA.personas.map(function (p) {
+        return {
+          nombre: p.nombre,
+          fecha_nacimiento: p.nacimiento && p.nacimiento.fecha,
+          lugar_origen: p.nacimiento && p.nacimiento.lugar,
+        };
+      });
+    }
+    paintPeople(rows);
+  }
 
-      <button type="submit" id="btn-guardar" class="w-full bg-slate-900 text-white font-medium py-3 rounded-lg hover:bg-slate-800 transition-colors">
-        Guardar Registro en la Base de Datos
-      </button>
-    </form>
-    
-    <div id="mensaje-estado" class="mt-4 text-center text-sm font-medium"></div>
-  </main>
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = $("form-personaje");
+    if (form) {
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var payload = {
+          nombre: ($("nombre") && $("nombre").value.trim()) || "",
+          fecha_nacimiento: ($("fecha_nacimiento") && $("fecha_nacimiento").value.trim()) || "",
+          lugar_origen: ($("lugar_origen") && $("lugar_origen").value.trim()) || "",
+          imagen_url: ($("imagen_url") && $("imagen_url").value.trim()) || "",
+          descripcion: ($("descripcion") && $("descripcion").value.trim()) || "",
+          video_youtube: ($("video_youtube") && $("video_youtube").value.trim()) || "",
+        };
+        if (!payload.nombre) {
+          setStatus("El nombre es obligatorio.", false);
+          return;
+        }
+        var r = await savePerson(payload);
+        setStatus(
+          r.where === "base"
+            ? "Personaje guardado en la base de datos."
+            : "Personaje guardado. La base tiene bloqueo de escritura; queda en este dispositivo y ya se lista abajo.",
+          true
+        );
+        form.reset();
+        loadPeople();
+      });
+    }
 
-  <!-- Scripts necesarios -->
-  <script src="js/supabase.js"></script>
-  <script src="js/admin.js"></script>
-</body>
-</html>
-  
+    var pageForm = $("form-pagina");
+    if (pageForm) {
+      var title = $("page-title");
+      var slug = $("page-slug");
+      if (title && slug) {
+        title.addEventListener("input", function () {
+          if (!slug.dataset.touched) slug.value = window.msNav.slugify(title.value);
+        });
+        slug.addEventListener("input", function () {
+          slug.dataset.touched = "1";
+          slug.value = window.msNav.slugify(slug.value);
+        });
+      }
+      pageForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var titulo = title.value.trim();
+        var s = window.msNav.slugify(slug.value || titulo);
+        if (!titulo || !s) {
+          setStatus("La página necesita título.", false);
+          return;
+        }
+        var payload = {
+          slug: s,
+          titulo: titulo,
+          resumen: ($("page-excerpt") && $("page-excerpt").value.trim()) || "",
+          cuerpo: ($("page-body") && $("page-body").value.trim()) || "",
+          mostrar_en_menu: !$("page-in-menu") || $("page-in-menu").checked,
+          orden: 200,
+        };
+        var r = await savePage(payload);
+        setStatus(
+          r.where === "base"
+            ? 'Página «' + s + '» guardada. Ya aparece en el menú.'
+            : 'Página «' + s + '» creada y agregada al menú. (Si la base no acepta escritura, queda en este dispositivo.)',
+          true
+        );
+        pageForm.reset();
+        if (window.msNav) window.msNav.renderNav();
+      });
+    }
+
+    loadPeople();
+  });
+})();
