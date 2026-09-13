@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memoria Sefardí — Enciclopedia Histórica Interactiva</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome 6.4.0 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Cinzel & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -28,6 +28,7 @@
                         amber: {
                             50: '#fffbe6',
                             100: '#fef3c7',
+                            200: '#fde68a',
                             700: '#b45309',
                             800: '#92400e',
                             900: '#78350f',
@@ -42,6 +43,7 @@
     <style>
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
+            height: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -53,277 +55,249 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+        .parchment-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#e5e0d8 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
     </style>
 </head>
-<body class="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased flex flex-col justify-between">
+<body class="min-h-screen parchment-pattern text-slate-800 font-sans antialiased flex flex-col justify-between">
 
-    <!-- Header / Navegación Principal -->
-    <header class="bg-amber-950 text-amber-50 sticky top-0 z-40 shadow-lg border-b border-amber-900/50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
+    <header class="bg-amber-950 text-amber-50 sticky top-0 z-40 shadow-xl border-b border-amber-900/60">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center gap-4">
             
-            <!-- Logo y Marca -->
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="resetView()">
-                <span class="text-3xl font-serif font-bold text-amber-400 select-none">מ</span>
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3 cursor-pointer group" onclick="resetView()">
+                <div class="w-10 h-10 rounded-xl bg-amber-900/80 border border-amber-700/60 flex items-center justify-center text-2xl font-serif font-bold text-amber-400 group-hover:bg-amber-800 transition shadow-inner">
+                    מ
+                </div>
                 <div>
-                    <span class="text-xl font-serif font-bold tracking-wide block leading-none">Memoria Sefardí</span>
-                    <span class="text-[10px] text-amber-300/80 tracking-wider uppercase font-sans">Enciclopedia Histórica</span>
+                    <span class="text-xl font-serif font-bold tracking-wide block leading-none text-amber-100 group-hover:text-amber-300 transition">Memoria Sefardí</span>
+                    <span class="text-[10px] text-amber-400/80 tracking-widest uppercase font-sans font-medium">Enciclopedia Histórica</span>
                 </div>
             </div>
 
-            <!-- Menú de Navegación en Escritorio -->
-            <nav class="hidden lg:flex items-center space-x-6 text-sm text-amber-200/90 font-medium">
-                <a href="#" onclick="showToast('Sección Inicio')" class="hover:text-amber-400 transition">Inicio</a>
-                <a href="#" onclick="showToast('Explorando Personas')" class="hover:text-amber-400 transition">Personas</a>
-                <a href="#" onclick="showToast('Explorando Familias')" class="text-amber-400 font-semibold border-b-2 border-amber-400 pb-0.5">Familias</a>
-                <a href="#" onclick="showToast('Catálogo de Documentos')" class="hover:text-amber-400 transition">Documentos</a>
-                <a href="#" onclick="showToast('Mapa Interactivo')" class="hover:text-amber-400 transition">Lugares & Mapa</a>
-                <a href="#" onclick="showToast('Biblioteca digital')" class="hover:text-amber-400 transition">Biblioteca</a>
+            <!-- Main Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-1 text-xs text-amber-200/90 font-medium">
+                <button onclick="setActiveTab('familias')" id="nav-familias" class="px-3 py-1.5 rounded-lg bg-amber-900 text-amber-300 font-bold border border-amber-700/50 transition">Familias</button>
+                <button onclick="setActiveTab('personas')" id="nav-personas" class="px-3 py-1.5 rounded-lg hover:bg-amber-900/60 hover:text-amber-300 transition">Personas</button>
+                <button onclick="setActiveTab('documentos')" id="nav-documentos" class="px-3 py-1.5 rounded-lg hover:bg-amber-900/60 hover:text-amber-300 transition">Documentos</button>
+                <button onclick="setActiveTab('lugares')" id="nav-lugares" class="px-3 py-1.5 rounded-lg hover:bg-amber-900/60 hover:text-amber-300 transition">Lugares & Mapa</button>
+                <button onclick="setActiveTab('cronologia')" id="nav-cronologia" class="px-3 py-1.5 rounded-lg hover:bg-amber-900/60 hover:text-amber-300 transition">Cronología</button>
+                <button onclick="setActiveTab('biblioteca')" id="nav-biblioteca" class="px-3 py-1.5 rounded-lg hover:bg-amber-900/60 hover:text-amber-300 transition">Biblioteca</button>
             </nav>
 
-            <!-- Acciones de Cabecera -->
+            <!-- Search & Mobile Actions -->
             <div class="flex items-center space-x-2">
-                <div class="relative">
-                    <button id="searchBtnToggle" onclick="toggleSearchInput()" class="p-2.5 text-amber-200 hover:text-white hover:bg-amber-900/60 rounded-full transition flex items-center justify-center">
-                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
-                    </button>
-                </div>
+                <button onclick="toggleSearchInput()" class="p-2.5 text-amber-200 hover:text-white hover:bg-amber-900/70 rounded-xl transition flex items-center justify-center bg-amber-900/40 border border-amber-800/60" title="Buscar">
+                    <i class="fa-solid fa-magnifying-glass text-base"></i>
+                </button>
                 
-                <button onclick="toggleMobileMenu()" class="p-2.5 lg:hidden text-amber-200 hover:text-white hover:bg-amber-900/60 rounded-full transition">
-                    <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
+                <button onclick="toggleMobileMenu()" class="p-2.5 lg:hidden text-amber-200 hover:text-white hover:bg-amber-900/70 rounded-xl transition border border-amber-800/60">
+                    <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Barra de búsqueda desplegable -->
-        <div id="searchBarContainer" class="hidden bg-amber-900/90 backdrop-blur-md px-4 py-3 border-t border-amber-800/60 transition-all">
-            <div class="max-w-3xl mx-auto flex items-center gap-3 bg-amber-950/80 rounded-xl px-4 py-2 border border-amber-700/50">
-                <i class="fa-solid fa-search text-amber-400"></i>
-                <input type="text" id="searchInput" oninput="handleGlobalSearch(this.value)" placeholder="Buscar apellido, persona, documento o lugar..." class="w-full bg-transparent text-amber-50 placeholder-amber-400/60 focus:outline-none text-sm">
-                <button onclick="clearSearch()" class="text-amber-400/60 hover:text-amber-200 text-xs px-2 py-1">Limpiar</button>
+        <!-- Search bar input tray -->
+        <div id="searchBarContainer" class="hidden bg-amber-900/95 backdrop-blur-md px-4 py-3 border-t border-amber-800/60 transition-all">
+            <div class="max-w-3xl mx-auto flex items-center gap-3 bg-amber-950/90 rounded-xl px-4 py-2.5 border border-amber-700/60 shadow-inner">
+                <i class="fa-solid fa-magnifying-glass text-amber-400"></i>
+                <input type="text" id="searchInput" oninput="handleGlobalSearch(this.value)" placeholder="Buscar apellido, persona, documento o ciudad (ej. Toledano, Salónica, Ketubá)..." class="w-full bg-transparent text-amber-50 placeholder-amber-400/50 focus:outline-none text-sm">
+                <button onclick="clearSearch()" class="text-amber-400/70 hover:text-amber-200 text-xs px-2 py-1 bg-amber-900/60 rounded-lg border border-amber-700/40">Limpiar</button>
             </div>
         </div>
 
-        <!-- Menú desplegable Móvil -->
-        <div id="mobileMenu" class="hidden lg:hidden bg-amber-900 border-t border-amber-800 px-4 py-4 space-y-3">
-            <div class="grid grid-cols-2 gap-2 text-sm text-amber-100 font-medium">
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Inicio</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Personas</a>
-                <a href="#" class="p-2 rounded bg-amber-800 text-amber-300 font-bold">Familias</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Documentos</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Árboles</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Lugares</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Cronología</a>
-                <a href="#" class="p-2 rounded bg-amber-950/40 hover:bg-amber-800">Biblioteca</a>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-amber-950 border-t border-amber-800/60 px-4 py-4">
+            <div class="grid grid-cols-2 gap-2 text-xs text-amber-100 font-medium">
+                <button onclick="setActiveTab('familias'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/80 text-amber-300 font-bold border border-amber-700/40 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-users text-amber-400"></i> Familias
+                </button>
+                <button onclick="setActiveTab('personas'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/40 hover:bg-amber-800 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-user text-amber-400"></i> Personas
+                </button>
+                <button onclick="setActiveTab('documentos'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/40 hover:bg-amber-800 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-scroll text-amber-400"></i> Documentos
+                </button>
+                <button onclick="setActiveTab('lugares'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/40 hover:bg-amber-800 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-amber-400"></i> Lugares & Mapa
+                </button>
+                <button onclick="setActiveTab('cronologia'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/40 hover:bg-amber-800 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-timeline text-amber-400"></i> Cronología
+                </button>
+                <button onclick="setActiveTab('biblioteca'); toggleMobileMenu();" class="p-2.5 rounded-xl bg-amber-900/40 hover:bg-amber-800 text-left flex items-center gap-2">
+                    <i class="fa-solid fa-book-bookmark text-amber-400"></i> Biblioteca
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Contenedor Principal -->
-    <div class="max-w-5xl mx-auto px-4 py-4 w-full flex-grow">
+    <div class="max-w-6xl mx-auto px-4 py-6 w-full flex-grow">
         
-        <!-- Breadcrumbs y Selector de Familia demo -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-2 border-b border-slate-200">
-            <nav class="text-xs sm:text-sm text-slate-500 flex items-center gap-1.5 flex-wrap">
+        <!-- Breadcrumbs & Lineage Selector -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-amber-200/80">
+            <nav class="text-xs sm:text-sm text-slate-500 flex items-center gap-2 flex-wrap font-medium">
                 <a href="#" onclick="resetView()" class="hover:text-amber-800 hover:underline">Inicio</a>
-                <span>›</span>
-                <a href="#" onclick="resetView()" class="hover:text-amber-800 hover:underline">Familias</a>
-                <span>›</span>
-                <span id="breadcrumbCurrent" class="font-semibold text-amber-900 bg-amber-100 px-2.5 py-0.5 rounded-md">Toledano</span>
+                <span class="text-slate-400">›</span>
+                <span id="breadcrumbCategory" class="hover:text-amber-800">Familias</span>
+                <span class="text-slate-400">›</span>
+                <span id="breadcrumbCurrent" class="font-bold text-amber-900 bg-amber-100/80 border border-amber-300/80 px-3 py-0.5 rounded-md shadow-xs">Toledano</span>
             </nav>
 
             <div class="flex items-center space-x-2 text-xs">
-                <span class="text-slate-500 font-medium">Cambiar linaje demo:</span>
-                <select id="familySelect" onchange="switchFamily(this.value)" class="bg-white border border-slate-300 text-slate-700 rounded-lg px-2.5 py-1 font-medium focus:ring-2 focus:ring-amber-500 outline-none shadow-sm cursor-pointer">
+                <label for="familySelect" class="text-slate-600 font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-dna text-amber-700"></i> Seleccionar Apellido:
+                </label>
+                <select id="familySelect" onchange="switchFamily(this.value)" class="bg-white border border-amber-300/80 text-amber-950 font-semibold rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-amber-500 outline-none shadow-sm cursor-pointer hover:border-amber-400 transition">
                     <option value="Toledano">Familia Toledano</option>
                     <option value="Belmonte">Familia Belmonte</option>
                     <option value="Abravanel">Familia Abravanel</option>
+                    <option value="Senior">Familia Senior / Coronel</option>
                 </select>
             </div>
         </div>
 
-        <!-- Banner Principal de la Familia -->
         <main class="space-y-6">
             
-            <section class="bg-gradient-to-r from-amber-950 via-amber-900 to-amber-950 text-white p-6 sm:p-8 rounded-2xl shadow-md border border-amber-900/80 relative overflow-hidden">
-                <div class="absolute -right-6 -bottom-10 text-amber-800/20 text-9xl font-serif select-none pointer-events-none">Toledo</div>
-                <div class="relative z-10">
-                    <div class="inline-flex items-center space-x-2 bg-amber-800/60 border border-amber-600/50 text-amber-200 px-3 py-1 rounded-full text-xs mb-3">
+            <!-- Hero Banner -->
+            <section class="bg-gradient-to-br from-amber-950 via-amber-900 to-amber-950 text-white p-6 sm:p-8 rounded-3xl shadow-lg border border-amber-800/80 relative overflow-hidden">
+                <div id="bgWatermark" class="absolute -right-4 -bottom-8 text-amber-800/15 font-serif text-8xl sm:text-9xl select-none pointer-events-none font-bold">Toledo</div>
+                <div class="relative z-10 max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 bg-amber-800/60 border border-amber-600/40 text-amber-200 px-3 py-1 rounded-full text-xs mb-4 backdrop-blur-sm">
                         <i class="fa-solid fa-scroll text-amber-400"></i>
-                        <span>Registro de Linaje Sefardí</span>
+                        <span>Registro Histórico de Linajes Sefardíes</span>
                     </div>
-                    <h1 id="familyTitle" class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mb-2 tracking-wide">Familia Toledano</h1>
-                    <p id="familySubtitle" class="text-amber-200/90 text-sm sm:text-base max-w-2xl leading-relaxed">
+                    <h1 id="familyTitle" class="text-3xl sm:text-5xl font-serif font-bold text-amber-100 mb-3 tracking-wide drop-shadow-sm">Familia Toledano</h1>
+                    <p id="familySubtitle" class="text-amber-200/90 text-sm sm:text-base leading-relaxed">
                         Historia del apellido, variantes ortográficas, asentamientos documentados y registro epistolar de las ramas de la diáspora.
                     </p>
                 </div>
             </section>
 
-            <!-- Advertencia Genealógica (Card interactivo) -->
-            <section class="bg-amber-50/90 border-l-4 border-amber-600 p-4 sm:p-5 rounded-r-xl shadow-sm text-amber-950 flex items-start space-x-3.5 border border-amber-200/60">
-                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl flex-shrink-0 mt-0.5"></i>
+            <!-- Genealogic Warning Banner -->
+            <section class="bg-amber-50/90 border-l-4 border-amber-600 p-4 sm:p-5 rounded-r-2xl shadow-sm text-amber-950 flex items-start space-x-3.5 border border-amber-200/80">
+                <i class="fa-solid fa-circle-exclamation text-amber-600 text-xl flex-shrink-0 mt-0.5"></i>
                 <div class="text-xs sm:text-sm leading-relaxed">
-                    <strong class="font-bold text-amber-900 block mb-0.5">Aviso Genealógico Importante:</strong>
-                    Evitar afirmar automáticamente que todas las personas que comparten este apellido pertenecen al mismo linaje. El apellido <span class="font-semibold text-amber-900 underline decoration-amber-400">Toledano</span> es toponímico y pudo ser adoptado por múltiples familias de manera independiente tras los decretos de expulsión.
+                    <strong class="font-bold text-amber-900 block mb-0.5">Advertencia Histórica & Genealógica:</strong>
+                    Evitar afirmar automáticamente que todas las personas que comparten este apellido pertenecen al mismo linaje. Muchas familias sefardíes independientes adoptaron gentilicios toponímicos tras el Decreto de Granada (1492).
                 </div>
             </section>
 
-            <!-- Historia del Apellido -->
-            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <h2 class="text-xl font-serif font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3 flex items-center justify-between">
-                    <span>Historia del apellido</span>
-                    <i class="fa-solid fa-book-open-reader text-amber-700 text-base"></i>
-                </h2>
-                <p id="familyHistory" class="text-slate-700 leading-relaxed text-sm sm:text-base">
-                    El apellido Toledano es de origen toponímico y hace referencia a la emblemática ciudad de Toledo (Castilla). Tras la expulsión de 1492, numerosas familias sefardíes que habían residido en Toledo o sus alrededores adoptaron o conservaron este gentilicio en la diáspora (Portugal, Imperio Otomano, Norte de África, Italia y Países Bajos).
-                </p>
-            </section>
-
-            <!-- Grid: Variantes y Primeras Apariciones -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Variantes -->
-                <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-2 flex items-center justify-between">
-                            <span>Variantes ortográficas</span>
-                            <i class="fa-solid fa-font text-amber-700"></i>
-                        </h2>
-                        <p class="text-xs text-slate-500 mb-3">Haz clic en una variante para filtrar registros:</p>
-                        <div id="variantsContainer" class="flex flex-wrap gap-2">
-                            <!-- Inyectado por JS -->
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Primeras Apariciones -->
-                <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-2 flex items-center justify-between">
-                        <span>Primeras apariciones</span>
-                        <i class="fa-solid fa-clock-rotate-left text-amber-700"></i>
-                    </h2>
-                    <ul id="firstRecordsList" class="text-slate-700 space-y-2.5 text-xs sm:text-sm">
-                        <!-- Inyectado por JS -->
-                    </ul>
-                </section>
+            <!-- Dynamic Content Area -->
+            <div id="tabContentContainer" class="space-y-6">
+                <!-- Content will be injected by JavaScript dynamically -->
             </div>
-
-            <!-- Lugares Registrados -->
-            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <h2 class="text-xl font-bold text-slate-900 mb-2 border-b border-slate-100 pb-3 flex items-center space-x-2">
-                    <i class="fa-solid fa-location-dot text-amber-700"></i>
-                    <span>Lugares de presencia documentada</span>
-                </h2>
-                <p class="text-xs text-slate-500 mb-4">Selecciona un asentamiento para filtrar las referencias asociadas:</p>
-                <div id="locationsContainer" class="flex flex-wrap gap-2">
-                    <!-- Inyectado por JS -->
-                </div>
-            </section>
-
-            <!-- Grid: Personas y Documentos -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Personas documentadas -->
-                <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
-                            <h2 class="text-lg font-bold text-slate-900 flex items-center space-x-2">
-                                <i class="fa-solid fa-users text-amber-700"></i>
-                                <span>Personas documentadas</span>
-                            </h2>
-                            <span id="peopleCount" class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">4</span>
-                        </div>
-                        <ul id="peopleList" class="divide-y divide-slate-100 text-xs sm:text-sm">
-                            <!-- Inyectado por JS -->
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- Documentos asociados -->
-                <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
-                        <h2 class="text-lg font-bold text-slate-900 flex items-center space-x-2">
-                            <i class="fa-solid fa-file-contract text-amber-700"></i>
-                            <span>Documentos asociados</span>
-                        </h2>
-                        <span id="docCount" class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full">2</span>
-                    </div>
-                    <div id="documentsList" class="space-y-3">
-                        <!-- Inyectado por JS -->
-                    </div>
-                </section>
-            </div>
-
-            <!-- Bibliografía -->
-            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-2 flex items-center space-x-2">
-                    <i class="fa-solid fa-book text-amber-700"></i>
-                    <span>Bibliografía de referencia</span>
-                </h2>
-                <ul id="biblioList" class="space-y-2 text-xs sm:text-sm text-slate-600 italic">
-                    <!-- Inyectado por JS -->
-                </ul>
-            </section>
 
         </main>
     </div>
 
-    <!-- Modal para Detalle de Personas / Documentos -->
-    <div id="modalOverlay" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in duration-200">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-8 h-8 rounded-full flex items-center justify-center bg-slate-100">
-                <i class="fa-solid fa-xmark"></i>
+    <!-- Modal for Person & Document details -->
+    <div id="modalOverlay" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-amber-200 relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <div id="modalContent">
-                <!-- Contenido dinámico del modal -->
+                <!-- Injected dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toastNotification" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-3 text-xs sm:text-sm">
-        <i class="fa-solid fa-circle-info text-amber-400"></i>
-        <span id="toastMessage">Mensaje de notificación</span>
+    <!-- Floating Toast Notification -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-amber-950 text-amber-100 px-4 py-3 rounded-2xl shadow-2xl z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-3 text-xs sm:text-sm border border-amber-700/60">
+        <i id="toastIcon" class="fa-solid fa-circle-info text-amber-400 text-base"></i>
+        <span id="toastMessage">Notificación del sistema</span>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs border-t border-slate-800 mt-12">
-        <div class="max-w-5xl mx-auto px-4 space-y-2">
-            <p class="font-serif text-sm text-slate-300">מ Memoria Sefardí — Enciclopedia histórica</p>
-            <p>© 2026 Memoria Sefardí — Archivo digital de investigación de genealogía e historia sefardí.</p>
+    <footer class="bg-amber-950 text-amber-200/70 py-10 text-center text-xs border-t border-amber-900/80 mt-16">
+        <div class="max-w-5xl mx-auto px-4 space-y-3">
+            <div class="flex items-center justify-center space-x-2 text-amber-400 font-serif text-lg font-bold">
+                <span>מ</span>
+                <span>Memoria Sefardí</span>
+            </div>
+            <p class="max-w-md mx-auto text-amber-300/60 text-[11px] leading-relaxed">
+                Archivo digital enciclopédico de investigación sobre la diáspora sefardí, preservación documental y genealogía histórica.
+            </p>
+            <p class="text-[11px] text-amber-400/50 pt-2 border-t border-amber-900/40">
+                © 2026 Memoria Sefardí — Demostración interactiva funcional.
+            </p>
         </div>
     </footer>
 
     <script>
-        // Base de Datos Dinámica de Familias
         const familiesData = {
             Toledano: {
                 name: "Familia Toledano",
                 titleName: "Toledano",
-                history: "El apellido Toledano es de origen toponímico y hace referencia a la ciudad de Toledo (Castilla). Tras la expulsión de 1492, numerosas familias sefardíes que habían residido en Toledo o sus alrededores adoptaron o conservaron este apellido en la diáspora (Portugal, Imperio Otomano, Norte de África, Italia, etc.).",
-                variants: ["Toledano", "de Toledo", "Toledani", "Toledanos"],
+                watermark: "Toledo",
+                history: "El apellido Toledano es de origen toponímico y hace referencia a la emblemática ciudad de Toledo (Castilla). Tras la expulsión de 1492, numerosas familias sefardíes que habían residido en Toledo o sus alrededores conservaron o adoptaron este gentilicio en sus asentamientos en la diáspora (Imperio Otomano, Norte de África, Países Bajos e Italia).",
+                variants: ["Toledano", "de Toledo", "Toledani", "Toledanos", "Talledo"],
                 firstRecords: [
-                    "Documentado en <strong>Toledo</strong> antes de la expulsión de 1492.",
-                    "Presencia continua registrada en <strong>Salónica</strong> desde principios del siglo XVI."
+                    "Registrado en padrones y fueros de <strong>Toledo</strong> antes de 1492.",
+                    "Asentamiento documentado en <strong>Salónica</strong> desde principios del siglo XVI.",
+                    "Registros de inscripciones rabínicas en <strong>Meknés y Tetuán</strong>."
                 ],
                 locations: ["Toledo", "Lisboa", "Salónica", "Esmirna", "Estambul", "Ámsterdam", "Marruecos"],
                 people: [
-                    { name: "David ben Abraham Toledano", role: "Erudito y Comerciante", era: "c. 1510 - 1575", location: "Salónica" },
-                    { name: "Isaac Toledano", role: "Rabino y Jurista", era: "c. 1530 - 1598", location: "Salónica / Estambul" },
-                    { name: "Miriam Toledano", role: "Filántropa comunitaria", era: "c. 1560 - 1620", location: "Ámsterdam" },
-                    { name: "Abraham Toledano", role: "Cronista diplomático", era: "c. 1605 - 1668", location: "Marruecos" }
+                    { name: "David ben Abraham Toledano", role: "Erudito y Comerciante de Seda", era: "c. 1510 - 1575", location: "Salónica", bio: "Destacado mercader involucrado en las rutas comerciales textiles del Mediterráneo Oriental." },
+                    { name: "Isaac Toledano", role: "Rabino y Jurista Rabínico", era: "c. 1530 - 1598", location: "Salónica", bio: "Autor de responsa rabínicos conservados en las comunidades judeoespañolas del Imperio Otomano." },
+                    { name: "Miriam Toledano", role: "Filántropa y Mecenas", era: "c. 1560 - 1620", location: "Ámsterdam", bio: "Financió la impresión de manuscritos en judeoespañol para refugiados en Europa del Norte." },
+                    { name: "Abraham Toledano", role: "Cronista y Consejero Diplomático", era: "c. 1605 - 1668", location: "Marruecos", bio: "Navegó misiones de mediación entre cortes europeas y las autoridades del norte de África." }
                 ],
                 documents: [
                     { 
                         title: "Ketubá de Isaac Toledano (1535)", 
-                        type: "Actas de matrimonio", 
+                        type: "Acta de Matrimonio", 
                         location: "Salónica",
-                        details: "Documento nupcial redactado en judeoespañol (ladino) firmado en la comunidad de Salónica. Incluye testigos de la familia ben Yaesh."
+                        details: "Contrato nupcial manuscrito redactado en judeoespañol (ladino) con firmas de los testigos de la congregación toledana."
                     },
                     { 
                         title: "Inventario de David Toledano (c. 1540)", 
-                        type: "Testamentos e inventarios", 
+                        type: "Testamentos e Inventarios", 
                         location: "Salónica",
-                        details: "Registro notarial comercial de bienes movibles, manuscritos y propiedades transmitidas en el Imperio Otomano."
+                        details: "Registro notarial detallado con libros, telas y propiedades comerciales de la familia."
                     }
                 ],
                 bibliography: [
                     "Beider, A. A Dictionary of Jewish Surnames from the Maghreb, Gibraltar and Malta.",
-                    "Faiguenb
+                    "Faiguenboim, G. et al. Dicionário Sefaradi de Sobrenomes."
+                ]
+            },
+            Belmonte: {
+                name: "Familia Belmonte",
+                titleName: "Belmonte",
+                watermark: "Belmonte",
+                history: "Apellido toponímico vinculado a la villa de Belmonte (Cuenca/Portugal). Fue adoptado por una prominente estirpe de banqueros, diplomáticos y poetas hispano-portugueses que fundaron la comunidad de Ámsterdam.",
+                variants: ["Belmonte", "de Belmonte", "Schonenberg", "Bienvenida"],
+                firstRecords: [
+                    "Registros conversos en la provincia de Beira Baixa (siglo XV).",
+                    "Establecimiento oficial de la casa comercial Belmonte en Ámsterdam (c. 1605)."
+                ],
+                locations: ["Belmonte", "Lisboa", "Ámsterdam", "Hamburgo", "Londres"],
+                people: [
+                    { name: "Barón Manuel de Belmonte", role: "Diplomático y Embajador", era: "1630 - 1705", location: "Ámsterdam", bio: "Embajador de España en los Países Bajos y fundador de academias literarias en la diáspora." },
+                    { name: "Jacob de Belmonte", role: "Fundador Comunitario", era: "1570 - 1629", location: "Ámsterdam", bio: "Uno de los primeros firmantes de los estatutos de la congregación Neve Shalom." }
+                ],
+                documents: [
+                    { 
+                        title: "Concesión de Título Nobiliario (1693)", 
+                        type: "Patente Regia", 
+                        location: "Ámsterdam",
+                        details: "Título otorgado por el rey Carlos II por servicios diplomáticos y comerciales intercontinentales."
+                    }
+                ],
+                bibliography: [
+                    "Kayserling, M. Biblioteca Española-Portugueza-Judaica.",
+                    "Roth, C. A History of the Marranos."
+                ]
+            },
+            Abravanel: {
+                name: "Familia Abravanel",
+                titleName: "Abravanel",
+                watermark: "Sevilla",
+                history: "Una de las dinastías sefardíes más célebres de la Península Ibérica. Con orígenes documentados en Sevilla y Lisboa, sus miembros sirvieron como consejeros financieros de reyes antes de liderar la diáspora de 1492.",
+                variants: ["Abravanel", "Abarbanel", "Barbanel", "Abravanelly"],
+                firstRecords: [
+              
