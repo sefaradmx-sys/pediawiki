@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homenaje Genealógico - Francisco Javier García Gaona</title>
+    <!-- Tailwind CSS para el diseño responsivo y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            800: '#1e3a8a',
+                            900: '#0f172a',
+                            gold: '#d97706',
+                            goldHover: '#b45309'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fuentes Google: Cinzel para títulos de estilo histórico e Inter para lectura -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+        }
+        .text-gold {
+            background: linear-gradient(135deg, #b38728 0%, #fbf5b7 50%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-pattern {
+            background-color: #0b1329;
+            background-image: radial-gradient(#1e3a8a 0.75px, transparent 0.75px), radial-gradient(#1e3a8a 0.75px, #0b1329 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased selection:bg-amber-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- Encabezado Hero -->
+    <header class="hero-pattern border-b-2 border-amber-500/40 text-white py-12 px-4 sm:px-6 lg:px-8 shadow-2xl relative overflow-hidden">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <div class="flex flex-col sm:flex-row items-center gap-6 text-center md:text-left">
+                <!-- Imagen Principal Portada -->
+                <div class="relative group shrink-0">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-amber-700 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                    <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/1788877903356.jpg" 
+                         alt="Francisco Javier García Gaona - Retrato e Historial" 
+                         onerror="this.onerror=null; this.src='https://github.com/sefaradmx-sys/pediawiki/raw/main/Imagenes-familires/1788877903356.jpg';"
+                         class="relative w-36 h-44 sm:w-44 sm:h-52 object-cover rounded-xl shadow-2xl border-2 border-amber-400/80 bg-slate-900">
+                </div>
+                
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs tracking-widest uppercase mb-3 font-semibold">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Diecinueve Generaciones Documentadas (1492–2024)
+                    </div>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
+                        Francisco Javier <span class="text-amber-400">García Gaona</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg font-light">
+                        Saltillo &bull; General Cepeda &bull; Galeana &bull; Rayones &bull; Monterrey
+                    </p>
+                    <p class="text-xs text-amber-300/90 mt-1 font-medium">
+                        "El Linaje de la Frontera Clandestina: Entre el Santo Oficio, la Cábala y la Memoria Sefardí"
+                    </p>
+                </div>
+            </div>
+
+            <!-- Escudo / Insignia visual y acción -->
+            <div class="flex flex-col items-center gap-3">
+                <div class="w-28 h-32 rounded-xl border-2 border-amber-400/80 bg-slate-900/90 shadow-2xl overflow-hidden relative group hover:scale-105 transition-transform duration-300">
+                    <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/escudo-familiar.jpg" 
+                         alt="Escudo Familiar García Gaona" 
+                         onerror="this.onerror=null; this.src='https://github.com/sefaradmx-sys/pediawiki/raw/main/Imagenes-familires/escudo-familiar.jpg';"
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 inset-x-0 bg-slate-950/80 text-[9px] font-serif uppercase tracking-widest text-amber-300 text-center py-0.5">
+                        Escudo Familiar
+                    </div>
+                </div>
+                <button onclick="copiarWikiTree()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs flex items-center gap-2 shadow-lg transition-all active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Copiar Formato WikiTree
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal con Navegación por Pestañas -->
+    <main class="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-1">
+        <!-- Pestañas -->
+        <div class="flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 mb-8 pb-2">
+            <button onclick="cambiarPestana('semblanza')" id="tab-semblanza" class="tab-btn active px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 bg-slate-900 text-white dark:bg-amber-500 dark:text-slate-950 shadow">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                Semblanza General
+            </button>
+            <button onclick="cambiarPestana('galeria')" id="tab-galeria" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Galería Histórica
+            </button>
+            <button onclick="cambiarPestana('cripto')" id="tab-cripto" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.107 2.01-.309 2.97m-2.468 4.032A13.957 13.957 0 0112 21c-2.404 0-4.654-.645-6.6-1.77"></path></svg>
+                Origen Sefardí & Criptojudaísmo
+            </button>
+            <button onclick="cambiarPestana('lineas')" id="tab-lineas" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"></path></svg>
+                19 Generaciones
+            </button>
+            <button onclick="cambiarPestana('ancestros')" id="tab-ancestros" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                Ancestros Ilustres
+            </button>
+            <button onclick="cambiarPestana('fuentes')" id="tab-fuentes" class="tab-btn px-4 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Evidencia Documental
+            </button>
+        </div>
+
+        <!-- SECCIÓN 1: Semblanza -->
+        <div id="sec-semblanza" class="tab-content block space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-amber-400 mb-4 flex items-center gap-3">
+                    <span class="w-2 h-7 bg-amber-500 rounded-full"></span>
+                    Semblanza del Linaje García-Gaona
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg mb-6">
+                    <strong class="text-slate-900 dark:text-white font-semibold">Francisco Javier García Gaona</strong> (Generación 1, 1988–presente), nacido en Saltillo, Coahuila, es el heredero y custodio de un linaje de 19 generaciones continuas que abarca desde la expulsión de España en 1492 y la conquista del Noreste novohispano hasta el México actual.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-xl border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs uppercase font-bold text-amber-600 dark:text-amber-400 mb-1">Padre (Generación 2)</div>
+                            <div class="text-lg font-bold text-slate-900 dark:text-white">Margarito García Vázquez</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 mb-3">(1968 – Fallecido) &bull; Saltillo / General Cepeda</div>
+                        </div>
+                        <div class="flex items-center gap-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+                            <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/boda%20francisca%20y%20jonas.jpg" alt="Boda Jonás García y Francisca Vázquez" class="w-16 h-16 object-cover rounded-lg border border-amber-500/40">
+                            <div class="text-xs text-slate-500 dark:text-slate-400">
+                                <span class="font-bold text-slate-700 dark:text-slate-300 block">Abuelos Paternos (G3):</span>
+                                Jonás García Castilleja y Francisca Vázquez Delgadillo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800/60 p-5 rounded-xl border border-slate-200 dark:border-slate-700/60 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs uppercase font-bold text-amber-600 dark:text-amber-400 mb-1">Madre (Generación 2)</div>
+                            <div class="text-lg font-bold text-slate-900 dark:text-white">Ramona Gaona Samaniego</div>
+                            <div class="text-sm text-slate-500 dark:text-slate-400 mb-3">(1970 – Presente) &bull; Galeana / Rayones, N.L.</div>
+                        </div>
+                        <div class="flex items-center gap-3 pt-2 border-t border-slate-200 dark:border-slate-700">
+                            <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/donsantosgaonamariasamaniegobida.jpg" alt="Boda Don Santos Gaona y Doña María Samaniego" class="w-16 h-16 object-cover rounded-lg border border-amber-500/40">
+                            <div class="text-xs text-slate-500 dark:text-slate-400">
+                                <span class="font-bold text-slate-700 dark:text-slate-300 block">Abuelos Maternos:</span>
+                                Don Santos Gaona y Doña María Samaniego
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                    La convergencia de las ramas <strong class="text-slate-900 dark:text-white">García</strong> (Saltillo / General Cepeda) y <strong class="text-slate-900 dark:text-white">Gaona</strong> (Galeana / Rayones) representa la culminación de un proceso de poblamiento y resistencia cultural en el corredor fronterizo septentrional.
+                </p>
+                <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs sm:text-sm">
+                    <strong>Resumen Genealógico Documentado:</strong> 19 Generaciones de trazabilidad directa certificada con registros de bautismo, matrimonio y defunción en el Archivo Parroquial de San Francisco de Asís (General Cepeda), Sagrario Metropolitano de Saltillo, Archivos Históricos de Nuevo León y actas del Registro Civil.
+                </div>
+            </div>
+
+            <!-- Resumen de Ramas Principales con Imágenes -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 font-bold text-lg mb-1">García de la Peña</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Entronque hidalgo de Saltillo y Villa de Patos. Raíces conectadas con Praxedis de la Peña y gobernadores de Coahuila.</p>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/hermil-Garcia-macaria-castilleja.jpg" alt="Hermilo García y Macaria Castilleja" class="w-full h-32 object-cover rounded-lg border border-slate-200 dark:border-slate-700">
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 font-bold text-lg mb-1">De la Garza Falcón & Treviño</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Linaje militar criptojudío originario de Lepe y Sevilla. Fundadores de Monterrey y capitanes pobladores.</p>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/escudo-familiar.jpg" alt="Escudo Heráldico Familiar" class="w-full h-32 object-cover rounded-lg border border-slate-200 dark:border-slate-700">
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-500 font-bold text-lg mb-1">Gaona & Samaniego</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Linaje arraigado en la serranía de Galeana y Rayones (Nuevo León), baluarte histórico de comunidades judeoconversas.</p>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/familia-Gaona.jpg" alt="Familia Gaona" class="w-full h-32 object-cover rounded-lg border border-slate-200 dark:border-slate-800">
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN NUEVA: Galería Histórica -->
+        <div id="sec-galeria" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-amber-400 mb-2 flex items-center gap-3">
+                    <span class="w-2 h-7 bg-amber-500 rounded-full"></span>
+                    Galería Fotográfica e Iconografía del Linaje
+                </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                    Retratos, matrimonios y acervo fotográfico de la familia García-Gaona en Coahuila y Nuevo León.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Foto 1: Boda Francisca y Jonás -->
+                    <div class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 group hover:border-amber-500 transition duration-300">
+                        <div class="h-64 overflow-hidden relative bg-slate-900">
+                            <img src="https://raw.githubusercontent.com/sefaradmx-sys/pediawiki/main/Imagenes-familires/boda%20francisca%20y%20jonas.jpg" 
+                                 alt="Boda de Francisca Vázquez y Jonás García" 
+                                 onerror="this.onerror=null; this.src='https://github.com/sefaradmx-sys/pediawiki/raw/main/Imagenes-familires/boda%20francisca%20y%20jonas.jpg';"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-4">
+                            <div class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">Generación 3 &bull; Matrimonio</div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-base">Boda de Jonás García Castilleja y Francisca Vázquez Delgadillo</h3>
+                            <p class="temaximo-lider.html
