@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documentos — Sefarad-mx</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script>tailwind.config={theme:{extend:{fontFamily:{serif:['Cormorant Garamond','serif'],sans:['Inter','sans-serif']},colors:{sefarad:{100:'#f4ede0',400:'#c5a16d',600:'#9b6e3c',800:'#67442f'},royal:{950:'#080d1a'}}}}}</script>
+  <style>
+    .lector{position:relative;user-select:none}
+    .lector .velo{position:absolute;inset:0;z-index:2}
+    .lector canvas,.lector img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
+  </style>
 </head>
-<body class="bg-sefarad-100 text-slate-800 font-sans">
+<body class="bg-sefarad-100 text-slate-800 font-sans" oncontextmenu="return false">
   <header class="bg-royal-950 text-sefarad-100 px-6 py-4 flex justify-between items-center">
     <a href="../index.html" class="font-serif text-2xl">Sefarad-mx</a>
     <nav class="text-sm space-x-4 text-sefarad-400">
@@ -18,19 +23,19 @@
     </nav>
   </header>
   <main class="max-w-4xl mx-auto px-4 py-12">
-    <p class="text-xs tracking-widest uppercase text-sefarad-600 mb-2">Acervo</p>
+    <p class="text-xs tracking-widest uppercase text-sefarad-600 mb-2">Consulta</p>
     <h1 class="font-serif text-4xl text-sefarad-800 mb-2">Documentos</h1>
-    <p class="text-slate-600 mb-8">El visor abre el PDF. Si el marco queda en blanco, usa <strong>Abrir PDF</strong>.</p>
+    <p class="text-slate-600 mb-8">Se lee en pantalla. No se descarga.</p>
     <div id="lista" class="space-y-3"></div>
     <section id="marco" class="mt-10 hidden">
       <h2 id="titulo" class="font-serif text-2xl text-sefarad-800 mb-3"></h2>
-      <p class="mb-3"><a id="abrir" class="inline-block bg-sefarad-800 text-sefarad-100 px-4 py-2 text-sm uppercase tracking-wide" target="_blank" rel="noopener">Abrir PDF</a></p>
-      <iframe id="visor" class="w-full bg-white border border-sefarad-400" style="height:80vh" title="Visor PDF"></iframe>
+      <div id="visor" class="lector bg-white border border-sefarad-400 p-2"></div>
     </section>
   </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     var RAW = 'https://raw.githubusercontent.com/sefaradmx-sys/genealogia-garcia/main/Imagenes-pdf/';
-    var VIEW = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=';
     var docs = [
       {casa:'Ramos', t:'Joseph García × Francisca Ramos, 1751', f:'Matrimonio Joseph Miguel García y Francisca Xaviera Ramos.PDF'},
       {casa:'Guajardo', t:'José Luis García × Josefa Guaxardo, 1782', f:'08d96abc-4c17-4839-af00-a24afe13fb3c.jpg', img:true},
@@ -44,24 +49,50 @@
       {casa:'Colección', t:'Coahuila — parroquiales', f:'Coahuila, México, registros parroquiales y diocesanos, 1627-1978 - Ancestry.PDF'}
     ];
     var lista = document.getElementById('lista');
-    docs.forEach(function (d, i) {
-      var a = document.createElement('button');
-      a.type = 'button';
-      a.className = 'w-full text-left bg-white border border-sefarad-400 px-4 py-3 hover:bg-sefarad-100';
-      a.innerHTML = '<span class="text-xs uppercase tracking-widest text-sefarad-600">' + d.casa + '</span><br><span class="font-serif text-lg">' + d.t + '</span>';
-      a.onclick = function () { abrir(d); };
-      lista.appendChild(a);
+    docs.forEach(function (d) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'w-full text-left bg-white border border-sefarad-400 px-4 py-3 hover:bg-sefarad-100';
+      b.innerHTML = '<span class="text-xs uppercase tracking-widest text-sefarad-600">'+d.casa+'</span><br><span class="font-serif text-lg">'+d.t+'</span>';
+      b.onclick = function () { ver(d); };
+      lista.appendChild(b);
     });
-    function abrir(d) {
+    function ver(d) {
       var url = RAW + encodeURIComponent(d.f);
+      var host = document.getElementById('visor');
       document.getElementById('marco').classList.remove('hidden');
       document.getElementById('titulo').textContent = d.t;
-      document.getElementById('abrir').href = url;
-      var visor = document.getElementById('visor');
-      if (d.img) visor.src = url;
-      else visor.src = VIEW + encodeURIComponent(url);
-      visor.scrollIntoView({behavior:'smooth'});
+      host.innerHTML = '';
+      var velo = document.createElement('div');
+      velo.className = 'velo';
+      if (d.img) {
+        var img = document.createElement('img');
+        img.alt = '';
+        img.src = url;
+        host.appendChild(img);
+        host.appendChild(velo);
+        host.scrollIntoView({behavior:'smooth'});
+        return;
+      }
+      pdfjsLib.getDocument({url:url}).promise.then(function (pdf) {
+        var chain = Promise.resolve();
+        for (var n = 1; n <= pdf.numPages; n++) {
+          chain = chain.then((function (num) {
+            return function () {
+              return pdf.getPage(num).then(function (page) {
+                var vp = page.getViewport({scale:1.2});
+                var c = document.createElement('canvas');
+                c.width = vp.width; c.height = vp.height;
+                host.appendChild(c);
+                return page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise;
+              });
+            };
+          })(n));
+        }
+        return chain.then(function () { host.appendChild(velo); host.scrollIntoView({behavior:'smooth'}); });
+      });
     }
+    document.addEventListener('dragstart', function (e) { e.preventDefault(); });
   </script>
 </body>
 </html>
