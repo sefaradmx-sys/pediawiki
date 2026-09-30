@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sefarad-mx — Archivo de casas del noreste</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{serif:['\"Cormorant Garamond\"','serif'],sans:['Inter','sans-serif']},colors:{sefarad:{50:'#fbf8f2',100:'#f4ede0',400:'#c5a16d',600:'#9b6e3c',800:'#67442f'},royal:{950:'#080d1a'}}}}}</script>
 </head>
-<body class="bg-amber-50">
-  <header class="bg-slate-950 text-amber-100">
-    <div class="max-w-6xl mx-auto px-4 py-6 flex justify-between">
-      <a href="index.html" class="text-2xl">Sefarad-mx</a>
-      <nav class="text-sm space-x-4">
-        <a href="index.html">Inicio</a>
-        <a href="pages/familias.html">Casas</a>
-        <a href="pages/personas-ilustres.html">Ilustres</a>
-        <a href="https://sefaradmx-sys.github.io/genealogia-garcia/">Archivo García</a>
-      </nav>
+<body class="bg-sefarad-50 text-slate-800 font-sans">
+  <header class="sticky top-0 z-50 bg-royal-950 text-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="font-serif text-2xl text-sefarad-100">Sefarad-mx</a>
+        <nav class="text-sm space-x-3">
+          <a href="index.html">Inicio</a>
+          <a href="pages/familias.html">Casas</a>
+          <a href="pages/personas-ilustres.html">Ilustres</a>
+          <a href="https://sefaradmx-sys.github.io/genealogia-garcia/">Archivo García</a>
+        </nav>
+      </div>
     </div>
   </header>
-  <main class="max-w-6xl mx-auto px-4 py-16">
-    <h1 class="text-4xl mb-4">Las casas del archivo</h1>
-    <p class="mb-8">Sefarad-mx. El papel se lee; no se inventa.</p>
-    <p class="mb-6"><a class="underline" href="pages/personas-ilustres.html">Personas ilustres de los García del Noreste</a></p>
-    <div class="grid md:grid-cols-3 gap-4">
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">De la Garza</a>
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">Saucedo</a>
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">Rodríguez</a>
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">Guajardo</a>
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">Ramos</a>
-      <a class="bg-white p-6 border rounded" href="pages/familias.html">García</a>
-    </div>
+  <main>
+    <section class="bg-royal-950 text-white py-20 text-center">
+      <p class="text-sefarad-400 text-xs tracking-[0.28em] uppercase mb-6">Saltillo · Huachichil · Lampazos · Monterrey · Mapimí</p>
+      <h1 class="font-serif text-5xl text-sefarad-100 mb-5">Las casas del archivo</h1>
+      <p class="text-slate-300 max-w-2xl mx-auto">Sefarad-mx. Entras por la casa. El papel se lee; no se inventa.</p>
+      <p class="mt-8"><a class="bg-sefarad-600 px-5 py-2 rounded text-white" href="pages/personas-ilustres.html">Personas ilustres</a></p>
+    </section>
+    <section class="py-16 max-w-7xl mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="pages/familias.html#de-la-garza" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">De la Garza</h3><p class="text-sm text-slate-600 mt-2">Lampazos, Monterrey, Mapimí, Saltillo.</p></a>
+      <a href="pages/familias.html#saucedo" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">Saucedo</h3><p class="text-sm text-slate-600 mt-2">Saltillo y Huachichil.</p></a>
+      <a href="pages/familias.html#rodriguez" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">Rodríguez</h3><p class="text-sm text-slate-600 mt-2">Rama por ancla.</p></a>
+      <a href="pages/familias.html#guajardo" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">Guajardo</h3><p class="text-sm text-slate-600 mt-2">José Luis García × Josefa Guaxardo, 1782.</p></a>
+      <a href="pages/familias.html#ramos" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">Ramos</h3><p class="text-sm text-slate-600 mt-2">Joseph Miguel García × Francisca Xaviera Ramos, 1751.</p></a>
+      <a href="pages/familias.html#garcia" class="bg-white p-6 rounded-xl border"><h3 class="font-serif text-2xl">García</h3><p class="text-sm text-slate-600 mt-2">Huachichil. Peña, Castilleja, Vázquez, Gaona.</p></a>
+    </section>
   </main>
+  <footer class="bg-royal-950 text-slate-400 py-10 text-center text-sm">Sefarad-mx · Archivo de casas del noreste</footer>
 </body>
 </html>
